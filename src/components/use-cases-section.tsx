@@ -59,7 +59,7 @@ export function UseCasesSection() {
             href="https://t.me/katenikolaeva1"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center w-full rounded-[999px] border-2 border-neutral-900 bg-white px-4 min-[360px]:px-5 sm:px-10 md:px-12 lg:px-16 xl:px-20 py-3 sm:py-4 md:py-5 lg:py-5 font-semibold text-neutral-900 whitespace-nowrap tracking-tight leading-none text-[clamp(0.62rem,3.2vw,1.5rem)] transition duration-300 ease-in-out hover:bg-neutral-900 hover:text-white"
+            className="relative inline-flex items-center justify-center w-full overflow-hidden rounded-[999px] border-2 border-neutral-900 bg-white px-4 min-[360px]:px-5 sm:px-10 md:px-12 lg:px-16 xl:px-20 py-3 sm:py-4 md:py-5 lg:py-5 font-semibold text-neutral-900 whitespace-nowrap tracking-tight leading-none text-[clamp(0.62rem,3.2vw,1.5rem)] transition duration-300 ease-in-out hover:bg-neutral-900 hover:text-white active:scale-[0.99] active:bg-neutral-900 active:text-white before:content-[''] before:pointer-events-none before:absolute before:inset-y-0 before:-left-[70%] before:w-[60%] before:skew-x-[-18deg] before:bg-[linear-gradient(90deg,transparent,rgba(245,158,11,0.35),transparent)] before:opacity-0 before:animate-[afa-cta-shine_3.6s_ease-in-out_infinite] motion-reduce:before:hidden lg:before:hidden"
           >
             Протестировать ИИ-ассистента для отдела продаж
           </a>

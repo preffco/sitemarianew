@@ -127,3 +127,25 @@
 html {
   scroll-behavior: smooth;
 }
+
+@keyframes afa-cta-shine {
+  0% {
+    transform: translateX(-140%);
+    opacity: 0;
+  }
+  70% {
+    transform: translateX(-140%);
+    opacity: 0;
+  }
+  78% {
+    opacity: 0.35;
+  }
+  92% {
+    transform: translateX(140%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(140%);
+    opacity: 0;
+  }
+}
