@@ -59,7 +59,7 @@ export function UseCasesSection() {
             href="https://t.me/katenikolaeva1"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center w-full max-w-7xl rounded-[999px] border-2 border-neutral-900 bg-white px-20 py-5 text-2xl font-semibold text-neutral-900 transition duration-300 ease-in-out hover:bg-neutral-900 hover:text-white"
+            className="inline-flex items-center justify-center w-full rounded-[999px] border-2 border-neutral-900 bg-white px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 py-3 sm:py-4 md:py-5 lg:py-5 text-sm min-[360px]:text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-neutral-900 whitespace-nowrap transition duration-300 ease-in-out hover:bg-neutral-900 hover:text-white"
           >
             Протестировать ИИ-ассистента для отдела продаж
           </a>
