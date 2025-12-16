@@ -38,15 +38,17 @@ export function ServicesSection() {
               }
             </p>
             
-            {/* Chat screenshot */}
-            <div className="mb-6 flex justify-center">
-              <Image
-                src="/services-chat-screenshot.png"
-                alt="Скриншот чата ИИ-ассистента"
-                width={500}
-                height={889}
-                className="rounded-2xl scale-[1.35]"
-              />
+            {/* Chat screenshot (mobile: bigger + slightly off the right edge) */}
+            <div className="mb-6 flex justify-end sm:justify-center">
+              <div className="w-[320px] min-[390px]:w-[360px] -mr-10 sm:mr-0 sm:w-full sm:max-w-[520px]">
+                <Image
+                  src="/services-chat-screenshot.png"
+                  alt="Скриншот чата ИИ-ассистента"
+                  width={500}
+                  height={889}
+                  className="w-full h-auto rounded-2xl shadow-lg"
+                />
+              </div>
             </div>
 
             <a href="#use-cases" className="flex items-center gap-2 text-neutral-950 font-medium group-hover:gap-4 transition-all mt-auto">
