@@ -3,10 +3,12 @@
 import type React from "react"
 
 import { useEffect, useState } from "react"
-import PhoneInput from "react-phone-input-2"
+import dynamic from "next/dynamic"
 import "react-phone-input-2/lib/style.css"
 import { Button } from "@/components/ui/button"
 import { AlertTriangle, CheckCircle2, X } from "lucide-react"
+
+const PhoneInput = dynamic(() => import("react-phone-input-2"), { ssr: false })
 
 export function CtaSection() {
   const [formData, setFormData] = useState({

@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Missing fields" }, { status: 400 })
   }
 
-  const message = `📩 Новая заявка с формы\n\nИмя: ${name}\nEmail: ${email}\nТелефон: ${phone}`
+  const message = `📩 Новая заявка с формы\n\n<b>Имя:</b> ${name}\n<b>Email:</b> ${email}\n<b>Телефон:</b> ${phone}`
 
   const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
     method: "POST",
