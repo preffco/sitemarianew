@@ -125,7 +125,9 @@ export function CertificatesSection() {
           {certificates.map((cert, index) => (
             <button
               key={cert.id}
-              ref={(el) => (thumbnailRefs.current[index] = el)}
+              ref={(el) => {
+                thumbnailRefs.current[index] = el
+              }}
               onClick={() => goToSlide(index, index > currentIndex ? "right" : "left")}
               className={`relative flex-shrink-0 w-16 h-10 sm:w-24 sm:h-14 md:w-32 md:h-20 rounded-lg sm:rounded-xl overflow-hidden transition-all ${
                 index === currentIndex
