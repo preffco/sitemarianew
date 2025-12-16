@@ -1,0 +1,157 @@
+"use client"
+
+import { useEffect, useMemo, useState } from "react"
+import { X } from "lucide-react"
+import { Button } from "@/components/ui/button"
+
+function HamburgerIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 72 24"
+      className={className}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M2 4H70" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M2 12H70" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M2 20H70" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const links = useMemo(
+    () => [
+      { label: "О нас", href: "#expert" },
+      { label: "Услуги", href: "#services" },
+      { label: "Мастер-классы", href: "#masterclasses" },
+      { label: "Кейсы", href: "#cases" },
+      { label: "Сертификаты", href: "#certificates" },
+      { label: "Обучение", href: "#education" },
+      { label: "Контакты", href: "#contact" },
+    ],
+    [],
+  )
+
+  useEffect(() => {
+    if (!isMenuOpen) return
+
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsMenuOpen(false)
+    }
+    window.addEventListener("keydown", onKeyDown)
+
+    return () => {
+      document.body.style.overflow = prevOverflow
+      window.removeEventListener("keydown", onKeyDown)
+    }
+  }, [isMenuOpen])
+
+  return (
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-neutral-950/95 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-amber-400 rounded-lg flex items-center justify-center">
+                <span className="text-neutral-950 font-bold text-[10px] tracking-wide">AFA</span>
+              </div>
+              <span className="text-white font-semibold text-lg">Ai for all</span>
+            </div>
+
+            <nav className="hidden xl:flex items-center gap-6">
+              {links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-neutral-300 hover:text-white transition-colors text-sm"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+
+            <div className="hidden xl:block">
+              <a href="#contact">
+                <Button className="bg-amber-400 hover:bg-amber-500 text-neutral-950 rounded-full px-6 font-medium">
+                  Получить аудит
+                </Button>
+              </a>
+            </div>
+
+            <button
+              className="xl:hidden flex items-center gap-2 text-white text-sm font-semibold"
+              onClick={() => setIsMenuOpen(true)}
+              aria-label="Открыть меню"
+              aria-expanded={isMenuOpen}
+            >
+              <HamburgerIcon className="w-[60px] h-5 shrink-0" />
+              <span>Меню</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile menu overlay (rendered OUTSIDE header to avoid stacking-context bugs) */}
+      <div
+        className={`fixed inset-0 z-[999] xl:hidden transition-opacity duration-200 ${
+          isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+        aria-hidden={!isMenuOpen}
+      >
+        <button
+          className="absolute inset-0 bg-black/60"
+          onClick={() => setIsMenuOpen(false)}
+          aria-label="Закрыть меню"
+        />
+
+        <aside
+          role="dialog"
+          aria-modal="true"
+          className={`absolute top-0 right-0 h-full w-[86vw] max-w-sm bg-white shadow-2xl transition-transform duration-300 ease-out ${
+            isMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <div className="h-full flex flex-col">
+            <div className="flex items-center justify-between px-6 py-5 border-b border-neutral-200">
+              <div>
+                <p className="text-xs text-neutral-500 uppercase tracking-[0.35em]">Меню</p>
+                <p className="text-lg font-semibold text-neutral-950">Ai for all</p>
+              </div>
+              <button className="text-neutral-700" onClick={() => setIsMenuOpen(false)} aria-label="Закрыть меню">
+                <X size={20} />
+              </button>
+            </div>
+
+            <nav className="flex-1 overflow-y-auto px-6 py-6 flex flex-col gap-4">
+              {links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-lg font-medium text-neutral-900 hover:text-neutral-950 transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+
+            <div className="px-6 py-6 border-t border-neutral-200">
+              <a href="#contact" onClick={() => setIsMenuOpen(false)}>
+                <Button className="w-full bg-amber-400 hover:bg-amber-500 text-neutral-950 rounded-full font-medium">
+                  Получить аудит
+                </Button>
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </>
+  )
+}
