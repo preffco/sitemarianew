@@ -1,5 +1,6 @@
 import { Bot, GraduationCap, ArrowRight } from "lucide-react"
 import Image from "next/image"
+import { useState } from "react"
 import { MasterclassLogosCarousel } from "@/components/masterclass-logos-carousel"
 
 const masterclassLogos = Array.from({ length: 12 }, (_, i) => ({
@@ -8,6 +9,7 @@ const masterclassLogos = Array.from({ length: 12 }, (_, i) => ({
 }))
 
 export function ServicesSection() {
+  const [zooming, setZooming] = useState(false)
   return (
     <section id="services" className="bg-neutral-100 py-24 px-6">
       <div className="max-w-7xl mx-auto">
@@ -44,14 +46,20 @@ export function ServicesSection() {
                 role="button"
                 tabIndex={0}
                 aria-label="Ознакомьтесь со скриншотом ИИ-ассистента"
-                className="relative group overflow-hidden rounded-2xl shadow-lg transition-transform duration-500 motion-safe:animate-[pulse_3s_infinite] focus-visible:outline focus-visible:outline-4 focus-visible:outline-amber-400"
+                className="relative group overflow-hidden rounded-2xl shadow-lg transition-transform duration-500 motion-safe:animate-[pulse_6s_infinite] focus-visible:outline focus-visible:outline-4 focus-visible:outline-amber-400"
+                onClick={() => {
+                  setZooming(true)
+                  window.setTimeout(() => setZooming(false), 600)
+                }}
               >
                 <Image
                   src="/services-chat-screenshot.png"
                   alt="Скриншот чата ИИ-ассистента"
                   width={500}
                   height={889}
-                  className="w-full h-auto transition-transform duration-500 group-hover:scale-105 group-active:scale-110"
+                  className={`w-full h-auto transition-transform duration-500 ${
+                    zooming ? "scale-110" : "group-hover:scale-105"
+                  }`}
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
