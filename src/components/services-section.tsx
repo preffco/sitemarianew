@@ -40,13 +40,21 @@ export function ServicesSection() {
             
             {/* Chat screenshot */}
             <div className="mb-6 flex justify-center">
-              <Image
-                src="/services-chat-screenshot.png"
-                alt="Скриншот чата ИИ-ассистента"
-                width={500}
-                height={889}
-                className="rounded-2xl scale-[1.35]"
-              />
+              <div
+                role="button"
+                tabIndex={0}
+                aria-label="Ознакомьтесь со скриншотом ИИ-ассистента"
+                className="relative group overflow-hidden rounded-2xl shadow-lg transition-transform duration-500 motion-safe:animate-[pulse_3s_infinite] focus-visible:outline focus-visible:outline-4 focus-visible:outline-amber-400"
+              >
+                <Image
+                  src="/services-chat-screenshot.png"
+                  alt="Скриншот чата ИИ-ассистента"
+                  width={500}
+                  height={889}
+                  className="w-full h-auto transition-transform duration-500 group-hover:scale-105 group-active:scale-110"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
             </div>
 
             <a href="#use-cases" className="flex items-center gap-2 text-neutral-950 font-medium group-hover:gap-4 transition-all mt-auto">
