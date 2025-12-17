@@ -128,14 +128,14 @@ export function ServicesSection() {
                 {serviceCards[activeCard].title}
               </h3>
 
-              <div className="mt-4 mb-3 flex flex-col sm:flex-row gap-4 items-start -ml-12 md:-ml-24">
+              <div className="mt-2 mb-2 flex flex-col sm:flex-row gap-4 items-start -ml-14 md:-ml-28">
                 <div className="relative w-[520px] sm:w-[600px] md:w-[680px] flex-shrink-0">
                   <Image
                     src="/services-chat-screenshot.png"
                     alt="Интерфейс чата"
                     width={220}
                     height={440}
-                    className="w-full h-auto object-contain transform -translate-x-20 md:-translate-x-32"
+                    className="w-full h-auto object-contain transform -translate-x-24 md:-translate-x-[7.5rem]"
                   />
                 </div>
                 <div className="relative flex-1 overflow-hidden rounded-3xl max-w-[560px] shadow-[0_30px_90px_rgba(0,0,0,0.35)] mt-6 sm:mt-0">
@@ -152,7 +152,7 @@ export function ServicesSection() {
                 </div>
               </div>
 
-              <p className="text-base md:text-lg text-[#CCCCCC] leading-relaxed mt-auto">
+              <p className="text-base md:text-lg text-[#CCCCCC] leading-relaxed mt-3">
                 {serviceCards[activeCard].description}
               </p>
             </div>
