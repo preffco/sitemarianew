@@ -32,6 +32,21 @@ const sections = [
   },
 ]
 
+const articleSections = [
+  {
+    id: "article-1",
+    title: "О нас в федеральных СМИ (РБК)",
+    description:
+      "Эпидемия ИИ-агентов: что говорят Morgan Stanley и азиатские супераппы, и как Россия может создать собственную экосистему.",
+  },
+  {
+    id: "article-2",
+    title: "ИИ для всех: как AFA переосмысливает бизнес-процессы",
+    description:
+      "Мария Аникина о том, как гуманитарий нашел свой путь в ИИ и помогает клиентам автоматизировать рутину без страха.",
+  },
+]
+
 export default function BlogPage() {
   return (
     <main className="bg-neutral-100 min-h-screen">
@@ -49,7 +64,22 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <section className="px-6 md:px-10 py-14">
+      <div className="max-w-5xl mx-auto px-6 md:px-10 py-8">
+        <div className="flex flex-wrap gap-3">
+          {articleSections.map((section) => (
+            <a
+              key={section.id}
+              href={`#${section.id}`}
+              className="inline-flex items-center gap-3 rounded-full border border-neutral-200 bg-white/90 px-5 py-2 text-sm font-semibold text-neutral-900 transition hover:border-neutral-400 hover:bg-white"
+            >
+              <span>{section.title}</span>
+              <span className="hidden text-xs font-normal text-neutral-500 md:inline">{section.description}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <section className="px-6 md:px-10 py-14" id="article-1">
         <div className="max-w-7xl mx-auto flex flex-col gap-10 lg:flex-row lg:items-start">
           <div className="lg:w-1/2 space-y-8">
             {sections.map((section) => (
@@ -74,7 +104,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <section className="px-6 md:px-10 py-14">
+      <section className="px-6 md:px-10 py-14" id="article-2">
         <div className="max-w-7xl mx-auto">
           <article className="bg-white border border-black/10 p-8 md:p-12 shadow-[0_15px_60px_rgba(15,23,42,0.08)] space-y-10">
             <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">

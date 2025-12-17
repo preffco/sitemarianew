@@ -10,8 +10,8 @@ const articles = [
     publication: "МАХ",
     publicationLogo: "/RBK_logo.svg.png",
     title:
-      "ИИ-агенты и супераппы в Азии — Россия рискует остаться в стороне, если не появится свой «умный» MAX. Мария Аникина (Ai for all) объясняет, как запустить такой проект.",
-    url: "#", // URL статьи, когда будет готов
+      "ИИ-агенты и супераппы в Азии — Россия рискует остаться в стороне, если не появится свой «умный» MAX. Мария Аникина объясняет, как запустить такой проект.",
+    url: "/blog#article-1",
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const articles = [
     publicationLogo: "/tenchat.png",
     title:
       "Мария Аникина рассказывает, как гуманитарий с юриспруденцией создала Ai for all и теперь помогает компаниям интегрировать ИИ в рутинные процессы.",
-    url: "/blog",
+    url: "/blog#article-2",
   },
 ]
 
@@ -33,9 +33,9 @@ export function PressSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           {articles.map((article) => (
-            <Link
+          <Link
               key={article.id}
-              href="/blog"
+            href={article.url}
               className="bg-white rounded-none pt-4 sm:pt-5 px-4 sm:px-5 pb-0 shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.12)] transition-shadow group flex flex-col min-h-[280px] sm:min-h-[300px]"
             >
               {/* Publication logo/name */}
