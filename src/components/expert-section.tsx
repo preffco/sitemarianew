@@ -61,19 +61,19 @@ export function ExpertSection() {
 
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <CheckCircle2 className="w-6 h-6 text-[#2f56ff]" />
+                <CheckCircle2 className="w-6 h-6 text-[#2f56ff] flex-shrink-0" />
                 <span className="text-neutral-700">Партнер Bitrix24</span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle2 className="w-6 h-6 text-[#2f56ff]" />
+                <CheckCircle2 className="w-6 h-6 text-[#2f56ff] flex-shrink-0" />
                 <span className="text-neutral-700">Партнер AMO CRM</span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle2 className="w-6 h-6 text-[#2f56ff]" />
+                <CheckCircle2 className="w-6 h-6 text-[#2f56ff] flex-shrink-0" />
                 <span className="text-neutral-700">Преподаватель практикумов по ИИ</span>
               </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle2 className="w-6 h-6 text-[#2f56ff]" />
+              <div className="flex items-start gap-3">
+                <CheckCircle2 className="w-6 h-6 text-[#2f56ff] flex-shrink-0 mt-0.5" />
                 <span className="text-neutral-700">Преподавание в рамках национального проекта «Кадры» Минцифры РФ</span>
               </div>
             </div>
