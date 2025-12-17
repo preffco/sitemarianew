@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { CookieConsentBanner } from "@/components/cookie-consent-banner"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] })
@@ -84,6 +85,7 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased`}>
         {children}
         <Analytics />
+        <CookieConsentBanner />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
