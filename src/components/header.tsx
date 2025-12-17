@@ -26,7 +26,6 @@ export function Header() {
     () => [
       { label: "О нас", href: "#expert" },
       { label: "Услуги", href: "#services" },
-      { label: "Мастер-классы", href: "#masterclasses" },
       { label: "Кейсы", href: "#cases" },
       { label: "Сертификаты", href: "#certificates" },
       { label: "Обучение", href: "#education" },
@@ -66,12 +65,12 @@ export function Header() {
               </div>
             </div>
 
-            <nav className="hidden xl:flex items-center gap-6">
+            <nav className="hidden xl:flex items-center gap-8">
               {links.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-white/70 hover:text-white transition-colors text-sm"
+                  className="text-white/70 hover:text-white transition-colors text-base"
                 >
                   {link.label}
                 </a>
