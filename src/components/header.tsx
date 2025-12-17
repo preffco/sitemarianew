@@ -66,9 +66,7 @@ export function Header({ variant = "dark" }: HeaderProps) {
     ? "hidden sm:inline-flex items-center rounded-full bg-neutral-900/5 px-2.5 py-1 text-[10px] font-semibold tracking-[0.22em] text-neutral-900"
     : "hidden sm:inline-flex items-center rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-semibold tracking-[0.22em] text-white/70"
   const navLinkClass = `${isLight ? "text-neutral-900 hover:text-neutral-950" : "text-white/70 hover:text-white"} transition-colors text-base`
-  const desktopButtonClass = isLight
-    ? "bg-neutral-950 hover:bg-black text-white rounded-full px-6 font-semibold"
-    : "bg-amber-400 hover:bg-amber-500 text-neutral-950 rounded-full px-6 font-semibold"
+  const desktopButtonClass = "bg-amber-400 hover:bg-amber-500 text-neutral-950 rounded-full px-6 font-semibold"
   const mobileButtonClass = "w-full bg-amber-400 hover:bg-amber-500 text-neutral-950 rounded-full font-medium"
   const hamburgerTextClass = isLight ? "text-neutral-900" : "text-white"
 
