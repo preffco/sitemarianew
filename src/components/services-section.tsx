@@ -128,27 +128,25 @@ export function ServicesSection() {
                 {serviceCards[activeCard].title}
               </h3>
 
-              <div className="my-8 flex flex-col sm:flex-row gap-5 items-start">
-                {/* Phone (make ~3x larger, remove backing plate) */}
-                <div className="relative w-[320px] sm:w-[360px] md:w-[420px] flex-shrink-0">
+              <div className="my-8 flex flex-col sm:flex-row gap-6 items-start">
+                <div className="relative w-[360px] sm:w-[420px] md:w-[480px] flex-shrink-0 rounded-[32px] overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
                   <Image
                     src="/services-chat-screenshot.png"
                     alt="Интерфейс чата"
-                    width={180}
-                    height={320}
-                    className="w-full h-auto rounded-2xl shadow-[0_18px_50px_rgba(0,0,0,0.35)]"
+                    width={220}
+                    height={440}
+                    className="w-full h-auto object-cover"
                   />
                 </div>
-                {/* Wide image (slightly smaller if needed) */}
-                <div className="relative flex-1 overflow-hidden rounded-xl max-w-[520px]">
+                <div className="relative flex-1 overflow-hidden rounded-3xl max-w-[640px] shadow-[0_30px_90px_rgba(0,0,0,0.35)]">
                   <Image
                     src="/services-masterclass.webp"
                     alt="Мастер-класс по ИИ"
-                    width={350}
-                    height={200}
+                    width={420}
+                    height={240}
                     className="w-full h-auto object-cover aspect-video"
                   />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-4 py-3">
                     <p className="text-xs text-white/90">Практикум по ИИ для бизнеса</p>
                   </div>
                 </div>
