@@ -32,7 +32,7 @@ export function ExpertSection() {
                     <span className="text-neutral-950 font-bold text-[10px] tracking-wide">AFA</span>
                   </div>
                     <div>
-                      <p className="font-semibold text-neutral-950">Owner</p>
+                      <p className="font-semibold text-neutral-950">Основатель</p>
                       <p className="text-neutral-500 text-sm">Агентства Ai for all</p>
                     </div>
                 </div>
