@@ -50,82 +50,80 @@ export function HeroSection() {
               </Button>
             </a>
 
-            {/* Mobile cards - показываются только на мобильных */}
-            <div className="lg:hidden mt-12">
-              <div className="relative">
-                <div className="overflow-x-auto scrollbar-hide pb-4 -mx-6 px-6 snap-x snap-mandatory">
-                  <div className="flex gap-4" style={{ width: 'max-content' }}>
-                    {heroCardData.map((card, idx) => (
-                      <div
-                        key={card.title}
-                        className={`flex-shrink-0 w-[calc(50vw-32px)] snap-start rounded-3xl px-5 py-5 border min-h-[140px] ${
-                          card.highlight 
-                            ? 'border-sky-600 bg-sky-400' 
-                            : 'border-black/5 bg-white'
-                        } shadow-none`}
-                      >
-                        <div className="flex items-center justify-between gap-4 mb-3">
-                          <p className={`font-semibold leading-tight text-sm ${
-                            card.highlight ? 'text-white' : 'text-neutral-950'
-                          }`}>
-                            {card.title}
-                          </p>
-                          <div className={`h-8 w-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                            card.highlight ? 'bg-amber-400' : 'bg-neutral-200'
-                          }`}>
-                            <card.icon className="h-4 w-4 text-neutral-950" />
-                          </div>
-                        </div>
-                        <p className={`text-xs leading-relaxed ${
-                          card.highlight ? 'text-white/80' : 'text-neutral-600'
+            {/* Mobile cards - горизонтальный свайп на мобильных */}
+            <div className="md:hidden mt-12">
+              <div 
+                className="overflow-x-auto scrollbar-hide pb-4 -mx-6 px-6"
+                style={{
+                  scrollSnapType: 'x mandatory',
+                  WebkitOverflowScrolling: 'touch',
+                  touchAction: 'pan-x',
+                  overscrollBehaviorX: 'contain',
+                }}
+              >
+                <div className="flex gap-4" style={{ width: 'max-content' }}>
+                  {heroCardData.map((card, idx) => (
+                    <div
+                      key={card.title}
+                      className={`flex-shrink-0 w-[min(320px,80vw)] snap-start rounded-2xl px-6 py-6 border min-h-[160px] ${
+                        card.highlight 
+                          ? 'border-sky-600 bg-sky-400' 
+                          : 'border-black/5 bg-white'
+                      } shadow-none`}
+                      style={{ scrollSnapAlign: 'start' }}
+                    >
+                      <div className="flex items-start justify-between gap-4 mb-4">
+                        <p className={`font-semibold leading-tight text-base flex-1 ${
+                          card.highlight ? 'text-white' : 'text-neutral-950'
                         }`}>
-                          {card.description}
+                          {card.title}
                         </p>
+                        <div className={`h-10 w-10 rounded-full flex items-center justify-center flex-shrink-0 ${
+                          card.highlight ? 'bg-amber-400' : 'bg-neutral-200'
+                        }`}>
+                          <card.icon className="h-5 w-5 text-neutral-950" />
+                        </div>
                       </div>
-                    ))}
-                  </div>
-                </div>
-                {/* Индикатор скролла - стрелка вправо */}
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none z-10">
-                  <div className="flex items-center gap-1 bg-neutral-950/60 backdrop-blur-sm rounded-full px-2 py-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-white/60"></div>
-                    <svg className="w-4 h-4 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
+                      <p className={`text-sm leading-relaxed ${
+                        card.highlight ? 'text-white/80' : 'text-neutral-600'
+                      }`}>
+                        {card.description}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right mosaic (reference-like cards) */}
-          <div className="hidden lg:grid lg:grid-cols-2 gap-4">
-            {[heroCardData[0], heroCardData[2]].map((card) => (
+          {/* Desktop cards - сетка 2×2 */}
+          <div className="hidden md:grid md:grid-cols-2 gap-4">
+            {heroCardData.map((card) => (
               <div
                 key={card.title}
-                className="rounded-3xl px-7 py-6 border border-black/5 bg-white shadow-none min-h-[140px]"
+                className={`rounded-2xl px-7 py-6 border min-h-[160px] ${
+                  card.highlight
+                    ? 'border-sky-600 bg-sky-400'
+                    : 'border-black/5 bg-white'
+                } shadow-none`}
               >
-                <div className="flex items-center justify-between gap-4">
-                  <p className="font-semibold leading-tight text-neutral-950">{card.title}</p>
-                  <div className="h-10 w-10 rounded-full bg-neutral-200 flex items-center justify-center">
+                <div className="flex items-start justify-between gap-4 mb-4">
+                  <p className={`font-semibold leading-tight flex-1 ${
+                    card.highlight ? 'text-white' : 'text-neutral-950'
+                  }`}>
+                    {card.title}
+                  </p>
+                  <div className={`h-10 w-10 rounded-full flex items-center justify-center flex-shrink-0 ${
+                    card.highlight ? 'bg-amber-400' : 'bg-neutral-200'
+                  }`}>
                     <card.icon className="h-5 w-5 text-neutral-950" />
                   </div>
                 </div>
-                <p className="mt-3 text-sm leading-relaxed text-neutral-600">{card.description}</p>
-              </div>
-            ))}
-            {[heroCardData[1], heroCardData[3]].map((card) => (
-              <div
-                key={card.title}
-                className="rounded-3xl px-7 py-6 border border-sky-600 bg-sky-400 shadow-none min-h-[140px]"
-              >
-                <div className="flex items-center justify-between gap-4">
-                  <p className="font-semibold leading-tight text-white">{card.title}</p>
-                  <div className="h-10 w-10 rounded-full bg-amber-400 flex items-center justify-center">
-                    <card.icon className="h-5 w-5 text-neutral-950" />
-                  </div>
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-white/80">{card.description}</p>
+                <p className={`text-sm leading-relaxed ${
+                  card.highlight ? 'text-white/80' : 'text-neutral-600'
+                }`}>
+                  {card.description}
+                </p>
               </div>
             ))}
           </div>
