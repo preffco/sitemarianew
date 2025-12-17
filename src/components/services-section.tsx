@@ -119,8 +119,8 @@ export function ServicesSection() {
   return (
     <>
       <section className="bg-[#EFEFEF] py-16 md:py-24" id="services">
-        <div className="mx-auto max-w-7xl px-6 sm:px-6 lg:px-8">
-          <h2 className="mb-14 text-[clamp(1.8rem,3.5vw,4.15rem)] font-black tracking-tight leading-[0.98] text-neutral-950">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="mb-14 text-[clamp(2.4rem,4.2vw,4.15rem)] font-black tracking-tight leading-[0.98] text-neutral-950">
             Наши услуги: от консалтинга
             <br />
             до разработки AI-ассистентов
@@ -128,32 +128,7 @@ export function ServicesSection() {
 
           <div className="flex flex-col lg:flex-row gap-6">
             <div className="w-full lg:w-1/2">
-              {/* Мобильная версия - две колонки с зигзагом */}
-              <div className="grid grid-cols-2 gap-3 md:hidden">
-                <div className="flex flex-col gap-3">
-                  {[0, 2, 4, 6].map((idx) => (
-                    <ServiceCardItem
-                      key={serviceCards[idx].id}
-                      card={serviceCards[idx]}
-                      isActive={activeCard === idx}
-                      onClick={() => handleCardClick(idx)}
-                    />
-                  ))}
-                </div>
-                <div className="flex flex-col gap-3 mt-8">
-                  {[1, 3, 5, 7].map((idx) => (
-                    <ServiceCardItem
-                      key={serviceCards[idx].id}
-                      card={serviceCards[idx]}
-                      isActive={activeCard === idx}
-                      onClick={() => handleCardClick(idx)}
-                    />
-                  ))}
-                </div>
-              </div>
-              
-              {/* Десктопная версия - 3 колонки */}
-              <div className="hidden md:grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 <div className="flex flex-col gap-3">
                   {[0, 3, 6].map((idx) => (
                     <ServiceCardItem
@@ -174,7 +149,7 @@ export function ServicesSection() {
                     />
                   ))}
                 </div>
-                <div className="flex flex-col gap-3 mt-16">
+                <div className="hidden md:flex flex-col gap-3 mt-16">
                   {[2, 5].map((idx) => (
                     <ServiceCardItem
                       key={serviceCards[idx].id}
@@ -197,7 +172,7 @@ export function ServicesSection() {
                 {/* Media slot (varies by active card) */}
                 <div className="mt-6">
                   {showPhone ? (
-                    <div className={`mx-auto w-full max-w-[520px] h-[clamp(300px,28vw,450px)] relative overflow-hidden rounded-3xl bg-neutral-900/30 shadow-[0_30px_90px_rgba(0,0,0,0.35)]`}>
+                    <div className={`mx-auto w-full max-w-[520px] ${mediaSlotHeight} relative overflow-hidden rounded-3xl bg-neutral-900/30 shadow-[0_30px_90px_rgba(0,0,0,0.35)]`}>
                       <Image
                         src="/photo/phone.png"
                         alt="Интерфейс чата"
@@ -260,32 +235,6 @@ export function ServicesSection() {
               <h3 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight mb-8 md:mb-12">
                 {modalCard.title}
               </h3>
-
-              {/* Image slot for specific cards */}
-              {modalCard.id === 1 && (
-                <div className="mx-auto w-full max-w-[200px] sm:max-w-[240px] md:max-w-[320px] aspect-[9/16] relative overflow-hidden rounded-3xl bg-neutral-900/30 shadow-[0_30px_90px_rgba(0,0,0,0.35)] mb-8 md:mb-12">
-                  <Image
-                    src="/photo/phone.png"
-                    alt="Интерфейс чата"
-                    fill
-                    className="object-cover w-full h-full scale-125"
-                    sizes="(min-width: 768px) 320px, (min-width: 640px) 240px, 200px"
-                  />
-                </div>
-              )}
-
-              {modalCard.id === 2 && (
-                <div className="w-full h-[240px] md:h-[300px] lg:h-[360px] relative overflow-hidden rounded-3xl bg-neutral-900/30 shadow-[0_30px_90px_rgba(0,0,0,0.35)] mb-8 md:mb-12">
-                  <Image
-                    src="/services-masterclass.webp"
-                    alt="Мастер-класс по ИИ"
-                    fill
-                    className="object-cover object-top"
-                    sizes="100vw"
-                  />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/55 to-transparent" />
-                </div>
-              )}
 
               {/* Description at bottom */}
               <div className="text-base md:text-lg lg:text-xl text-white leading-relaxed space-y-4 max-w-4xl mt-auto">
