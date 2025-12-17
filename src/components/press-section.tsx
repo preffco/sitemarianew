@@ -44,9 +44,9 @@ export function PressSection() {
                   <Image
                     src={article.publicationLogo}
                     alt={article.publication}
-                    width={120}
-                    height={40}
-                    className="h-8 w-auto object-contain brightness-0 opacity-85"
+                    width={article.id === 2 ? 180 : 120}
+                    height={article.id === 2 ? 60 : 40}
+                    className={`${article.id === 2 ? 'h-12' : 'h-8'} w-auto object-contain brightness-0 opacity-85`}
                   />
                 ) : (
                   <div className="border border-neutral-900 rounded px-3 py-1.5 inline-block">
