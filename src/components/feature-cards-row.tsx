@@ -20,7 +20,7 @@ export function FeatureCardsRow({
         {items.map((card) => (
           <div
             key={card.title}
-            className={`rounded-[18px] px-7 py-6 border min-h-[160px] ${
+            className={`rounded-[18px] px-7 py-6 border min-h-[160px] flex flex-col ${
               card.highlight ? "border-sky-600 bg-sky-400" : "border-black/5 bg-white"
             }`}
           >
@@ -36,9 +36,11 @@ export function FeatureCardsRow({
                 <card.icon className="h-5 w-5 text-neutral-950" />
               </div>
             </div>
-            <p className={`text-sm leading-relaxed ${card.highlight ? "text-white/80" : "text-neutral-600"}`}>
-              {card.description}
-            </p>
+            <div className="flex-1 flex items-end">
+              <p className={`text-sm leading-relaxed ${card.highlight ? "text-white/80" : "text-neutral-600"}`}>
+                {card.description}
+              </p>
+            </div>
           </div>
         ))}
       </div>
@@ -54,7 +56,7 @@ export function FeatureCardsRow({
       {items.map((card) => (
           <div
             key={card.title}
-            className={`snap-start flex-shrink-0 w-[min(200px,55vw)] rounded-[18px] px-5 py-10 border min-h-[250px] ${
+            className={`snap-start flex-shrink-0 w-[min(200px,55vw)] rounded-[18px] px-5 py-10 border min-h-[250px] flex flex-col ${
               card.highlight ? "border-sky-600 bg-sky-400" : "border-black/5 bg-white"
             }`}
           >
@@ -70,9 +72,11 @@ export function FeatureCardsRow({
               <card.icon className="h-5 w-5 text-neutral-950" />
             </div>
           </div>
+          <div className="flex-1 flex items-end">
           <p className={`text-sm leading-relaxed ${card.highlight ? "text-white/80" : "text-neutral-600"}`}>
             {card.description}
           </p>
+          </div>
         </div>
       ))}
     </div>
