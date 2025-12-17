@@ -60,7 +60,7 @@ export function PressSection() {
                   <ArrowRight className="w-5 h-5 text-neutral-700" />
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
 
