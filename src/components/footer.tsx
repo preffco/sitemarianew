@@ -65,7 +65,7 @@ export function Footer() {
               <Link href="/privacy" className="text-neutral-500 hover:text-neutral-300 transition-colors text-sm">
                 Политика конфиденциальности
               </Link>
-              <Link href="/privacy" className="text-neutral-500 hover:text-neutral-300 transition-colors text-sm">
+              <Link href="/agreement" className="text-neutral-500 hover:text-neutral-300 transition-colors text-sm">
                 Пользовательское соглашение
               </Link>
             </div>
