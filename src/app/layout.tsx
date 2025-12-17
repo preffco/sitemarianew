@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "интеграция CRM Bitrix24",
   ],
   openGraph: {
-    title: "Ai for all — агентство по внедрению ИИ",
+    title: "Ai for all — внедрение ИИ в бизнес",
     description:
       "Ai for all создаёт кастомных AI-ассистентов и проводит корпоративные мастер-классы по нейросетям для коммерческих команд.",
     url: siteUrl,
