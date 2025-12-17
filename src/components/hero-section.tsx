@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Bot, GraduationCap, MessageSquare, ShieldCheck, Users } from "lucide-react"
+import { FeatureCardsRow } from "@/components/feature-cards-row"
 
 const heroCardData = [
   {
@@ -50,82 +51,15 @@ export function HeroSection() {
               </Button>
             </a>
 
-            {/* Mobile cards - горизонтальный свайп на мобильных */}
-            <div className="md:hidden mt-12">
-              <div 
-                className="overflow-x-auto scrollbar-hide pb-4 -mx-6 px-6"
-                style={{
-                  scrollSnapType: 'x mandatory',
-                  WebkitOverflowScrolling: 'touch',
-                  touchAction: 'pan-x',
-                  overscrollBehaviorX: 'contain',
-                }}
-              >
-                <div className="flex gap-4" style={{ width: 'max-content' }}>
-                  {heroCardData.map((card, idx) => (
-                    <div
-                      key={card.title}
-                      className={`flex-shrink-0 w-[min(320px,80vw)] snap-start rounded-2xl px-6 py-6 border min-h-[160px] ${
-                        card.highlight 
-                          ? 'border-sky-600 bg-sky-400' 
-                          : 'border-black/5 bg-white'
-                      } shadow-none`}
-                      style={{ scrollSnapAlign: 'start' }}
-                    >
-                      <div className="flex items-start justify-between gap-4 mb-4">
-                        <p className={`font-semibold leading-tight text-base flex-1 ${
-                          card.highlight ? 'text-white' : 'text-neutral-950'
-                        }`}>
-                          {card.title}
-                        </p>
-                        <div className={`h-10 w-10 rounded-full flex items-center justify-center flex-shrink-0 ${
-                          card.highlight ? 'bg-amber-400' : 'bg-neutral-200'
-                        }`}>
-                          <card.icon className="h-5 w-5 text-neutral-950" />
-                        </div>
-                      </div>
-                      <p className={`text-sm leading-relaxed ${
-                        card.highlight ? 'text-white/80' : 'text-neutral-600'
-                      }`}>
-                        {card.description}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            {/* Mobile: swipeable row under CTA */}
+            <div className="md:hidden mt-10">
+              <FeatureCardsRow items={heroCardData} variant="carousel" />
             </div>
           </div>
 
-          {/* Desktop cards - сетка 2×2 */}
-          <div className="hidden md:grid md:grid-cols-2 gap-4">
-            {heroCardData.map((card) => (
-              <div
-                key={card.title}
-                className={`rounded-2xl px-7 py-6 border min-h-[160px] ${
-                  card.highlight
-                    ? 'border-sky-600 bg-sky-400'
-                    : 'border-black/5 bg-white'
-                } shadow-none`}
-              >
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <p className={`font-semibold leading-tight flex-1 ${
-                    card.highlight ? 'text-white' : 'text-neutral-950'
-                  }`}>
-                    {card.title}
-                  </p>
-                  <div className={`h-10 w-10 rounded-full flex items-center justify-center flex-shrink-0 ${
-                    card.highlight ? 'bg-amber-400' : 'bg-neutral-200'
-                  }`}>
-                    <card.icon className="h-5 w-5 text-neutral-950" />
-                  </div>
-                </div>
-                <p className={`text-sm leading-relaxed ${
-                  card.highlight ? 'text-white/80' : 'text-neutral-600'
-                }`}>
-                  {card.description}
-                </p>
-              </div>
-            ))}
+          {/* Tablet/Desktop: grid (no horizontal scroll) */}
+          <div className="hidden md:block">
+            <FeatureCardsRow items={heroCardData} variant="grid" />
           </div>
         </div>
       </div>

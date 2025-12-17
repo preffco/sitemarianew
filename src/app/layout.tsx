@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { CookieConsentBanner } from "@/components/cookie-consent-banner"
@@ -53,6 +53,11 @@ export const metadata: Metadata = {
     "max-image-preview": "large",
     "max-snippet": -1,
   },
+}
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 }
 
 const jsonLd = {
