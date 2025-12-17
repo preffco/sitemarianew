@@ -39,6 +39,7 @@ export function Header({ variant = "dark" }: HeaderProps) {
     ],
     [],
   )
+  const linkBase = variant === "light" ? "/" : ""
 
   useEffect(() => {
     if (!isMenuOpen) return
@@ -84,7 +85,7 @@ export function Header({ variant = "dark" }: HeaderProps) {
 
             <nav className="hidden xl:flex items-center gap-8">
               {links.map((link) => (
-                <a key={link.href} href={link.href} className={navLinkClass}>
+                <a key={link.href} href={`${linkBase}${link.href}`} className={navLinkClass}>
                   {link.label}
                 </a>
               ))}
@@ -136,7 +137,7 @@ export function Header({ variant = "dark" }: HeaderProps) {
               {links.map((link) => (
                 <a
                   key={link.href}
-                  href={link.href}
+                  href={`${linkBase}${link.href}`}
                   className="text-lg font-medium text-neutral-900 hover:text-neutral-950 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
