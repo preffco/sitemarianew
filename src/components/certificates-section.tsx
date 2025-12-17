@@ -18,14 +18,36 @@ export function CertificatesSection() {
   const thumbnailRefs = useRef<(HTMLButtonElement | null)[]>([])
   const thumbnailContainerRef = useRef<HTMLDivElement | null>(null)
 
-  const goToSlide = useCallback((index: number, dir: "left" | "right") => {
-    setDirection(dir)
-    setIsAnimating(true)
-    setTimeout(() => {
-      setCurrentIndex(index)
-      setIsAnimating(false)
-    }, 300)
+  const scrollThumbnailIntoView = useCallback((index: number) => {
+    const container = thumbnailContainerRef.current
+    const thumbnail = thumbnailRefs.current[index]
+    if (!container || !thumbnail) return
+
+    const thumbnailCenter = thumbnail.offsetLeft + thumbnail.offsetWidth / 2
+    const rawScroll = thumbnailCenter - container.clientWidth / 2
+    const maxScroll = Math.max(container.scrollWidth - container.clientWidth, 0)
+    const targetScroll = Math.min(Math.max(rawScroll, 0), maxScroll)
+
+    if (Math.abs(container.scrollLeft - targetScroll) < 1) return
+
+    container.scrollTo({ left: targetScroll, behavior: "smooth" })
   }, [])
+
+  const goToSlide = useCallback(
+    (index: number, dir: "left" | "right", scrollThumbnails = false) => {
+      setDirection(dir)
+      setIsAnimating(true)
+      setTimeout(() => {
+        setCurrentIndex(index)
+        setIsAnimating(false)
+      }, 300)
+
+      if (scrollThumbnails) {
+        scrollThumbnailIntoView(index)
+      }
+    },
+    [scrollThumbnailIntoView],
+  )
 
   const nextSlide = useCallback(() => {
     const newIndex = (currentIndex + 1) % certificates.length
@@ -35,6 +57,16 @@ export function CertificatesSection() {
   const prevSlide = useCallback(() => {
     const newIndex = (currentIndex - 1 + certificates.length) % certificates.length
     goToSlide(newIndex, "left")
+  }, [currentIndex, goToSlide])
+
+  const handleNextClick = useCallback(() => {
+    const newIndex = (currentIndex + 1) % certificates.length
+    goToSlide(newIndex, "right", true)
+  }, [currentIndex, goToSlide])
+
+  const handlePrevClick = useCallback(() => {
+    const newIndex = (currentIndex - 1 + certificates.length) % certificates.length
+    goToSlide(newIndex, "left", true)
   }, [currentIndex, goToSlide])
 
   // Auto-advance every 4 seconds
@@ -47,16 +79,6 @@ export function CertificatesSection() {
 
     return () => clearInterval(interval)
   }, [isHovered, nextSlide])
-
-  useEffect(() => {
-    const container = thumbnailContainerRef.current
-    const thumbnail = thumbnailRefs.current[currentIndex]
-    if (!container || !thumbnail) return
-
-    const thumbnailCenter = thumbnail.offsetLeft + thumbnail.offsetWidth / 2
-    const scrollPosition = thumbnailCenter - container.clientWidth / 2
-    container.scrollTo({ left: scrollPosition, behavior: "smooth" })
-  }, [currentIndex])
 
   return (
     <section
@@ -74,14 +96,14 @@ export function CertificatesSection() {
           {/* Navigation controls */}
           <div className="flex items-center gap-3">
             <button
-              onClick={prevSlide}
+              onClick={handlePrevClick}
               className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-neutral-300 flex items-center justify-center hover:bg-white transition-colors"
               aria-label="Предыдущий сертификат"
             >
               <ChevronLeft className="w-5 h-5 text-neutral-700" />
             </button>
             <button
-              onClick={nextSlide}
+              onClick={handleNextClick}
               className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-neutral-300 flex items-center justify-center hover:bg-white transition-colors"
               aria-label="Следующий сертификат"
             >
@@ -128,7 +150,7 @@ export function CertificatesSection() {
               ref={(el) => {
                 thumbnailRefs.current[index] = el
               }}
-              onClick={() => goToSlide(index, index > currentIndex ? "right" : "left")}
+              onClick={() => goToSlide(index, index > currentIndex ? "right" : "left", true)}
               className={`relative flex-shrink-0 w-16 h-10 sm:w-24 sm:h-14 md:w-32 md:h-20 rounded-lg sm:rounded-xl overflow-hidden transition-all ${
                 index === currentIndex
                   ? "ring-4 ring-amber-500 ring-offset-2 ring-offset-white"
@@ -146,7 +168,7 @@ export function CertificatesSection() {
           {certificates.map((_, index) => (
             <button
               key={index}
-              onClick={() => goToSlide(index, index > currentIndex ? "right" : "left")}
+              onClick={() => goToSlide(index, index > currentIndex ? "right" : "left", true)}
               className={`h-2 rounded-full transition-all ${
                 index === currentIndex ? "w-6 bg-amber-500" : "w-2 bg-neutral-300"
               }`}
