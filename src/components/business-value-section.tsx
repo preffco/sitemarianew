@@ -62,8 +62,8 @@ export function BusinessValueSection() {
           })}
         </div>
 
-        <div className="bg-neutral-950 rounded-3xl p-8 md:p-12 shadow-[0_30px_80px_rgba(0,0,0,0.25)]">
-          <p className="text-white/85 text-lg md:text-xl leading-relaxed max-w-4xl">
+        <div className="bg-neutral-950 rounded-3xl p-6 md:p-12 shadow-[0_30px_80px_rgba(0,0,0,0.25)]">
+          <p className="text-white/85 text-[clamp(0.875rem,2.5vw,1.25rem)] md:text-xl leading-relaxed max-w-4xl">
             Наше агентство по внедрению ИИ анализирует ваши бизнес-процессы и показывает, где автоматизация с помощью
             нейросетей даст максимальный эффект: в продажах, маркетинге, юриспруденции или HR.
           </p>
