@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import { TrendingDown, Clock, DollarSign } from "lucide-react"
 
 const valueCards = [
@@ -22,7 +21,6 @@ const valueCards = [
 ]
 
 export function BusinessValueSection() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
     <section className="bg-neutral-100 py-24 px-6">
@@ -44,15 +42,9 @@ export function BusinessValueSection() {
             return (
               <div
                 key={idx}
-                onMouseEnter={() => setHoveredIndex(idx)}
-                onMouseLeave={() => setHoveredIndex(null)}
                 className="bg-white rounded-3xl p-8 shadow-[0_18px_50px_rgba(15,23,42,0.08)] border border-black/5 transition-all hover:shadow-[0_18px_50px_rgba(15,23,42,0.12)] cursor-pointer"
               >
-                <div
-                  className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-200 ${
-                    hoveredIndex === idx ? "bg-amber-400" : "bg-neutral-200"
-                  }`}
-                >
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 bg-amber-400">
                   <Icon className="w-7 h-7 text-neutral-950" />
                 </div>
                 <h3 className="text-xl font-semibold text-neutral-950 mb-3">{card.title}</h3>
