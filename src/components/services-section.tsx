@@ -1,8 +1,8 @@
- "use client"
+"use client"
 
-import { Bot, GraduationCap, ArrowRight } from "lucide-react"
+import { Bot, GraduationCap, ArrowRight, X } from "lucide-react"
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { MasterclassLogosCarousel } from "@/components/masterclass-logos-carousel"
 
 const masterclassLogos = Array.from({ length: 12 }, (_, i) => ({
@@ -11,7 +11,24 @@ const masterclassLogos = Array.from({ length: 12 }, (_, i) => ({
 }))
 
 export function ServicesSection() {
-  const [zooming, setZooming] = useState(false)
+  const [isPhoneZoomOpen, setIsPhoneZoomOpen] = useState(false)
+
+  useEffect(() => {
+    if (!isPhoneZoomOpen) return
+
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsPhoneZoomOpen(false)
+    }
+    window.addEventListener("keydown", onKeyDown)
+
+    return () => {
+      document.body.style.overflow = prevOverflow
+      window.removeEventListener("keydown", onKeyDown)
+    }
+  }, [isPhoneZoomOpen])
   return (
     <section id="services" className="bg-neutral-100 py-24 px-6">
       <div className="max-w-7xl mx-auto">
@@ -48,10 +65,13 @@ export function ServicesSection() {
                 role="button"
                 tabIndex={0}
                 aria-label="Ознакомьтесь со скриншотом ИИ-ассистента"
-                className="relative group overflow-hidden rounded-2xl shadow-lg transition-transform duration-500 motion-safe:animate-[pulse_6s_infinite] focus-visible:outline focus-visible:outline-4 focus-visible:outline-amber-400"
-                onClick={() => {
-                  setZooming(true)
-                  window.setTimeout(() => setZooming(false), 600)
+                className="relative group overflow-hidden rounded-2xl shadow-lg focus-visible:outline focus-visible:outline-4 focus-visible:outline-amber-400 cursor-zoom-in"
+                onClick={() => setIsPhoneZoomOpen(true)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault()
+                    setIsPhoneZoomOpen(true)
+                  }
                 }}
               >
                 <Image
@@ -59,13 +79,48 @@ export function ServicesSection() {
                   alt="Скриншот чата ИИ-ассистента"
                   width={500}
                   height={889}
-                  className={`w-full h-auto transition-transform duration-500 ${
-                    zooming ? "scale-110" : "group-hover:scale-105"
-                  }`}
+                  className="w-full h-auto transition-transform duration-300 ease-out group-hover:scale-[1.03]"
                 />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </div>
+
+            {/* Zoom overlay */}
+            {isPhoneZoomOpen && (
+              <div className="fixed inset-0 z-[999]">
+                <button
+                  type="button"
+                  className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+                  aria-label="Закрыть"
+                  onClick={() => setIsPhoneZoomOpen(false)}
+                />
+
+                <div className="relative mx-auto w-[min(92vw,460px)] pt-20 sm:pt-24">
+                  <button
+                    type="button"
+                    className="absolute -top-2 right-2 sm:right-0 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/15 transition-colors"
+                    aria-label="Закрыть"
+                    onClick={() => setIsPhoneZoomOpen(false)}
+                  >
+                    <X className="h-5 w-5" />
+                  </button>
+
+                  <div className="overflow-hidden rounded-3xl border border-white/10 bg-neutral-950 shadow-[0_40px_120px_rgba(0,0,0,0.55)]">
+                    <Image
+                      src="/services-chat-screenshot.png"
+                      alt="Скриншот чата ИИ-ассистента (увеличение)"
+                      width={500}
+                      height={889}
+                      className="w-full h-auto origin-center motion-safe:animate-[afa-phone-zoom-loop_6.5s_ease-in-out_infinite] motion-reduce:animate-none"
+                    />
+                  </div>
+
+                  <p className="mt-4 text-center text-white/70 text-sm">
+                    Нажмите вне изображения, чтобы закрыть
+                  </p>
+                </div>
+              </div>
+            )}
 
             <a href="#use-cases" className="flex items-center gap-2 text-neutral-950 font-medium group-hover:gap-4 transition-all mt-auto">
               <span>Подробнее</span>
