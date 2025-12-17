@@ -69,12 +69,12 @@ export function UseCasesSection() {
         </div>
 
         {/* Reference-like blue bar + white pill CTA */}
-        <div className="mt-12 bg-sky-400 px-8 sm:px-10 py-5 sm:py-6 flex items-center">
+        <div className="mt-12 bg-sky-400 px-3 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 flex items-center">
           <a
             href="https://t.me/katenikolaeva1"
             target="_blank"
             rel="noreferrer"
-            className="mx-auto w-full max-w-4xl rounded-[999px] bg-white px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-6 text-center text-[clamp(0.75rem,1.8vw,1.8rem)] font-semibold text-neutral-950 shadow-[0_18px_50px_rgba(0,0,0,0.25)] transition-all duration-300 ease-in-out hover:bg-neutral-950 hover:text-white active:scale-[0.99] whitespace-nowrap overflow-hidden text-ellipsis"
+            className="mx-auto w-full max-w-4xl rounded-[999px] bg-white px-3 sm:px-6 md:px-8 py-2.5 sm:py-4 md:py-6 text-center text-[clamp(0.65rem,1.5vw,1.8rem)] font-semibold text-neutral-950 shadow-[0_18px_50px_rgba(0,0,0,0.25)] transition-all duration-300 ease-in-out hover:bg-neutral-950 hover:text-white active:scale-[0.99] whitespace-nowrap"
           >
             Протестировать ИИ‑ассистента для отдела продаж
           </a>
