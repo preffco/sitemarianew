@@ -32,16 +32,16 @@ export function HeroSection() {
     <section id="hero" className="bg-neutral-950 pt-24 pb-16 px-0 lg:px-6">
       <div className="w-full lg:max-w-7xl lg:mx-auto px-6 lg:px-0">
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
-          <div className="w-full">
+          <div className="w-full max-w-3xl">
             <p className="text-white/70 font-medium mb-5 text-base sm:text-lg tracking-wide">
               {"Агентство 'Ai for all'"}
             </p>
-            <h1 className="max-w-full text-[clamp(1.8rem,3.5vw,4.6rem)] font-black text-white leading-[0.98] tracking-tight mb-5 break-words hyphens-auto">
+            <h1 className="text-[clamp(1.8rem,3.5vw,4.6rem)] font-black text-white leading-[0.98] tracking-tight mb-5">
               <span className="block">Внедрение ИИ</span>
               <span className="block">в бизнес:</span>
               <span className="block mt-2 text-white/90">AI-ассистенты и мастер-классы</span>
             </h1>
-            <p className="max-w-full text-white/75 text-base sm:text-lg md:text-lg leading-relaxed mb-8 break-words">
+            <p className="text-white/75 text-base sm:text-lg md:text-lg leading-relaxed mb-8">
               Разрабатываем ИИ-ассистентов для продаж, маркетинга и HR. Проводим корпоративные мастер-классы по
               нейросетям для руководителей и сотрудников
             </p>
