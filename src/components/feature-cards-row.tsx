@@ -47,17 +47,17 @@ export function FeatureCardsRow({
 
   // carousel
   return (
-    <div
-      className="overflow-x-auto scrollbar-hide -mx-6 px-6 pb-2 flex gap-4 snap-x snap-mandatory overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch]"
-      aria-label="Преимущества (листаются горизонтально)"
-    >
+      <div
+        className="overflow-x-auto scrollbar-hide -mx-6 px-6 pb-2 flex gap-4 snap-x snap-mandatory overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch]"
+        aria-label="Преимущества (листаются горизонтально)"
+      >
       {items.map((card) => (
-        <div
-          key={card.title}
-          className={`snap-start flex-shrink-0 w-[min(320px,78vw)] rounded-[18px] px-6 py-6 border h-[168px] ${
-            card.highlight ? "border-sky-600 bg-sky-400" : "border-black/5 bg-white"
-          }`}
-        >
+          <div
+            key={card.title}
+            className={`snap-start flex-shrink-0 w-[min(260px,70vw)] rounded-[18px] px-6 py-8 border min-h-[190px] ${
+              card.highlight ? "border-sky-600 bg-sky-400" : "border-black/5 bg-white"
+            }`}
+          >
           <div className="flex items-start justify-between gap-4 mb-4">
             <p className={`font-semibold leading-tight text-base flex-1 ${card.highlight ? "text-white" : "text-neutral-950"}`}>
               {card.title}
