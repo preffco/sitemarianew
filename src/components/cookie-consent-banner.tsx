@@ -31,29 +31,29 @@ export function CookieConsentBanner() {
 
   return (
     <div
-      className="fixed inset-x-4 bottom-4 z-[1100] rounded-3xl border border-white/10 bg-neutral-950/95 p-6 shadow-[0_40px_80px_rgba(0,0,0,0.6)] backdrop-blur-xl text-white sm:bottom-6 sm:px-8"
+      className="fixed inset-x-4 bottom-4 z-[1100] rounded-[32px] border border-white/10 bg-neutral-900/70 p-5 shadow-[0_15px_60px_rgba(15,23,42,0.45)] backdrop-blur-[12px] text-white transition duration-500 sm:bottom-6 sm:px-7"
       role="dialog"
       aria-live="polite"
       aria-label="Уведомление о cookie"
     >
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
         <div className="space-y-2 flex-1 text-sm leading-relaxed text-neutral-200">
           <p className="font-semibold text-white text-base sm:text-lg">Мы используем cookie</p>
-          <p>
-            Сохраняем технические cookie для стабильной работы интерфейса и аналитические cookie, чтобы
-            понимать, как вы используете сайт. Это помогает быстрее реагировать и делать рекомендации.
+          <p className="text-white/70">
+            Собираем исключительно технические и аналитические cookie, чтобы интерфейс работал стабильно,
+            а мы понимали, какие разделы приносят вам пользу.
           </p>
         </div>
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-4">
           <Button
-            className="flex-1 bg-amber-400 text-neutral-950 hover:bg-amber-500 focus-visible:ring-2"
+            className="flex-1 bg-amber-400 text-neutral-950 hover:bg-amber-500 focus-visible:ring-2 focus-visible:ring-amber-300 transition-colors"
             onClick={() => handleChoice("accepted")}
           >
             Принять
           </Button>
           <Button
             variant="outline"
-            className="flex-1 text-white border-white/40 hover:border-white"
+            className="flex-1 border-white/20 bg-white/10 text-neutral-950 hover:border-white/30"
             onClick={() => handleChoice("declined")}
           >
             Отклонить
