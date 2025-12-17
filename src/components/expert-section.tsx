@@ -72,6 +72,10 @@ export function ExpertSection() {
                 <CheckCircle2 className="w-6 h-6 text-[#2f56ff]" />
                 <span className="text-neutral-700">Преподаватель практикумов по ИИ</span>
               </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-6 h-6 text-[#2f56ff]" />
+                <span className="text-neutral-700">Преподавание в рамках национального проекта «Кадры» Минцифры РФ</span>
+              </div>
             </div>
           </div>
         </div>

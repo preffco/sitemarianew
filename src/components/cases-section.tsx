@@ -7,7 +7,7 @@ import { Quote, ChevronLeft, ChevronRight } from "lucide-react"
 const cases = [
   {
     id: 1,
-    title: "Кейс 1",
+    title: "Кейс: ИИ-ассистент для директора",
     client: "Коммерческий директор Ольга К.",
     avatar: "/case1-avatar.webp",
     task: "В компании много времени тратилось на поиск специализированной информации в Интернете (в том числе, на иностранных языках).",
@@ -18,7 +18,7 @@ const cases = [
   },
   {
     id: 2,
-    title: "Кейс 2",
+    title: "Кейс: обучение ИИ на фабрике",
     client: "Директор паркетной фабрики Андрей Д.",
     avatar: "/case2-avatar.jpeg",
     task: "Сотрудники паркетной фабрики работали в привычной парадигме: рутинные процессы, минимум использования современных AI-инструментов. Тема искусственного интеллекта казалась слишком сложной.",
@@ -29,7 +29,7 @@ const cases = [
   },
   {
     id: 3,
-    title: "Кейс 3",
+    title: "Кейс: ИИ-ассистент для онлайн-школы",
     client: "Собственник онлайн-школы Ирина Б.",
     avatar: "/case3-avatar.png",
     task: "В онлайн-школе множество бизнес-процессов (анализ конкурентов, контент, стратегии продаж), требующих автоматизации.",
@@ -39,7 +39,7 @@ const cases = [
   },
   {
     id: 4,
-    title: "Кейс 4",
+    title: "Кейс по созданию ИИ-ассистента для музея",
     client: "Директор музея Владимир Ф.",
     avatar: "/case4-avatar.png",
     task: "Посты в социальных сетях публиковались 1-2 раза в неделю, их подготовка занимала до часа, часто не хватало вдохновения.",
@@ -49,7 +49,7 @@ const cases = [
   },
   {
     id: 5,
-    title: "Кейс 5",
+    title: "Кейс: ИИ-ассистент для бренда одежды",
     client: "Бренд одежды Papa Jeans",
     avatar: "/case5-avatar.webp",
     task: "Создать систему для грамотной и вежливой обработки рекламаций и претензий клиентов 24/7.",
@@ -60,7 +60,7 @@ const cases = [
   },
   {
     id: 6,
-    title: "Кейс 6",
+    title: "Кейс: аудит внедрения ИИ",
     client: "Психолог Юлия Г.",
     avatar: "/case6-avatar.webp",
     task: "Консультация по внедрению ИИ в бизнес",
@@ -255,13 +255,8 @@ export function CasesSection() {
                     className="object-cover"
                   />
                 </div>
-                <span
-                  className={`text-xs font-semibold ${index === currentIndex ? "text-sky-100" : "text-neutral-400"}`}
-                >
-                  0{caseItem.id}
-                </span>
               </div>
-              <span className="text-xs sm:text-sm font-medium line-clamp-2">{caseItem.title.split(" (")[0]}</span>
+              <span className="text-xs sm:text-sm font-medium line-clamp-2">{caseItem.title}</span>
             </button>
           ))}
         </div>

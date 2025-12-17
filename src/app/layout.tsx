@@ -11,7 +11,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://preffco.github.io/s
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Ai for all — Внедрение ИИ в бизнес",
+  title: "Ai for all — внедрение ИИ в бизнес",
   description:
     "Разрабатываем ИИ-ассистентов для продаж, маркетинга и HR. Проводим корпоративные мастер-классы по нейросетям для руководителей и сотрудников.",
   applicationName: "Ai for all",

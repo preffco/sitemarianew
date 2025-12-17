@@ -59,6 +59,13 @@ export function Footer() {
           <div className="text-neutral-500 text-sm leading-relaxed max-w-3xl">
             ИП Аникина Мария Олеговна · ИНН 211277870304 · ОГРН 32521000002990
           </div>
+          <div className="flex flex-col gap-3 text-neutral-500 text-xs leading-relaxed max-w-3xl">
+            <p>
+              Вся информация, представленная на данном сайте, носит исключительно справочный характер и не является
+              публичной офертой, определяемой положениями статьи 437 ГК РФ.
+            </p>
+            <p>Регистрация в Реестре операторов персональных данных Роскомнадзора за № 52-25-251691.</p>
+          </div>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <p className="text-neutral-500 text-sm">© 2025 Ai for all. Все права защищены.</p>
             <div className="flex gap-6">

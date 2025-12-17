@@ -36,6 +36,7 @@ export function Header({ variant = "dark" }: HeaderProps) {
       { label: "Кейсы", href: "#cases" },
       { label: "Сертификаты", href: "#certificates" },
       { label: "Обучение", href: "#education" },
+      { label: "Блог и публикации", href: "/blog" },
       { label: "Контакты", href: "#contact" },
     ],
     [],
@@ -85,11 +86,18 @@ export function Header({ variant = "dark" }: HeaderProps) {
             </div>
 
             <nav className="hidden xl:flex items-center gap-8">
-              {links.map((link) => (
-                <a key={link.href} href={`${linkBase}${link.href}`} className={navLinkClass}>
-                  {link.label}
-                </a>
-              ))}
+              {links.map((link) => {
+                const isExternalLink = link.href.startsWith("/")
+                return isExternalLink ? (
+                  <Link key={link.href} href={link.href} className={navLinkClass}>
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a key={link.href} href={`${linkBase}${link.href}`} className={navLinkClass}>
+                    {link.label}
+                  </a>
+                )
+              })}
             </nav>
 
             <div className="hidden xl:block">
@@ -137,16 +145,28 @@ export function Header({ variant = "dark" }: HeaderProps) {
             </div>
 
             <nav className="flex-1 overflow-y-auto px-6 py-6 flex flex-col gap-4">
-              {links.map((link) => (
-                <a
-                  key={link.href}
-                  href={`${linkBase}${link.href}`}
-                  className="text-lg font-medium text-neutral-900 hover:text-neutral-950 transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
-              ))}
+              {links.map((link) => {
+                const isExternalLink = link.href.startsWith("/")
+                return isExternalLink ? (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-lg font-medium text-neutral-900 hover:text-neutral-950 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.href}
+                    href={`${linkBase}${link.href}`}
+                    className="text-lg font-medium text-neutral-900 hover:text-neutral-950 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                )
+              })}
             </nav>
 
             <div className="px-6 py-6 border-t border-neutral-200">

@@ -34,42 +34,42 @@ const serviceCards: ServiceCard[] = [
   {
     id: 3,
     title: "Поиск по базе знаний",
-    description: "Ответы по документам за секунды.",
+    description: "Ответы по документам за секунды: подключаем внутренние базы знаний, регламенты и файлы (PDF/Word/таблицы) и даём сотрудникам поиск «как в Google». Ассистент находит нужный фрагмент, цитирует первоисточник и собирает краткий ответ без воды. Сокращаем время на поиск информации и снижаем количество ошибок из‑за устаревших версий документов. Настраиваем индексацию, обновление базы и контроль доступа — чтобы каждый сотрудник получал актуальную информацию по своей зоне ответственности.",
     icon: <Search className="w-6 h-6" />,
     iconBg: "bg-[#A8C5F0]",
   },
   {
     id: 4,
     title: "ИИ-ассистент в чатах",
-    description: "Telegram/виджеты, квалификация и поддержка.",
+    description: "Telegram и виджеты: ассистент встречает клиента, уточняет задачу, собирает контекст и квалифицирует обращение по правилам бизнеса. Закрывает типовые вопросы, а сложные кейсы передаёт человеку с полной историей диалога и кратким резюме. Настраиваем сценарии продаж/поддержки, контроль качества и безопасные ограничения — чтобы ответы были точными и одинаково «в стиле бренда». Интегрируем с вашими системами учета и аналитикой для полной картины по каждому клиенту.",
     icon: <MessageSquare className="w-6 h-6" />,
     iconBg: "bg-[#E8E8E8]",
   },
   {
     id: 5,
     title: "Интеграция CRM",
-    description: "Bitrix24/AMO: лиды, задачи, контроль диалогов.",
+    description: "Bitrix24/AMO: связываем чаты, звонки и заявки в единый поток. Ассистент создаёт лиды и задачи, заполняет поля, ставит напоминания, фиксирует итоги диалога и следит за дисциплиной обработки. Руководитель видит контроль качества коммуникаций и узкие места в воронке, а менеджеры избавляются от рутины и фокусируются на закрытии сделок. Настраиваем автоматическую синхронизацию данных, ведение истории взаимодействий и аналитические дашборды для принятия решений.",
     icon: <Users className="w-6 h-6" />,
     iconBg: "bg-[#FFE066]",
   },
   {
     id: 6,
     title: "152-ФЗ и риски",
-    description: "Проектируем безопасно и прозрачно.",
+    description: "Проектируем безопасно и прозрачно: строим архитектуру и процессы под 152‑ФЗ и требования бизнеса. Настраиваем хранение и доступы, логирование, аудит и контроль качества ответов. Ассистент работает только в разрешённом периметре, не «утекает» с данными и соблюдает правила обработки персональной информации. Делаем понятные регламенты для команды и снижаем юридические и репутационные риски. Проводим аудит безопасности, настраиваем шифрование и контролируем доступ к конфиденциальным данным на всех этапах работы системы.",
     icon: <Shield className="w-6 h-6" />,
     iconBg: "bg-[#E8E8E8]",
   },
   {
     id: 7,
     title: "Сценарии внедрения",
-    description: "Гипотезы, KPI, пилот и масштабирование.",
+    description: "Гипотезы, KPI, пилот и масштабирование: начинаем с задач, где есть быстрый эффект — и сразу фиксируем метрики (скорость, качество, конверсия, экономия времени). Готовим сценарии, чек‑листы, матрицу решений и план интеграций, чтобы пилот не «умер» после демонстрации. Проводим тестирование, сбор обратной связи и доработки до стабильной версии. Затем масштабируем на новые отделы и каналы без потери качества. Строим дорожную карту развития, обучаем команду и обеспечиваем плавный переход от пилота к полноценной эксплуатации.",
     icon: <MessageSquare className="w-6 h-6" />,
     iconBg: "bg-[#E8E8E8]",
   },
   {
     id: 8,
     title: "Сопровождение",
-    description: "Поддержка, улучшения и масштабирование.",
+    description: "Поддержка, улучшения и масштабирование: после запуска держим систему в рабочем состоянии и улучшаем её по данным. Настраиваем мониторинг качества, обновления сценариев, расширение базы знаний и обучение команды. Регулярно анализируем диалоги, ищем точки просадки и повышаем точность ответов. Добавляем новые каналы и функции по мере роста — чтобы ИИ давал результат не «первую неделю», а постоянно. Обеспечиваем техническую поддержку, резервное копирование и плановые обновления для стабильной работы без простоев.",
     icon: <Headset className="w-6 h-6" />,
     iconBg: "bg-[#FF6B4A]",
   },
@@ -170,36 +170,43 @@ export function ServicesSection() {
                 </h3>
 
                 {/* Media slot (varies by active card) */}
-                <div className="mt-6">
-                  {showPhone ? (
-                    <div className={`mx-auto w-full max-w-[520px] ${mediaSlotHeight} relative overflow-hidden rounded-3xl bg-neutral-900/30 shadow-[0_30px_90px_rgba(0,0,0,0.35)]`}>
-                      <Image
-                        src="/photo/phone.png"
-                        alt="Интерфейс чата"
-                        fill
-                        className="object-cover scale-[1.03]"
-                        sizes="(min-width: 1280px) 22vw, (min-width: 768px) 40vw, 100vw"
-                      />
-                    </div>
-                  ) : showWide ? (
-                    <div className={`w-full ${mediaSlotHeight} relative overflow-hidden rounded-3xl bg-neutral-900/30 shadow-[0_30px_90px_rgba(0,0,0,0.35)]`}>
-                      <Image
-                        src="/services-masterclass.webp"
-                        alt="Мастер-класс по ИИ"
-                        fill
-                        className="object-cover"
-                        sizes="(min-width: 1280px) 44vw, (min-width: 768px) 80vw, 100vw"
-                      />
-                      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/55 to-transparent" />
-                    </div>
+                <div className="mt-6 flex-1 flex flex-col">
+                  {active.id <= 2 ? (
+                    <>
+                      {showPhone ? (
+                        <div className={`mx-auto w-full max-w-[520px] ${mediaSlotHeight} relative overflow-hidden rounded-3xl bg-neutral-900/30 shadow-[0_30px_90px_rgba(0,0,0,0.35)]`}>
+                          <Image
+                            src="/photo/phone.png"
+                            alt="Интерфейс чата"
+                            fill
+                            className="object-cover scale-[1.03]"
+                            sizes="(min-width: 1280px) 22vw, (min-width: 768px) 40vw, 100vw"
+                          />
+                        </div>
+                      ) : showWide ? (
+                        <div className={`w-full ${mediaSlotHeight} relative overflow-hidden rounded-3xl bg-neutral-900/30 shadow-[0_30px_90px_rgba(0,0,0,0.35)]`}>
+                          <Image
+                            src="/services-masterclass.webp"
+                            alt="Мастер-класс по ИИ"
+                            fill
+                            className="object-cover"
+                            sizes="(min-width: 1280px) 44vw, (min-width: 768px) 80vw, 100vw"
+                          />
+                          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/55 to-transparent" />
+                        </div>
+                      ) : (
+                        <div className={mediaSlotHeight} aria-hidden="true" />
+                      )}
+                      <p className="text-base md:text-lg text-[#CCCCCC] leading-relaxed mt-auto">
+                        {active.description}
+                      </p>
+                    </>
                   ) : (
-                    <div className={mediaSlotHeight} aria-hidden="true" />
+                    <div className="text-base md:text-lg text-[#CCCCCC] leading-relaxed overflow-y-auto">
+                      <p>{active.description}</p>
+                    </div>
                   )}
                 </div>
-
-                <p className="text-base md:text-lg text-[#CCCCCC] leading-relaxed mt-auto">
-                  {active.description}
-                </p>
               </div>
             </div>
           </div>
@@ -230,14 +237,40 @@ export function ServicesSection() {
             </button>
 
             {/* Content */}
-            <div className="flex-1 flex flex-col justify-between">
+            <div className="flex-1 flex flex-col">
               {/* Title at top */}
               <h3 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight mb-8 md:mb-12">
                 {modalCard.title}
               </h3>
 
+              {/* Image slot for specific cards */}
+              {modalCard.id === 1 && (
+                <div className="mx-auto w-full max-w-[200px] sm:max-w-[240px] md:max-w-[320px] aspect-[9/16] relative overflow-hidden rounded-3xl bg-neutral-900/30 shadow-[0_30px_90px_rgba(0,0,0,0.35)] mb-8 md:mb-12">
+                  <Image
+                    src="/photo/phone.png"
+                    alt="Интерфейс чата"
+                    fill
+                    className="object-cover w-full h-full scale-125"
+                    sizes="(min-width: 768px) 320px, (min-width: 640px) 240px, 200px"
+                  />
+                </div>
+              )}
+
+              {modalCard.id === 2 && (
+                <div className="w-full h-[240px] md:h-[300px] lg:h-[360px] relative overflow-hidden rounded-3xl bg-neutral-900/30 shadow-[0_30px_90px_rgba(0,0,0,0.35)] mb-8 md:mb-12">
+                  <Image
+                    src="/services-masterclass.webp"
+                    alt="Мастер-класс по ИИ"
+                    fill
+                    className="object-cover object-top"
+                    sizes="100vw"
+                  />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/55 to-transparent" />
+                </div>
+              )}
+
               {/* Description at bottom */}
-              <div className="text-base md:text-lg lg:text-xl text-white leading-relaxed space-y-4 max-w-4xl mt-auto">
+              <div className={`text-base md:text-lg lg:text-xl text-white leading-relaxed space-y-4 max-w-4xl ${modalCard.id <= 2 ? 'mt-auto' : ''}`}>
                 <p>{modalCard.description}</p>
               </div>
             </div>
