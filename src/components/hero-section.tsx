@@ -12,12 +12,12 @@ const heroCardData = [
     title: "AI-ассистенты",
     description: "Под ключ, интеграции в CRM и чаты.",
     icon: MessageSquare,
+    highlight: true,
   },
   {
     title: "CRM и поддержка",
     description: "Автоматизация лидов, задач и сопровождения.",
     icon: Users,
-    highlight: true,
   },
   {
     title: "152‑ФЗ и риски",
@@ -32,7 +32,7 @@ export function HeroSection() {
     <section id="hero" className="bg-neutral-950 pt-24 pb-16 px-0 lg:px-6">
       <div className="w-full lg:max-w-7xl lg:mx-auto px-6 lg:px-0">
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
-          <div className="w-full max-w-3xl">
+          <div className="max-w-full lg:max-w-xl lg:w-full" style={{ maxWidth: 'min(36rem, calc(100vw - 3rem))' }}>
             <p className="text-white/70 font-medium mb-5 text-base sm:text-lg tracking-wide">
               {"Агентство 'Ai for all'"}
             </p>
@@ -45,8 +45,8 @@ export function HeroSection() {
               Разрабатываем ИИ-ассистентов для продаж, маркетинга и HR. Проводим корпоративные мастер-классы по
               нейросетям для руководителей и сотрудников
             </p>
-            <a href="#contact">
-              <Button className="mt-14 mx-auto block h-12 md:h-16 w-full max-w-[720px] rounded-full bg-amber-400 text-neutral-950 text-base md:text-[1.5rem] font-bold transition hover:bg-amber-500 hover:shadow-none focus-visible:ring-2 focus-visible:ring-amber-300">
+            <a href="#contact" className="block">
+              <Button className="mt-14 w-full max-w-full md:max-w-[720px] h-12 md:h-16 rounded-full bg-amber-400 text-neutral-950 text-base md:text-[1.5rem] font-bold transition hover:bg-amber-500 hover:shadow-none focus-visible:ring-2 focus-visible:ring-amber-300">
                 Получить бесплатный аудит
               </Button>
             </a>
