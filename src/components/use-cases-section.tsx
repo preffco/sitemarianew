@@ -1,67 +1,74 @@
-import { TrendingUp, Users, Megaphone, Search } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { ArrowUpRight, Bot, GraduationCap, Search, TrendingUp, Users } from "lucide-react"
 
 const useCases = [
   {
-    icon: TrendingUp,
     title: "ИИ для отдела продаж",
-    description: "Автоматизация первичных консультаций, квалификация лидов, подготовка коммерческих предложений",
-    color: "bg-amber-400",
+    description: "Квалификация лидов, ответы на вопросы, подготовка КП и сопровождение клиента 24/7.",
+    highlight: true,
   },
   {
-    icon: Users,
     title: "ИИ для HR и кадров",
-    description: "Скрининг резюме, первичные интервью, ответы на вопросы сотрудников, онбординг",
-    color: "bg-sky-400",
+    description: "Скрининг резюме, первичные интервью, ответы сотрудникам и онбординг.",
   },
   {
-    icon: Megaphone,
     title: "ИИ для маркетинга",
-    description: "Генерация контента, анализ конкурентов, персонализация рассылок, работа с отзывами",
-    color: "bg-emerald-400",
+    description: "Контент, анализ конкурентов, персонализация рассылок и работа с отзывами.",
   },
   {
-    icon: Search,
     title: "ИИ-поисковик по базе знаний",
-    description: "Мгновенный поиск по документам, регламентам, инструкциям и корпоративной wiki",
-    color: "bg-rose-400",
+    description: "Мгновенные ответы по регламентам, инструкциям и внутренней документации.",
+  },
+  {
+    title: "Интеграция с CRM",
+    description: "Bitrix24, AMO и другие: протоколы, заметки, задачи, контроль качества диалогов.",
+  },
+  {
+    title: "Корпоративное обучение",
+    description: "Мастер‑классы по нейросетям для руководителей и команд. Практика за 1 день.",
   },
 ]
 
 export function UseCasesSection() {
   return (
-    <section id="use-cases" className="bg-white py-24 px-6">
+    <section id="use-cases" className="bg-neutral-100 py-24 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-950 mb-4 text-balance leading-tight">
-            Какие задачи решают ИИ-ассистенты для бизнеса
+        <div className="mb-14">
+          <h2 className="text-[clamp(2.5rem,4.4vw,4.25rem)] font-black text-neutral-950 tracking-tight leading-[0.98]">
+            Какие задачи мы решаем
           </h2>
-          <p className="text-neutral-600 text-base sm:text-lg">Популярные сценарии внедрения нейросетей в бизнес</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {useCases.map((useCase, index) => (
-            <div key={index} className="bg-neutral-100 rounded-3xl p-6 hover:bg-neutral-200 transition-colors group">
-              <div className="flex items-start justify-between mb-6">
-                <div className={`w-14 h-14 ${useCase.color} rounded-2xl flex items-center justify-center`}>
-                  <useCase.icon className="w-7 h-7 text-neutral-950" />
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {useCases.map((item, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-3xl p-8 shadow-[0_18px_50px_rgba(15,23,42,0.08)] border border-black/5"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <h3 className="text-2xl font-semibold text-neutral-950 leading-tight">{item.title}</h3>
+                <div
+                  className={`h-11 w-11 rounded-full flex items-center justify-center ${
+                    item.highlight ? "bg-sky-400 text-white" : "bg-neutral-200 text-neutral-950"
+                  }`}
+                  aria-hidden="true"
+                >
+                  <ArrowUpRight className="w-5 h-5" />
                 </div>
-                <span className="text-neutral-400 text-sm font-medium">0{index + 1}</span>
               </div>
-              <h3 className="text-xl font-semibold text-neutral-950 mb-3">{useCase.title}</h3>
-              <p className="text-neutral-600 text-sm leading-relaxed">{useCase.description}</p>
+              <p className="mt-4 text-neutral-700 leading-relaxed">{item.description}</p>
             </div>
           ))}
         </div>
 
-        <div className="flex justify-center">
+        {/* Reference-like blue bar + white pill CTA */}
+        <div className="mt-12 rounded-3xl bg-sky-400 p-8 sm:p-10">
           <a
             href="https://t.me/katenikolaeva1"
             target="_blank"
             rel="noreferrer"
-            className="relative inline-flex items-center justify-center w-full overflow-hidden rounded-[999px] border-2 border-neutral-900 bg-white px-4 min-[360px]:px-5 sm:px-10 md:px-12 lg:px-16 xl:px-20 py-3 sm:py-4 md:py-5 lg:py-5 font-semibold text-neutral-900 whitespace-nowrap tracking-tight leading-none text-[clamp(0.62rem,3.2vw,1.5rem)] transition duration-300 ease-in-out hover:bg-neutral-900 hover:text-white active:scale-[0.99] active:bg-neutral-900 active:text-white before:content-[''] before:pointer-events-none before:absolute before:inset-y-0 before:-left-[70%] before:w-[60%] before:skew-x-[-18deg] before:bg-[linear-gradient(90deg,transparent,rgba(245,158,11,0.35),transparent)] before:opacity-0 before:animate-[afa-cta-shine_3.6s_ease-in-out_infinite] motion-reduce:before:hidden lg:before:hidden"
+            className="mx-auto block w-full max-w-4xl rounded-[999px] bg-white px-8 py-6 text-center text-[clamp(1.1rem,2.4vw,1.8rem)] font-semibold text-neutral-950 shadow-[0_18px_50px_rgba(0,0,0,0.25)] transition-transform active:scale-[0.99]"
           >
-            Протестировать ИИ-ассистента для отдела продаж
+            Протестировать ИИ‑ассистента для отдела продаж
           </a>
         </div>
       </div>

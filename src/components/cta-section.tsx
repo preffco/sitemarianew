@@ -6,7 +6,8 @@ import { useEffect, useState } from "react"
 import dynamic from "next/dynamic"
 import "react-phone-input-2/lib/style.css"
 import { Button } from "@/components/ui/button"
-import { AlertTriangle, CheckCircle2, X } from "lucide-react"
+import Link from "next/link"
+import { AlertTriangle, Check, CheckCircle2, X } from "lucide-react"
 
 const PhoneInput = dynamic(() => import("react-phone-input-2"), { ssr: false })
 
@@ -14,12 +15,15 @@ export function CtaSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    message: "",
   })
   const [phone, setPhone] = useState("")
   const [emailError, setEmailError] = useState("")
   const [loading, setLoading] = useState(false)
   const [toast, setToast] = useState<{ variant: "success" | "error"; title: string; message: string } | null>(null)
   const [toastOpen, setToastOpen] = useState(false)
+  const [agreeTerms, setAgreeTerms] = useState(false)
+  const [agreeConsent, setAgreeConsent] = useState(false)
 
   useEffect(() => {
     if (!toastOpen) return
@@ -36,6 +40,15 @@ export function CtaSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!agreeTerms || !agreeConsent) {
+      setToast({
+        variant: "error",
+        title: "Нужно согласие",
+        message: "Пожалуйста, отметьте оба пункта согласия перед отправкой.",
+      })
+      setToastOpen(true)
+      return
+    }
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailPattern.test(formData.email)) {
       setEmailError("Введите корректный email")
@@ -54,6 +67,7 @@ export function CtaSection() {
           name: formData.name,
           email: formData.email,
           phone,
+            message: formData.message,
         }),
       })
 
@@ -68,7 +82,7 @@ export function CtaSection() {
         message: "Мы скоро свяжемся с вами.",
       })
       setToastOpen(true)
-      setFormData({ name: "", email: "" })
+      setFormData({ name: "", email: "", message: "" })
       setPhone("")
     } catch (error) {
       setToast({
@@ -133,52 +147,68 @@ export function CtaSection() {
       )}
 
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-14 xl:gap-20 items-start">
           <div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 text-balance">
+            <h2 className="text-[clamp(2.6rem,5.2vw,4.8rem)] font-black text-white leading-[0.98] tracking-tight mb-6">
               Начните внедрение ИИ с бесплатного аудита
             </h2>
-            <p className="text-neutral-400 text-lg leading-relaxed mb-8">
+            <p className="text-white/70 text-lg leading-relaxed mb-10 max-w-xl">
               Заполните форму, и мы свяжемся с вами для 30-минутной консультации. Мы проанализируем ваши задачи и
               предложим конкретный план: начать с мастер-класса для команды или сразу внедрять AI-ассистента. Это
               бесплатно и ни к чему не обязывает.
             </p>
 
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center">
-                  <span className="text-amber-400 font-semibold">30</span>
+            <div className="space-y-6 text-white/80">
+              <div className="flex items-start gap-4">
+                <div className="mt-1 h-10 w-10 rounded-full bg-amber-400 flex items-center justify-center text-neutral-950 font-semibold">
+                  30
                 </div>
-                <span className="text-neutral-300">минут консультации</span>
+                <div>
+                  <p className="text-white font-semibold">минут консультации</p>
+                  <p className="text-white/65">Разберём процессы и предложим план внедрения</p>
+                </div>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center">
-                  <span className="text-amber-400 font-semibold">₽0</span>
+              <div className="flex items-start gap-4">
+                <div className="mt-1 h-10 w-10 rounded-full bg-amber-400 flex items-center justify-center text-neutral-950 font-semibold">
+                  ₽0
                 </div>
-                <span className="text-neutral-300">бесплатно</span>
+                <div>
+                  <p className="text-white font-semibold">бесплатно</p>
+                  <p className="text-white/65">Никаких обязательств — только польза</p>
+                </div>
+              </div>
+              <div className="pt-2 space-y-2 text-white/70">
+                <p>
+                  <span className="text-white/60">Email:</span>{" "}
+                  <a className="underline underline-offset-4 hover:text-white" href="mailto:ai-for-all@yandex.ru">
+                    ai-for-all@yandex.ru
+                  </a>
+                </p>
+                <p>
+                  <span className="text-white/60">Телефон:</span>{" "}
+                  <a className="underline underline-offset-4 hover:text-white" href="tel:+79850614040">
+                    +7 985 061‑40‑40
+                  </a>
+                </p>
               </div>
             </div>
           </div>
 
-          <div className="bg-neutral-900 rounded-3xl p-8 md:p-10">
+          <div className="bg-neutral-900/80 rounded-[36px] p-8 md:p-10 shadow-[0_30px_80px_rgba(0,0,0,0.25)] border border-white/10">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-neutral-400 text-sm mb-2">
-                  Ваше имя
-                </label>
                 <input
                   type="text"
                   id="name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-2xl px-5 py-4 text-white placeholder-neutral-500 focus:outline-none focus:border-amber-400 transition-colors"
-                  placeholder="Иван Иванов"
+                  className="w-full h-14 rounded-full bg-neutral-800 border border-white/10 px-7 text-white placeholder-white/40 focus:outline-none focus:border-white/25 transition-colors"
+                  placeholder="Имя"
                 />
               </div>
 
               <div>
-                <label className="block text-neutral-400 text-sm mb-2">Ваш номер телефона</label>
-                <div className="rounded-2xl border border-neutral-700 bg-neutral-800 px-3 py-2">
+                <div className="rounded-full border border-white/10 bg-neutral-800 px-4 py-2">
                   <PhoneInput
                     country="ru"
                     value={phone}
@@ -193,7 +223,7 @@ export function CtaSection() {
                       color: "#ffffff",
                       outline: "none",
                       fontSize: "1rem",
-                      height: "48px",
+                      height: "44px",
                     }}
                     buttonStyle={{
                       backgroundColor: "transparent",
@@ -214,16 +244,13 @@ export function CtaSection() {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-neutral-400 text-sm mb-2">
-                  Ваш email
-                </label>
                 <input
                   type="email"
                   id="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-2xl px-5 py-4 text-white placeholder-neutral-500 focus:outline-none focus:border-amber-400 transition-colors"
-                  placeholder="ivan@company.ru"
+                  className="w-full h-14 rounded-full bg-neutral-800 border border-white/10 px-7 text-white placeholder-white/40 focus:outline-none focus:border-white/25 transition-colors"
+                  placeholder="Email"
                   onBlur={() => {
                     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
                     setEmailError(emailPattern.test(formData.email) ? "" : "Введите корректный email")
@@ -231,21 +258,83 @@ export function CtaSection() {
                 />
               </div>
 
-              {emailError && <p className="text-amber-300 text-sm mt-1">{emailError}</p>}
+              <div>
+                <textarea
+                  id="message"
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="w-full min-h-[140px] rounded-3xl bg-neutral-800 border border-white/10 px-7 py-5 text-white placeholder-white/40 focus:outline-none focus:border-white/25 transition-colors resize-none"
+                  placeholder="Напишите компанию или задачу — мы вернемся с решением. Поле необязательное"
+                />
+              </div>
+
+              {emailError && <p className="text-amber-300 text-sm -mt-3">{emailError}</p>}
+
+              <div className="space-y-3 pt-2">
+                <label className="flex items-start gap-3 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    checked={agreeTerms}
+                    onChange={(e) => setAgreeTerms(e.target.checked)}
+                    className="sr-only"
+                  />
+                  <span
+                    className={`mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-full ${
+                      agreeTerms ? "bg-amber-400 text-neutral-950" : "bg-white/10 text-white/40"
+                    }`}
+                    aria-hidden="true"
+                  >
+                    <Check className="h-5 w-5" />
+                  </span>
+                  <span className="text-white/70 leading-relaxed">
+                    Я согласен с{" "}
+                    <Link href="/agreement" className="underline underline-offset-4 hover:text-white">
+                      пользовательским соглашением
+                    </Link>{" "}
+                    и{" "}
+                    <Link href="/privacy" className="underline underline-offset-4 hover:text-white">
+                      политикой обработки персональных данных
+                    </Link>
+                  </span>
+                </label>
+
+                <label className="flex items-start gap-3 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    checked={agreeConsent}
+                    onChange={(e) => setAgreeConsent(e.target.checked)}
+                    className="sr-only"
+                  />
+                  <span
+                    className={`mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-full ${
+                      agreeConsent ? "bg-amber-400 text-neutral-950" : "bg-white/10 text-white/40"
+                    }`}
+                    aria-hidden="true"
+                  >
+                    <Check className="h-5 w-5" />
+                  </span>
+                  <span className="text-white/70 leading-relaxed">
+                    Я даю{" "}
+                    <Link href="/agreement" className="underline underline-offset-4 hover:text-white">
+                      согласие на обработку персональных данных
+                    </Link>
+                  </span>
+                </label>
+              </div>
 
               <Button
                 type="submit"
-                className={`w-full bg-amber-400 hover:bg-amber-500 text-neutral-950 rounded-full py-6 text-lg font-semibold transition ${
+                className={`w-full h-16 rounded-full bg-white text-neutral-950 hover:bg-white/95 text-lg font-semibold shadow-[0_22px_70px_rgba(0,0,0,0.35)] transition ${
                   loading ? "opacity-70 cursor-not-allowed" : ""
                 }`}
                 disabled={loading}
                 aria-busy={loading}
               >
-                {loading ? "Отправляем..." : "Получить бесплатный аудит"}
+                {loading ? "Отправляем..." : "Отправить"}
               </Button>
 
-              <p className="text-neutral-500 text-xs text-center">
-                Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных
+              <p className="text-white/45 text-xs text-center">
+                Нажимая «Отправить», вы подтверждаете согласие с условиями и обработкой персональных данных.
               </p>
             </form>
           </div>

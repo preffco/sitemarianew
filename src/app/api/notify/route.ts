@@ -11,13 +11,15 @@ export async function POST(request: Request) {
     )
   }
 
-  const { name, email, phone } = await request.json().catch(() => ({}))
+  const { name, email, phone, message: note } = await request.json().catch(() => ({}))
 
   if (!name || !email || !phone) {
     return NextResponse.json({ error: "Missing fields" }, { status: 400 })
   }
 
-  const message = `📩 Новая заявка с формы\n\n<b>Имя:</b> ${name}\n<b>Email:</b> ${email}\n<b>Телефон:</b> ${phone}`
+  const message = `📩 Новая заявка с формы\n\n<b>Имя:</b> ${name}\n<b>Email:</b> ${email}\n<b>Телефон:</b> ${phone}${
+    note ? `\n<b>Сообщение:</b> ${note}` : ""
+  }`
 
   const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
     method: "POST",

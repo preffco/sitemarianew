@@ -56,13 +56,15 @@ export function Header() {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-neutral-950/95 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-6 py-3">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-amber-400 rounded-lg flex items-center justify-center">
-                <span className="text-neutral-950 font-bold text-[10px] tracking-wide">AFA</span>
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
+                <span className="text-white font-semibold text-lg tracking-tight">Ai for all</span>
+                <span className="hidden sm:inline-flex items-center rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-semibold tracking-[0.22em] text-white/70">
+                  AFA
+                </span>
               </div>
-              <span className="text-white font-semibold text-lg">Ai for all</span>
             </div>
 
             <nav className="hidden xl:flex items-center gap-6">
@@ -70,7 +72,7 @@ export function Header() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-neutral-300 hover:text-white transition-colors text-sm"
+                  className="text-white/70 hover:text-white transition-colors text-sm"
                 >
                   {link.label}
                 </a>
@@ -79,7 +81,7 @@ export function Header() {
 
             <div className="hidden xl:block">
               <a href="#contact">
-                <Button className="bg-amber-400 hover:bg-amber-500 text-neutral-950 rounded-full px-6 font-medium">
+                <Button className="bg-amber-400 hover:bg-amber-500 text-neutral-950 rounded-full px-6 font-semibold shadow-[0_10px_30px_rgba(245,255,98,0.22)] hover:shadow-[0_12px_36px_rgba(245,255,98,0.28)] transition-shadow">
                   Получить аудит
                 </Button>
               </a>
