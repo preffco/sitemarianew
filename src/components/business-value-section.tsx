@@ -1,6 +1,6 @@
 "use client"
 
-import { TrendingDown, Clock, DollarSign } from "lucide-react"
+import { TrendingDown, Clock, CurrencyRub } from "lucide-react"
 
 const valueCards = [
   {
@@ -14,7 +14,7 @@ const valueCards = [
     description: "Обработка заявок, резюме и документов — часы работы каждый день",
   },
   {
-    icon: DollarSign,
+    icon: CurrencyRub,
     title: "Экономия с ИИ",
     description: "Автоматизация сокращает расходы и повышает эффективность в 3-5 раз",
   },
