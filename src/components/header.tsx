@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useEffect, useMemo, useState } from "react"
 import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -77,10 +78,10 @@ export function Header({ variant = "dark" }: HeaderProps) {
         <div className="max-w-7xl mx-auto px-6 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2">
+              <Link href={`${linkBase}#hero`} className="flex items-center gap-2">
                 <span className={`${brandTextClass} font-semibold text-lg tracking-tight`}>Ai for all</span>
                 <span className={badgeClass}>AFA</span>
-              </div>
+              </Link>
             </div>
 
             <nav className="hidden xl:flex items-center gap-8">
@@ -126,7 +127,9 @@ export function Header({ variant = "dark" }: HeaderProps) {
             <div className="flex items-center justify-between px-6 py-5 border-b border-neutral-200">
               <div>
                 <p className="text-xs text-neutral-500 uppercase tracking-[0.35em]">Меню</p>
-                <p className="text-lg font-semibold text-neutral-950">Ai for all</p>
+                <Link href={`${linkBase}#hero`} className="text-lg font-semibold text-neutral-950">
+                  Ai for all
+                </Link>
               </div>
               <button className="text-neutral-700" onClick={() => setIsMenuOpen(false)} aria-label="Закрыть меню">
                 <X size={20} />
