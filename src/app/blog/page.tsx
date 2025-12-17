@@ -73,6 +73,69 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
+
+      <section className="px-6 md:px-10 py-14">
+        <div className="max-w-7xl mx-auto">
+          <article className="bg-white border border-black/10 p-8 md:p-12 shadow-[0_15px_60px_rgba(15,23,42,0.08)] space-y-10">
+            <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+              <div>
+                <p className="text-xs uppercase tracking-[0.3em] text-neutral-400 mb-2">
+                  ИИ для всех
+                </p>
+                <h2 className="text-[clamp(2rem,3.6vw,3.6rem)] font-black text-neutral-950 leading-tight">
+                  ИИ для всех: как AFA переосмысливает бизнес-процессы
+                </h2>
+              </div>
+              <div className="text-sm text-neutral-500 text-right">
+                <p>4 месяца назад</p>
+                <p>Просмотрено 1.6K</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-[1.2fr_0.8fr]">
+              <div className="space-y-6 text-neutral-700 leading-relaxed">
+                <p>
+                  Юрист по образованию, Мария Аникина делает ставку на смысл и структуру: ИИ долгое время
+                  казался только технарям, и сегодня её агентство Ai for all доказывает, что экосистема
+                  побеждает, когда понимает бизнес-процессы клиента глубоко.
+                </p>
+                <p>
+                  Мария учит видеть готовность к внедрению по реальной боли и желанию менять процессы. Малый
+                  бизнес без рутины приходит решительно, тогда как крупные структуры теряются из-за согласований.
+                </p>
+                <p>
+                  Переоценены универсальные ИИ-боты и модные аватары; недооценено внедрение в рекрутинг, онбординг,
+                  обработку документов и внутренние знания. ИИ по её мнению — партнёр человека, сохраняющий за ним
+                  стратегию и смысл.
+                </p>
+              </div>
+              <div className="flex justify-end">
+                <div className="relative aspect-square w-full overflow-hidden rounded-[32px] border border-black/10 shadow-[0_30px_60px_rgba(15,23,42,0.15)]">
+                  <Image
+                    src="/screen2.webp"
+                    alt="Мария Аникина в интервью"
+                    width={600}
+                    height={600}
+                    className="w-full h-full object-cover"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-4 text-neutral-700">
+              <h3 className="text-xl font-semibold text-neutral-950">Ключевые мысли</h3>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>Сложности внедрения — не технологии, а скепсис людей, привыкших к старым процессам.</li>
+                <li>Качественный ИИ-ассистент — кастомный продукт, построенный на сценариях клиента, а не на шаблонах.</li>
+                <li>Лучшие кейсы приходят от малого бизнеса, который готов быстро тестировать и адаптировать решения.</li>
+                <li>ИИ не заменяет человека, он освобождает от рутины, сохраняя стратегию за человеком.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <Footer />
     </main>
   )
