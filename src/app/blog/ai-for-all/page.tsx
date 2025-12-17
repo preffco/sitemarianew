@@ -46,6 +46,15 @@ export default function AiForAllArticlePage() {
       <section className="bg-neutral-950 text-white px-6 md:px-10 py-16 pt-[110px]">
         <div className="max-w-5xl">
           <p className="text-sm uppercase tracking-[0.3em] text-neutral-400">Блог и публикации</p>
+          <div className="mt-6 mb-4">
+            <Image
+              src="/tenchat.png"
+              alt="TenChat"
+              width={120}
+              height={40}
+              className="h-8 w-auto object-contain"
+            />
+          </div>
           <h1 className="text-[clamp(2.5rem,4vw,4.5rem)] font-black leading-tight mt-4">ИИ для всех: как AFA переосмысливает бизнес-процессы</h1>
           <p className="mt-6 text-lg text-white/80 max-w-3xl">
             История о том, как гуманитарий стал проводником ИИ в бизнес-процессы, помогает клиентам перестроить рутины и создает кастомные решения, где смысл важнее технологий.
