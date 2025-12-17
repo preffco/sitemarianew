@@ -129,14 +129,17 @@ export function ServicesSection() {
               </h3>
 
               <div className="my-8 flex flex-col sm:flex-row gap-6 items-start">
-                <div className="relative w-[360px] sm:w-[420px] md:w-[480px] flex-shrink-0 rounded-[32px] overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.45)] -ml-6">
-                  <Image
-                    src="/services-chat-screenshot.png"
-                    alt="Интерфейс чата"
-                    width={220}
-                    height={440}
-                    className="w-full h-auto object-cover"
-                  />
+                <div className="relative w-[350px] sm:w-[410px] md:w-[470px] flex-shrink-0 -translate-x-6">
+                  <div className="absolute inset-0 pointer-events-none" />
+                  <div className="relative overflow-hidden rounded-[32px] shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
+                    <Image
+                      src="/services-chat-screenshot.png"
+                      alt="Интерфейс чата"
+                      width={220}
+                      height={440}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
                 </div>
                 <div className="relative flex-1 overflow-hidden rounded-3xl max-w-[640px] shadow-[0_30px_90px_rgba(0,0,0,0.35)]">
                   <Image
