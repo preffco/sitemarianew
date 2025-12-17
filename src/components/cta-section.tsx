@@ -248,16 +248,16 @@ export function CtaSection() {
 
               {emailError && <p className="text-amber-300 text-sm -mt-3">{emailError}</p>}
 
-              <Button
-                type="submit"
-                className={`w-full h-16 rounded-full bg-white text-neutral-950 hover:bg-white/95 text-lg font-semibold shadow-[0_22px_70px_rgba(0,0,0,0.35)] transition ${
-                  loading ? "opacity-70 cursor-not-allowed" : ""
-                }`}
-                disabled={loading}
-                aria-busy={loading}
-              >
-                {loading ? "Отправляем..." : "Отправить"}
-              </Button>
+          <Button
+            type="submit"
+            className={`w-full h-16 rounded-full bg-white text-neutral-950 hover:bg-white/95 text-lg font-semibold shadow-[0_22px_70px_rgba(0,0,0,0.35)] transition ${
+              loading ? "opacity-70 cursor-not-allowed" : ""
+            }`}
+            disabled={loading}
+            aria-busy={loading}
+          >
+            {loading ? "Отправляем..." : "Свяжитесь со мной"}
+          </Button>
 
               <p className="text-white/45 text-xs text-center">
                 Нажимая «Отправить», вы подтверждаете согласие с условиями и обработкой персональных данных.
