@@ -28,7 +28,7 @@ export function BusinessValueSection() {
     <section className="bg-neutral-100 py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="max-w-3xl mb-14">
-          <h2 className="text-[clamp(2.4rem,4.2vw,4.15rem)] font-black text-neutral-950 tracking-tight leading-[0.98] mb-6">
+          <h2 className="text-[clamp(1.8rem,3.5vw,4.15rem)] font-black text-neutral-950 tracking-tight leading-[0.98] mb-6">
             Как автоматизация бизнеса с помощью ИИ экономит ваши деньги
           </h2>
           <p className="text-neutral-700 text-lg leading-relaxed">

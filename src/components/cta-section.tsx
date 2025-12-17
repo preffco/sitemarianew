@@ -137,7 +137,7 @@ export function CtaSection() {
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-14 xl:gap-20 items-start">
           <div>
-            <h2 className="text-[clamp(2rem,4vw,3.8rem)] font-black text-white leading-[0.98] tracking-tight mb-6">
+            <h2 className="text-[clamp(1.6rem,3.2vw,3.8rem)] font-black text-white leading-[0.98] tracking-tight mb-6">
               Начните внедрение ИИ с бесплатного аудита
             </h2>
             <p className="text-white/70 text-lg leading-relaxed mb-10 max-w-xl">

@@ -122,7 +122,7 @@ export function CertificatesSection() {
     >
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 sm:mb-10">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-950 text-balance max-w-2xl">
+          <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-950 text-balance max-w-2xl">
             Наши сертификаты об&nbsp;экспертизе в&nbsp;области&nbsp;ИИ
           </h2>
 

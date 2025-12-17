@@ -37,7 +37,7 @@ export function UseCasesSection() {
     <section id="use-cases" className="bg-neutral-100 py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-14">
-          <h2 className="text-[clamp(2.5rem,4.4vw,4.25rem)] font-black text-neutral-950 tracking-tight leading-[0.98]">
+          <h2 className="text-[clamp(1.8rem,3.5vw,4.25rem)] font-black text-neutral-950 tracking-tight leading-[0.98]">
             Какие задачи мы решаем
           </h2>
         </div>

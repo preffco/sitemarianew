@@ -8,7 +8,7 @@ export function ExpertSection() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Заголовок и подзаголовок - сначала на мобильных */}
           <div className="lg:order-2 lg:hidden">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-950 mb-2 text-balance">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-neutral-950 mb-2 text-balance">
               Мария Аникина
             </h2>
             <p className="text-xl text-neutral-600 mb-8">Ваш эксперт по автоматизации бизнеса</p>
@@ -44,7 +44,7 @@ export function ExpertSection() {
           <div className="order-3 lg:order-2">
             {/* Заголовок и подзаголовок - скрыты на мобильных, видны на десктопе */}
             <div className="hidden lg:block">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-950 mb-2 text-balance">
+              <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-neutral-950 mb-2 text-balance">
                 Мария Аникина
               </h2>
               <p className="text-xl text-neutral-600 mb-8">Ваш эксперт по автоматизации бизнеса</p>

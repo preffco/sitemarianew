@@ -38,7 +38,7 @@ export function EducationSection() {
     <section id="education" className="bg-neutral-100 py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-950 mb-4">Программы обучения</h2>
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-neutral-950 mb-4">Программы обучения</h2>
           <p className="text-neutral-600 text-lg">Практические мастер-классы для команд любого уровня</p>
         </div>
 

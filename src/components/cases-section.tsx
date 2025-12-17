@@ -120,7 +120,7 @@ export function CasesSection() {
     >
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 sm:mb-12">
-            <h2 className="text-[clamp(2.4rem,4.2vw,4.15rem)] font-black text-neutral-950 tracking-tight leading-[0.98] max-w-3xl">
+            <h2 className="text-[clamp(1.8rem,3.5vw,4.15rem)] font-black text-neutral-950 tracking-tight leading-[0.98] max-w-3xl">
             Наши кейсы: успешное внедрение ИИ в&nbsp;российских компаниях
           </h2>
 

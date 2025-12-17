@@ -89,7 +89,7 @@ export function MasterclassLogosCarousel({
     <div className="w-full">
       {title ? (
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-8">
-          <h3 className="text-[clamp(2.4rem,4.2vw,4.15rem)] font-black text-neutral-950 tracking-tight leading-[0.98] max-w-3xl">
+          <h3 className="text-[clamp(1.8rem,3.5vw,4.15rem)] font-black text-neutral-950 tracking-tight leading-[0.98] max-w-3xl">
             {title}
           </h3>
           <div className="flex items-center gap-3 sm:gap-4">

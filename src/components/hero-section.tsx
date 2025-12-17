@@ -49,6 +49,53 @@ export function HeroSection() {
                 Получить бесплатный аудит
               </Button>
             </a>
+
+            {/* Mobile cards - показываются только на мобильных */}
+            <div className="lg:hidden mt-12">
+              <div className="relative">
+                <div className="overflow-x-auto scrollbar-hide pb-4 -mx-6 px-6 snap-x snap-mandatory">
+                  <div className="flex gap-4" style={{ width: 'max-content' }}>
+                    {heroCardData.map((card, idx) => (
+                      <div
+                        key={card.title}
+                        className={`flex-shrink-0 w-[calc(50vw-32px)] snap-start rounded-3xl px-5 py-5 border min-h-[140px] ${
+                          card.highlight 
+                            ? 'border-sky-600 bg-sky-400' 
+                            : 'border-black/5 bg-white'
+                        } shadow-none`}
+                      >
+                        <div className="flex items-center justify-between gap-4 mb-3">
+                          <p className={`font-semibold leading-tight text-sm ${
+                            card.highlight ? 'text-white' : 'text-neutral-950'
+                          }`}>
+                            {card.title}
+                          </p>
+                          <div className={`h-8 w-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                            card.highlight ? 'bg-amber-400' : 'bg-neutral-200'
+                          }`}>
+                            <card.icon className="h-4 w-4 text-neutral-950" />
+                          </div>
+                        </div>
+                        <p className={`text-xs leading-relaxed ${
+                          card.highlight ? 'text-white/80' : 'text-neutral-600'
+                        }`}>
+                          {card.description}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                {/* Индикатор скролла - стрелка вправо */}
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none z-10">
+                  <div className="flex items-center gap-1 bg-neutral-950/60 backdrop-blur-sm rounded-full px-2 py-1.5">
+                    <div className="w-1.5 h-1.5 rounded-full bg-white/60"></div>
+                    <svg className="w-4 h-4 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Right mosaic (reference-like cards) */}

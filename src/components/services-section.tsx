@@ -120,7 +120,7 @@ export function ServicesSection() {
     <>
       <section className="bg-[#EFEFEF] py-16 md:py-24" id="services">
         <div className="mx-auto max-w-7xl px-6 sm:px-6 lg:px-8">
-          <h2 className="mb-14 text-[clamp(2.4rem,4.2vw,4.15rem)] font-black tracking-tight leading-[0.98] text-neutral-950">
+          <h2 className="mb-14 text-[clamp(1.8rem,3.5vw,4.15rem)] font-black tracking-tight leading-[0.98] text-neutral-950">
             Наши услуги: от консалтинга
             <br />
             до разработки AI-ассистентов
