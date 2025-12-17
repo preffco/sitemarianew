@@ -3,26 +3,25 @@ import { Bot, MessageSquare, Users, ShieldCheck, ArrowRight } from "lucide-react
 
 export function HeroSection() {
   return (
-    <section id="hero" className="bg-neutral-950 min-h-screen pt-28 pb-24 px-6">
+    <section id="hero" className="bg-neutral-950 pt-24 pb-16 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center min-h-[calc(100vh-14rem)]">
+        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
           <div>
             <p className="text-white/70 font-medium mb-5 text-base sm:text-lg tracking-wide">
               {"Агентство 'Ai for all'"}
             </p>
-            <h1 className="text-[clamp(2.8rem,5.6vw,5.2rem)] font-black text-white leading-[0.98] tracking-tight mb-6">
+            <h1 className="text-[clamp(2.4rem,4.8vw,4.6rem)] font-black text-white leading-[0.98] tracking-tight mb-5">
               <span className="block">Внедрение ИИ</span>
               <span className="block">в бизнес:</span>
               <span className="block mt-2 text-white/90">AI-ассистенты и мастер‑классы</span>
             </h1>
-            <p className="text-white/75 text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
+            <p className="text-white/75 text-base sm:text-lg md:text-lg leading-relaxed mb-8 max-w-xl">
               Разрабатываем ИИ-ассистентов для продаж, маркетинга и HR. Проводим корпоративные мастер-классы по
               нейросетям для руководителей и сотрудников
             </p>
             <a href="#contact">
-              <Button className="h-16 px-10 rounded-full bg-amber-400 hover:bg-amber-500 text-neutral-950 text-lg font-semibold shadow-[0_18px_50px_rgba(245,255,98,0.26)] hover:shadow-[0_22px_60px_rgba(245,255,98,0.3)] transition-shadow">
-                <span>Получить бесплатный аудит</span>
-                <ArrowRight className="w-5 h-5" />
+              <Button className="h-16 w-full max-w-[640px] rounded-full bg-amber-400 hover:bg-amber-500 text-neutral-950 text-lg font-semibold shadow-[0_18px_50px_rgba(245,255,98,0.22)] hover:shadow-[0_22px_60px_rgba(245,255,98,0.28)] transition-shadow">
+                <span className="flex-1 text-center">Получить бесплатный аудит</span>
               </Button>
             </a>
           </div>
