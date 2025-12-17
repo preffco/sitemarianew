@@ -158,10 +158,10 @@ html {
     transform: scale(1);
   }
   42% {
-    transform: scale(2.5);
+    transform: scale(1.4);
   }
   52% {
-    transform: scale(2.5);
+    transform: scale(1.4);
   }
   82% {
     transform: scale(1);
