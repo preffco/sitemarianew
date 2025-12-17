@@ -36,7 +36,9 @@ export function HeroSection() {
                     <Bot className="h-5 w-5 text-neutral-950" />
                   </div>
                 </div>
-                <p className="mt-3 text-[#1d9bf0] text-sm leading-relaxed">Структурируем задачи, находим точки роста.</p>
+                <p className="mt-3 text-neutral-600 text-sm leading-relaxed">
+                  Структурируем задачи, находим точки роста.
+                </p>
               </div>
               <div className="rounded-3xl bg-white px-8 py-6 shadow-[0_15px_40px_rgba(0,0,0,0.15)] border border-black/5">
                 <div className="flex items-center justify-between gap-4">
@@ -45,7 +47,9 @@ export function HeroSection() {
                     <MessageSquare className="h-5 w-5 text-neutral-950" />
                   </div>
                 </div>
-                <p className="mt-3 text-[#1d9bf0] text-sm leading-relaxed">Под ключ, интеграции в CRM и чаты.</p>
+                <p className="mt-3 text-neutral-600 text-sm leading-relaxed">
+                  Под ключ, интеграции в CRM и чаты.
+                </p>
               </div>
             </div>
 
@@ -53,20 +57,24 @@ export function HeroSection() {
               <div className="rounded-3xl bg-white px-8 py-6 shadow-[0_20px_60px_rgba(0,0,0,0.25)] border border-black/5">
                 <div className="flex items-center justify-between gap-4">
                   <p className="text-neutral-950 font-semibold leading-tight">CRM и поддержка</p>
-                <div className="h-10 w-10 rounded-2xl bg-neutral-200 flex items-center justify-center">
-                    <Users className="h-5 w-5 text-[#1d9bf0]" />
+                  <div className="h-10 w-10 rounded-2xl bg-neutral-200 flex items-center justify-center">
+                    <Users className="h-5 w-5 text-neutral-950" />
                   </div>
                 </div>
-                <p className="mt-3 text-[#1d9bf0] text-sm leading-relaxed">Автоматизация лидов, задач и сопровождения.</p>
+                <p className="mt-3 text-neutral-600 text-sm leading-relaxed">
+                  Автоматизация лидов, задач и сопровождения.
+                </p>
               </div>
               <div className="rounded-3xl bg-white px-8 py-6 shadow-[0_20px_60px_rgba(0,0,0,0.25)] border border-black/5">
                 <div className="flex items-center justify-between gap-4">
                   <p className="text-neutral-950 font-semibold leading-tight">152‑ФЗ и риски</p>
-                    <div className="h-10 w-10 rounded-2xl bg-neutral-200 flex items-center justify-center">
-                    <ShieldCheck className="h-5 w-5 text-[#1d9bf0]" />
+                  <div className="h-10 w-10 rounded-2xl bg-neutral-200 flex items-center justify-center">
+                    <ShieldCheck className="h-5 w-5 text-neutral-950" />
                   </div>
                 </div>
-                <p className="mt-3 text-[#1d9bf0] text-sm leading-relaxed">Проектируем решения с учетом норм.</p>
+                <p className="mt-3 text-neutral-600 text-sm leading-relaxed">
+                  Проектируем решения с учетом норм.
+                </p>
               </div>
             </div>
           </div>
