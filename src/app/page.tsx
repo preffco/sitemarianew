@@ -5,6 +5,7 @@ import { ServicesSection } from "@/components/services-section"
 import { UseCasesSection } from "@/components/use-cases-section"
 import { EducationSection } from "@/components/education-section"
 import { CasesSection } from "@/components/cases-section"
+import { PressSection } from "@/components/press-section"
 import { CertificatesSection } from "@/components/certificates-section"
 import { CtaSection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
@@ -21,6 +22,7 @@ export default function Home() {
       <UseCasesSection />
       <EducationSection />
       <CasesSection />
+      <PressSection />
       <CertificatesSection />
       <CtaSection />
       <Footer />
