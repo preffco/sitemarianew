@@ -123,7 +123,7 @@ export function ServicesSection() {
           </div>
 
           <div className="w-full lg:w-1/2 mt-8 lg:mt-0">
-            <div className="bg-[#1A1A1A] rounded-2xl p-8 md:p-10 h-full min-h-[500px] flex flex-col">
+            <div className="bg-[#212121] rounded-2xl p-8 md:p-10 h-full min-h-[500px] flex flex-col">
               <h3 className="text-2xl md:text-3xl lg:text-[2.5rem] font-bold text-white mb-auto leading-tight">
                 {serviceCards[activeCard].title}
               </h3>
@@ -176,7 +176,7 @@ function ServiceCardItem({
     <button
       onClick={onClick}
       className={`relative p-4 rounded-xl text-left transition-all duration-200 ${
-        isActive ? "bg-[#1A1A1A] text-white" : "bg-white hover:bg-gray-50 text-[#1A1A1A]"
+        isActive ? "bg-[#2b2b2b] text-white" : "bg-white hover:bg-gray-50 text-[#1A1A1A]"
       }`}
     >
       <span className={`text-sm ${isActive ? "text-white/60" : "text-[#999]"}`}>
@@ -185,7 +185,7 @@ function ServiceCardItem({
 
       <div
         className={`w-12 h-12 rounded-full flex items-center justify-center my-4 ${
-          isActive ? "bg-[#1A1A1A]" : card.iconBg
+          isActive ? "bg-[#2b2b2b]" : card.iconBg
         }`}
       >
         <span className={isActive ? "text-white" : "text-[#1A1A1A]"}>{card.icon}</span>
