@@ -54,7 +54,7 @@ export function FeatureCardsRow({
       {items.map((card) => (
           <div
             key={card.title}
-            className={`snap-start flex-shrink-0 w-[min(260px,70vw)] rounded-[18px] px-6 py-8 border min-h-[190px] ${
+            className={`snap-start flex-shrink-0 w-[min(220px,60vw)] rounded-[18px] px-5 py-9 border min-h-[220px] ${
               card.highlight ? "border-sky-600 bg-sky-400" : "border-black/5 bg-white"
             }`}
           >
