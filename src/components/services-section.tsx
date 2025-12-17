@@ -124,18 +124,18 @@ export function ServicesSection() {
 
           <div className="w-full lg:w-1/2 mt-8 lg:mt-0">
             <div className="bg-[#212121] rounded-2xl p-8 md:p-10 h-full min-h-[520px] flex flex-col">
-              <h3 className="text-2xl md:text-3xl lg:text-[2.5rem] font-bold text-white mb-auto leading-tight">
+              <h3 className="text-2xl md:text-3xl lg:text-[2.5rem] font-bold text-white leading-tight">
                 {serviceCards[activeCard].title}
               </h3>
 
-              <div className="my-4 flex flex-col sm:flex-row gap-4 items-start -ml-10 md:-ml-20">
+              <div className="mt-4 mb-3 flex flex-col sm:flex-row gap-4 items-start -ml-12 md:-ml-24">
                 <div className="relative w-[520px] sm:w-[600px] md:w-[680px] flex-shrink-0">
                   <Image
                     src="/services-chat-screenshot.png"
                     alt="Интерфейс чата"
                     width={220}
                     height={440}
-                    className="w-full h-auto object-contain transform -translate-x-16 md:-translate-x-28"
+                    className="w-full h-auto object-contain transform -translate-x-20 md:-translate-x-32"
                   />
                 </div>
                 <div className="relative flex-1 overflow-hidden rounded-3xl max-w-[560px] shadow-[0_30px_90px_rgba(0,0,0,0.35)] mt-6 sm:mt-0">
