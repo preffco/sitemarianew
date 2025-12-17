@@ -13,10 +13,12 @@ const certificates = Array.from({ length: 17 }, (_, index) => ({
 export function CertificatesSection() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
+  const [isInView, setIsInView] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
   const [direction, setDirection] = useState<"left" | "right">("right")
   const thumbnailRefs = useRef<(HTMLButtonElement | null)[]>([])
   const thumbnailContainerRef = useRef<HTMLDivElement | null>(null)
+  const sectionRef = useRef<HTMLElement | null>(null)
 
   const scrollThumbnailIntoView = useCallback((index: number) => {
     const container = thumbnailContainerRef.current
@@ -69,23 +71,54 @@ export function CertificatesSection() {
     goToSlide(newIndex, "left", true)
   }, [currentIndex, goToSlide])
 
-  // Auto-advance every 4 seconds
+  // Detect if the section is in view (prevents scroll jumps from offscreen autoplay)
   useEffect(() => {
-    if (isHovered) return
+    const el = sectionRef.current
+    if (!el) return
+
+    if (typeof IntersectionObserver === "undefined") {
+      setIsInView(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setIsInView(entries[0]?.isIntersecting ?? false)
+      },
+      {
+        root: null,
+        // start autoplay a bit before it fully enters the viewport, stop when it leaves
+        rootMargin: "160px 0px 160px 0px",
+        threshold: 0.15,
+      },
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  // Auto-advance every 4 seconds (only when visible)
+  useEffect(() => {
+    if (isHovered || !isInView) return
 
     const interval = setInterval(() => {
       nextSlide()
     }, 4000)
 
     return () => clearInterval(interval)
-  }, [isHovered, nextSlide])
+  }, [isHovered, isInView, nextSlide])
 
   return (
     <section
       id="certificates"
+      ref={sectionRef}
       className="bg-neutral-100 py-12 sm:py-16 lg:py-20 px-4 sm:px-6"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      style={{
+        // Prevent browser scroll anchoring from adjusting the page when the carousel swaps images offscreen
+        overflowAnchor: "none",
+      }}
     >
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 sm:mb-10">
