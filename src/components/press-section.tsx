@@ -36,10 +36,10 @@ export function PressSection() {
             <Link
               key={article.id}
               href={article.url}
-              className="bg-white rounded-none pt-4 sm:pt-5 px-4 sm:px-5 pb-0 shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.12)] transition-shadow group flex flex-col min-h-[280px] sm:min-h-[300px]"
+              className={`bg-white rounded-none ${article.id === 2 ? 'pt-2 sm:pt-3' : 'pt-4 sm:pt-5'} px-4 sm:px-5 pb-0 shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.12)] transition-shadow group flex flex-col min-h-[280px] sm:min-h-[300px]`}
             >
               {/* Publication logo/name */}
-              <div className="mb-3">
+              <div className={article.id === 2 ? 'mb-1' : 'mb-3'}>
                 {article.publicationLogo ? (
                   <Image
                     src={article.publicationLogo}
