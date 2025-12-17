@@ -1,6 +1,6 @@
 "use client"
 
-import { TrendingDown, Clock, CurrencyRub } from "lucide-react"
+import { TrendingDown, Clock } from "lucide-react"
 
 const valueCards = [
   {
@@ -14,7 +14,7 @@ const valueCards = [
     description: "Обработка заявок, резюме и документов — часы работы каждый день",
   },
   {
-    icon: CurrencyRub,
+    icon: null,
     title: "Экономия с ИИ",
     description: "Автоматизация сокращает расходы и повышает эффективность в 3-5 раз",
   },
@@ -45,7 +45,11 @@ export function BusinessValueSection() {
                 className="bg-white rounded-3xl p-8 shadow-[0_18px_50px_rgba(15,23,42,0.08)] border border-black/5 transition-all hover:shadow-[0_18px_50px_rgba(15,23,42,0.12)] cursor-pointer"
               >
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 bg-amber-400">
-                  <Icon className="w-7 h-7 text-neutral-950" />
+                  {Icon ? (
+                    <Icon className="w-7 h-7 text-neutral-950" />
+                  ) : (
+                    <span className="text-2xl font-semibold text-neutral-950">₽</span>
+                  )}
                 </div>
                 <h3 className="text-xl font-semibold text-neutral-950 mb-3">{card.title}</h3>
                 <p className="text-neutral-700">{card.description}</p>
