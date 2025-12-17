@@ -20,8 +20,8 @@ export function HeroSection() {
               нейросетям для руководителей и сотрудников
             </p>
             <a href="#contact">
-              <Button className="h-16 w-full max-w-[640px] rounded-full bg-amber-400 hover:bg-amber-500 text-neutral-950 text-lg font-semibold shadow-[0_18px_50px_rgba(245,255,98,0.22)] hover:shadow-[0_22px_60px_rgba(245,255,98,0.28)] transition-shadow">
-                <span className="flex-1 text-center">Получить бесплатный аудит</span>
+              <Button className="mt-10 mx-auto block h-16 w-full max-w-[720px] rounded-full bg-amber-400 text-neutral-950 text-[1.5rem] font-bold transition hover:bg-amber-500 hover:shadow-none focus-visible:ring-2 focus-visible:ring-amber-300">
+                Получить бесплатный аудит
               </Button>
             </a>
           </div>
