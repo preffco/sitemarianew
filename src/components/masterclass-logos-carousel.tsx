@@ -89,14 +89,14 @@ export function MasterclassLogosCarousel({
     <div className="w-full">
       {title ? (
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-8">
-          <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-950 text-balance max-w-3xl">
+          <h3 className="text-[clamp(2.4rem,4.2vw,4.15rem)] font-black text-neutral-950 tracking-tight leading-[0.98] max-w-3xl">
             {title}
           </h3>
           <div className="flex items-center gap-3 sm:gap-4">
             <button
               type="button"
               onClick={prevAnimated}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-neutral-300 flex items-center justify-center hover:bg-neutral-100 transition-colors"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-black/10 bg-white flex items-center justify-center hover:bg-neutral-200 transition-colors"
               aria-label="Предыдущие логотипы"
             >
               <ChevronLeft className="w-5 h-5 text-neutral-700" />
@@ -104,7 +104,7 @@ export function MasterclassLogosCarousel({
             <button
               type="button"
               onClick={nextAnimated}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-neutral-300 flex items-center justify-center hover:bg-neutral-100 transition-colors"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-black/10 bg-white flex items-center justify-center hover:bg-neutral-200 transition-colors"
               aria-label="Следующие логотипы"
             >
               <ChevronRight className="w-5 h-5 text-neutral-700" />
@@ -172,7 +172,7 @@ export function MasterclassLogosCarousel({
               onClick={() => goToAnimated(i)}
               aria-label={`Показать страницу ${i + 1} из ${pageCount}`}
               className={`h-1 w-16 rounded-full transition-colors ${
-                i === pageIndex ? "bg-amber-500" : "bg-neutral-300 hover:bg-neutral-400"
+                i === pageIndex ? "bg-sky-400" : "bg-black/20 hover:bg-black/30"
               }`}
             />
           ))}

@@ -114,13 +114,13 @@ export function CasesSection() {
   return (
     <section
       id="cases"
-      className="bg-white py-16 sm:py-20 lg:py-24 px-4 sm:px-6"
+        className="bg-neutral-100 py-16 sm:py-20 lg:py-24 px-4 sm:px-6"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-950 text-balance max-w-3xl">
+            <h2 className="text-[clamp(2.4rem,4.2vw,4.15rem)] font-black text-neutral-950 tracking-tight leading-[0.98] max-w-3xl">
             Наши кейсы: успешное внедрение ИИ в&nbsp;российских компаниях
           </h2>
 
