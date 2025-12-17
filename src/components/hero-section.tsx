@@ -27,48 +27,46 @@ export function HeroSection() {
           </div>
 
           {/* Right mosaic (reference-like cards) */}
-          <div className="hidden lg:block">
-            <div className="grid grid-cols-2 gap-4 items-end">
-              <div className="space-y-4">
-                <div className="rounded-3xl bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
-                  <div className="flex items-center justify-between gap-4">
-                    <p className="text-neutral-950 font-semibold leading-tight">Аудит процессов</p>
-                    <div className="h-10 w-10 rounded-2xl bg-neutral-200 flex items-center justify-center">
-                      <Bot className="w-5 h-5 text-neutral-950" />
-                    </div>
+          <div className="hidden lg:flex gap-6 justify-end">
+            <div className="flex flex-col gap-4">
+              <div className="rounded-3xl bg-white px-8 py-6 shadow-[0_25px_80px_rgba(0,0,0,0.25)] border border-black/5">
+                <div className="flex items-center justify-between gap-4">
+                  <p className="text-neutral-950 font-semibold leading-tight">Аудит процессов</p>
+                  <div className="h-10 w-10 rounded-2xl bg-neutral-200 flex items-center justify-center">
+                    <Bot className="h-5 w-5 text-neutral-950" />
                   </div>
                 </div>
-
-                <div className="rounded-3xl bg-sky-400 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
-                  <div className="flex items-center justify-between gap-4">
-                    <p className="text-white font-semibold leading-tight">AI-ассистенты</p>
-                    <div className="h-10 w-10 rounded-2xl bg-white/15 flex items-center justify-center">
-                      <MessageSquare className="w-5 h-5 text-white" />
-                    </div>
-                  </div>
-                  <p className="mt-3 text-white/80 text-sm">Под ключ, с интеграциями</p>
-                </div>
+                <p className="mt-3 text-neutral-600 text-sm leading-relaxed">Структурируем задачи, находим точки роста.</p>
               </div>
-
-              <div className="space-y-4">
-                <div className="rounded-3xl bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
-                  <div className="flex items-center justify-between gap-4">
-                    <p className="text-neutral-950 font-semibold leading-tight">CRM и поддержка</p>
-                    <div className="h-10 w-10 rounded-2xl bg-neutral-200 flex items-center justify-center">
-                      <Users className="w-5 h-5 text-neutral-950" />
-                    </div>
+              <div className="rounded-3xl bg-white px-8 py-6 shadow-[0_15px_40px_rgba(0,0,0,0.15)] border border-black/5">
+                <div className="flex items-center justify-between gap-4">
+                  <p className="text-neutral-950 font-semibold leading-tight">AI-ассистенты</p>
+                  <div className="h-10 w-10 rounded-2xl bg-neutral-200 flex items-center justify-center">
+                    <MessageSquare className="h-5 w-5 text-neutral-950" />
                   </div>
                 </div>
+                <p className="mt-3 text-neutral-600 text-sm leading-relaxed">Под ключ, интеграции в CRM и чаты.</p>
+              </div>
+            </div>
 
-                <div className="rounded-3xl bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
-                  <div className="flex items-center justify-between gap-4">
-                    <p className="text-neutral-950 font-semibold leading-tight">152‑ФЗ и риски</p>
-                    <div className="h-10 w-10 rounded-2xl bg-neutral-200 flex items-center justify-center">
-                      <ShieldCheck className="w-5 h-5 text-neutral-950" />
-                    </div>
+            <div className="flex flex-col gap-4 mt-6">
+              <div className="rounded-3xl bg-white px-8 py-6 shadow-[0_20px_60px_rgba(0,0,0,0.25)] border border-black/5">
+                <div className="flex items-center justify-between gap-4">
+                  <p className="text-neutral-950 font-semibold leading-tight">CRM и поддержка</p>
+                  <div className="h-10 w-10 rounded-2xl bg-neutral-200 flex items-center justify-center">
+                    <Users className="h-5 w-5 text-neutral-950" />
                   </div>
-                  <p className="mt-3 text-neutral-600 text-sm">Проектируем безопасно</p>
                 </div>
+                <p className="mt-3 text-neutral-600 text-sm leading-relaxed">Автоматизация лидов, задач и сопровождения.</p>
+              </div>
+              <div className="rounded-3xl bg-white px-8 py-6 shadow-[0_20px_60px_rgba(0,0,0,0.25)] border border-black/5">
+                <div className="flex items-center justify-between gap-4">
+                  <p className="text-neutral-950 font-semibold leading-tight">152‑ФЗ и риски</p>
+                  <div className="h-10 w-10 rounded-2xl bg-neutral-200 flex items-center justify-center">
+                    <ShieldCheck className="h-5 w-5 text-neutral-950" />
+                  </div>
+                </div>
+                <p className="mt-3 text-neutral-600 text-sm leading-relaxed">Проектируем решения с учетом норм.</p>
               </div>
             </div>
           </div>
