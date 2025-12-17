@@ -1,214 +1,197 @@
 "use client"
 
-import {
-  ArrowRight,
-  Bot,
-  FileSearch,
-  GraduationCap,
-  Headset,
-  ListChecks,
-  ShieldCheck,
-  Users,
-  Workflow,
-  X,
-} from "lucide-react"
-import Image from "next/image"
-import { useEffect, useState } from "react"
-import { MasterclassLogosCarousel } from "@/components/masterclass-logos-carousel"
+import type React from "react"
 
-const masterclassLogos = Array.from({ length: 12 }, (_, i) => ({
-  src: `/logos/logo-${String(i + 1).padStart(2, "0")}.webp`,
-  alt: `Логотип компании ${i + 1}`,
-}))
+import { useState } from "react"
+import Image from "next/image"
+import { Bot, MessageSquare, Search, Users, Shield, GraduationCap, Headset } from "lucide-react"
+
+interface ServiceCard {
+  id: number
+  title: string
+  description: string
+  icon: React.ReactNode
+  iconBg: string
+}
+
+const serviceCards: ServiceCard[] = [
+  {
+    id: 1,
+    title: "Разработка ИИ-ассистентов",
+    description:
+      'Создаем кастомных ИИ-ассистентов "под ключ". Интегрируем их в ваши CRM (Bitrix24, AMO) и бизнес-процессы.',
+    icon: <Bot className="w-6 h-6" />,
+    iconBg: "bg-[#FF6B4A]",
+  },
+  {
+    id: 2,
+    title: "Сценарии внедрения",
+    description: "Гипотезы, KPI, пилот и масштабирование.",
+    icon: <MessageSquare className="w-6 h-6" />,
+    iconBg: "bg-[#E8E8E8]",
+  },
+  {
+    id: 3,
+    title: "Поиск по базе знаний",
+    description: "Ответы по документам за секунды.",
+    icon: <Search className="w-6 h-6" />,
+    iconBg: "bg-[#A8C5F0]",
+  },
+  {
+    id: 4,
+    title: "ИИ-ассистент в чатах",
+    description: "Telegram/виджеты, квалификация и поддержка.",
+    icon: <MessageSquare className="w-6 h-6" />,
+    iconBg: "bg-[#E8E8E8]",
+  },
+  {
+    id: 5,
+    title: "Интеграция CRM",
+    description: "Bitrix24/AMO: лиды, задачи, контроль диалогов.",
+    icon: <Users className="w-6 h-6" />,
+    iconBg: "bg-[#FFE066]",
+  },
+  {
+    id: 6,
+    title: "152-ФЗ и риски",
+    description: "Проектируем безопасно и прозрачно.",
+    icon: <Shield className="w-6 h-6" />,
+    iconBg: "bg-[#E8E8E8]",
+  },
+  {
+    id: 7,
+    title: "Обучение команды",
+    description: "Практика нейросетей за 1 день.",
+    icon: <GraduationCap className="w-6 h-6" />,
+    iconBg: "bg-[#90EE90]",
+  },
+  {
+    id: 8,
+    title: "Сопровождение",
+    description: "Поддержка, улучшения и масштабирование.",
+    icon: <Headset className="w-6 h-6" />,
+    iconBg: "bg-[#FF6B4A]",
+  },
+]
 
 export function ServicesSection() {
-  const [isPhoneZoomOpen, setIsPhoneZoomOpen] = useState(false)
+  const [activeCard, setActiveCard] = useState(0)
 
-  useEffect(() => {
-    if (!isPhoneZoomOpen) return
-
-    const prevOverflow = document.body.style.overflow
-    document.body.style.overflow = "hidden"
-
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setIsPhoneZoomOpen(false)
-    }
-    window.addEventListener("keydown", onKeyDown)
-
-    return () => {
-      document.body.style.overflow = prevOverflow
-      window.removeEventListener("keydown", onKeyDown)
-    }
-  }, [isPhoneZoomOpen])
   return (
-    <section id="services" className="bg-neutral-100 py-24 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-14">
-          <h2 className="text-[clamp(2.6rem,4.8vw,4.5rem)] font-black text-neutral-950 tracking-tight leading-[0.98]">
-            Все возможности внедрения ИИ
-          </h2>
-          <p className="mt-3 text-neutral-700 text-lg">
-            От консалтинга до разработки AI‑ассистентов — в одной системе подхода
-          </p>
-        </div>
+    <section className="bg-[#EFEFEF] py-16 md:py-24" id="services">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 className="mb-16 text-3xl font-bold tracking-tight text-[#1A1A1A] md:text-4xl lg:text-[2.75rem] lg:leading-tight">
+          Наши услуги: от консалтинга
+          <br />
+          до разработки AI-ассистентов
+        </h2>
 
-        <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-6 items-stretch">
-          {/* Left: tiles */}
-          <div className="grid grid-cols-2 gap-4">
-            {[
-              { n: "01", title: "Аудит процессов", icon: Workflow, desc: "Находим точки роста и считаем эффект." },
-              { n: "02", title: "Сценарии внедрения", icon: ListChecks, desc: "Гипотезы, KPI, пилот и масштабирование." },
-              { n: "03", title: "Поиск по базе знаний", icon: FileSearch, desc: "Ответы по документам за секунды." },
-              { n: "04", title: "ИИ‑ассистент в чатах", icon: Bot, desc: "Telegram/виджеты, квалификация и поддержка." },
-              { n: "05", title: "Интеграция CRM", icon: Users, desc: "Bitrix24/AMO: лиды, задачи, контроль диалогов." },
-              { n: "06", title: "152‑ФЗ и риски", icon: ShieldCheck, desc: "Проектируем безопасно и прозрачно." },
-              { n: "07", title: "Обучение команды", icon: GraduationCap, desc: "Практика нейросетей за 1 день." },
-              { n: "08", title: "Сопровождение", icon: Headset, desc: "Поддержка, улучшения и контроль качества." },
-            ].map((t) => (
-              <div
-                key={t.n}
-                className="bg-white rounded-3xl p-6 shadow-[0_18px_50px_rgba(15,23,42,0.08)] border border-black/5"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <span className="text-neutral-500 font-semibold">{t.n}</span>
-                  <div className="h-11 w-11 rounded-full bg-neutral-200 flex items-center justify-center">
-                    <t.icon className="h-5 w-5 text-neutral-950" />
-                  </div>
-                </div>
-                <h3 className="mt-5 text-xl font-semibold text-neutral-950 leading-tight">{t.title}</h3>
-                <p className="mt-2 text-neutral-700 leading-relaxed">{t.desc}</p>
+        <div className="flex flex-col lg:flex-row gap-6">
+          <div className="w-full lg:w-1/2">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              <div className="flex flex-col gap-3">
+                {[0, 3, 6].map((idx) => (
+                  <ServiceCardItem
+                    key={serviceCards[idx].id}
+                    card={serviceCards[idx]}
+                    isActive={activeCard === idx}
+                    onClick={() => setActiveCard(idx)}
+                  />
+                ))}
               </div>
-            ))}
+              <div className="flex flex-col gap-3 mt-8">
+                {[1, 4, 7].map((idx) => (
+                  <ServiceCardItem
+                    key={serviceCards[idx].id}
+                    card={serviceCards[idx]}
+                    isActive={activeCard === idx}
+                    onClick={() => setActiveCard(idx)}
+                  />
+                ))}
+              </div>
+              <div className="hidden md:flex flex-col gap-3 mt-16">
+                {[2, 5].map((idx) => (
+                  <ServiceCardItem
+                    key={serviceCards[idx].id}
+                    card={serviceCards[idx]}
+                    isActive={activeCard === idx}
+                    onClick={() => setActiveCard(idx)}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* Right: big feature panel */}
-          <div className="rounded-3xl bg-neutral-950 text-white p-8 md:p-10 overflow-hidden relative">
-            <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-sky-400/40 blur-3xl" />
-            <div className="pointer-events-none absolute -left-24 -bottom-24 h-64 w-64 rounded-full bg-amber-400/30 blur-3xl" />
+          <div className="w-full lg:w-1/2 mt-8 lg:mt-0">
+            <div className="bg-[#1A1A1A] rounded-2xl p-8 md:p-10 h-full min-h-[500px] flex flex-col">
+              <h3 className="text-2xl md:text-3xl lg:text-[2.5rem] font-bold text-white mb-auto leading-tight">
+                {serviceCards[activeCard].title}
+              </h3>
 
-            <div className="relative">
-              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
-                <div>
-                  <p className="text-white/70 font-medium">Главная услуга</p>
-                  <h3 className="mt-2 text-3xl md:text-4xl font-black tracking-tight leading-[1.05]">
-                    Внедрение и разработка ИИ‑ассистентов
-                  </h3>
-                </div>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center rounded-full bg-amber-400 px-7 py-3 text-neutral-950 font-semibold shadow-[0_16px_40px_rgba(245,255,98,0.2)] hover:bg-amber-500 transition-colors"
-                >
-                  Получить аудит
-                </a>
-              </div>
-
-              <p className="mt-6 text-white/75 text-lg leading-relaxed max-w-2xl">
-                Создаем кастомных ИИ‑ассистентов «под ключ» и интегрируем их в CRM и бизнес‑процессы. От «нейропродавца» в
-                чате до интеллектуального поиска по базе знаний.
-              </p>
-
-              <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                <a
-                  href="#use-cases"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-white/10 px-6 py-3 text-white font-semibold hover:bg-white/15 transition-colors"
-                >
-                  Сценарии внедрения <ArrowRight className="w-5 h-5" />
-                </a>
-                <a
-                  href="#education"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-white/10 px-6 py-3 text-white font-semibold hover:bg-white/15 transition-colors"
-                >
-                  Программы обучения <ArrowRight className="w-5 h-5" />
-                </a>
-              </div>
-
-              {/* Image preview */}
-              <div className="mt-10 grid md:grid-cols-2 gap-4 items-start">
-                <div
-                  role="button"
-                  tabIndex={0}
-                  aria-label="Открыть пример диалога ИИ-ассистента"
-                  className="relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 cursor-zoom-in"
-                  onClick={() => setIsPhoneZoomOpen(true)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      e.preventDefault()
-                      setIsPhoneZoomOpen(true)
-                    }
-                  }}
-                >
+              <div className="my-8 flex flex-col sm:flex-row gap-4 items-start">
+                <div className="relative w-[140px] sm:w-[160px] flex-shrink-0 overflow-hidden rounded-2xl border-4 border-[#333] bg-[#333]">
                   <Image
                     src="/services-chat-screenshot.png"
-                    alt="Пример диалога ИИ-ассистента"
-                    width={500}
-                    height={889}
-                    className="w-full h-auto opacity-95"
+                    alt="Интерфейс чата"
+                    width={180}
+                    height={320}
+                    className="w-full h-auto"
                   />
                 </div>
-
-                <div className="rounded-3xl overflow-hidden bg-white/5 border border-white/10">
-                  <div className="aspect-video relative">
-                    <Image
-                      src="/services-masterclass.webp"
-                      alt="Корпоративный мастер-класс по ИИ"
-                      fill
-                      className="object-cover opacity-95"
-                    />
+                <div className="relative flex-1 overflow-hidden rounded-xl">
+                  <Image
+                    src="/services-masterclass.webp"
+                    alt="Мастер-класс по ИИ"
+                    width={350}
+                    height={200}
+                    className="w-full h-auto object-cover aspect-video"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
+                    <p className="text-xs text-white/90">Практикум по ИИ для бизнеса</p>
                   </div>
                 </div>
               </div>
+
+              <p className="text-base md:text-lg text-[#CCCCCC] leading-relaxed mt-auto">
+                {serviceCards[activeCard].description}
+              </p>
             </div>
           </div>
-        </div>
-
-        {/* Zoom overlay */}
-        {isPhoneZoomOpen && (
-          <div className="fixed inset-0 z-[999]">
-            <button
-              type="button"
-              className="absolute inset-0 bg-black/70 backdrop-blur-sm"
-              aria-label="Закрыть"
-              onClick={() => setIsPhoneZoomOpen(false)}
-            />
-
-            <div className="relative mx-auto w-[min(92vw,460px)] pt-20 sm:pt-24">
-              <button
-                type="button"
-                className="absolute -top-2 right-2 sm:right-0 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/15 transition-colors"
-                aria-label="Закрыть"
-                onClick={() => setIsPhoneZoomOpen(false)}
-              >
-                <X className="h-5 w-5" />
-              </button>
-
-              <div className="overflow-hidden rounded-3xl border border-white/10 bg-neutral-950 shadow-[0_40px_120px_rgba(0,0,0,0.55)]">
-                <Image
-                  src="/services-chat-screenshot.png"
-                  alt="Пример диалога ИИ-ассистента (увеличение)"
-                  width={500}
-                  height={889}
-                  className="w-full h-auto origin-center motion-safe:animate-[afa-phone-zoom-loop_6.5s_ease-in-out_infinite] motion-reduce:animate-none"
-                />
-              </div>
-
-              <p className="mt-4 text-center text-white/70 text-sm">Нажмите вне изображения, чтобы закрыть</p>
-            </div>
-          </div>
-        )}
-        <div id="masterclasses" className="mt-20">
-          <MasterclassLogosCarousel
-            title={
-              <>
-                Мы провели <span className="whitespace-nowrap">мастер-классы</span> по ИИ для
-              </>
-            }
-            logos={masterclassLogos}
-            perPage={3}
-            autoPlay
-            intervalMs={3000}
-          />
         </div>
       </div>
     </section>
+  )
+}
+
+function ServiceCardItem({
+  card,
+  isActive,
+  onClick,
+}: {
+  card: ServiceCard
+  isActive: boolean
+  onClick: () => void
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={`relative p-4 rounded-xl text-left transition-all duration-200 ${
+        isActive ? "bg-[#1A1A1A] text-white" : "bg-white hover:bg-gray-50 text-[#1A1A1A]"
+      }`}
+    >
+      <span className={`text-sm ${isActive ? "text-white/60" : "text-[#999]"}`}>
+        {String(card.id).padStart(2, "0")}
+      </span>
+
+      <div
+        className={`w-12 h-12 rounded-full flex items-center justify-center my-4 ${
+          isActive ? "bg-[#1A1A1A]" : card.iconBg
+        }`}
+      >
+        <span className={isActive ? "text-white" : "text-[#1A1A1A]"}>{card.icon}</span>
+      </div>
+
+      <p className="text-sm font-medium leading-tight">{card.title}</p>
+    </button>
   )
 }
