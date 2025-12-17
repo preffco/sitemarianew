@@ -148,7 +148,7 @@ export function CtaSection() {
 
             <div className="space-y-6 text-white/80">
               <div className="flex items-start gap-4">
-                <div className="mt-1 h-10 w-10 rounded-full bg-amber-400 flex items-center justify-center text-neutral-950 font-semibold">
+                <div className="mt-1 h-10 w-10 rounded-full bg-amber-400 flex-shrink-0 flex items-center justify-center text-neutral-950 font-semibold">
                   30
                 </div>
                 <div>
@@ -157,7 +157,7 @@ export function CtaSection() {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="mt-1 h-10 w-10 rounded-full bg-amber-400 flex items-center justify-center text-neutral-950 font-semibold">
+                <div className="mt-1 h-10 w-10 rounded-full bg-amber-400 flex-shrink-0 flex items-center justify-center text-neutral-950 font-semibold">
                   ₽0
                 </div>
                 <div>
