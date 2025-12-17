@@ -69,9 +69,7 @@ export function Header({ variant = "dark" }: HeaderProps) {
   const desktopButtonClass = isLight
     ? "bg-neutral-950 hover:bg-black text-white rounded-full px-6 font-semibold"
     : "bg-amber-400 hover:bg-amber-500 text-neutral-950 rounded-full px-6 font-semibold"
-  const mobileButtonClass = isLight
-    ? "w-full bg-neutral-950 hover:bg-black text-white rounded-full font-medium"
-    : "w-full bg-amber-400 hover:bg-amber-500 text-neutral-950 rounded-full font-medium"
+  const mobileButtonClass = "w-full bg-amber-400 hover:bg-amber-500 text-neutral-950 rounded-full font-medium"
   const hamburgerTextClass = isLight ? "text-neutral-900" : "text-white"
 
   return (
