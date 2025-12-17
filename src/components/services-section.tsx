@@ -129,7 +129,7 @@ export function ServicesSection() {
               </h3>
 
               <div className="my-8 flex flex-col sm:flex-row gap-6 items-start">
-                <div className="relative w-[360px] sm:w-[420px] md:w-[480px] flex-shrink-0 rounded-[32px] overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
+                <div className="relative w-[360px] sm:w-[420px] md:w-[480px] flex-shrink-0 rounded-[32px] overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.45)] -ml-6">
                   <Image
                     src="/services-chat-screenshot.png"
                     alt="Интерфейс чата"
