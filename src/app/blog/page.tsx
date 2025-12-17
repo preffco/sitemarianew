@@ -1,5 +1,7 @@
 "use client"
 
+import { Footer } from "@/components/footer"
+import { Header } from "@/components/header"
 import Image from "next/image"
 
 const sections = [
@@ -33,7 +35,8 @@ const sections = [
 export default function BlogPage() {
   return (
     <main className="bg-neutral-100 min-h-screen">
-      <section className="bg-neutral-950 text-white px-6 md:px-10 py-16">
+      <Header variant="light" />
+      <section className="bg-neutral-950 text-white px-6 md:px-10 py-16 pt-[110px]">
         <div className="max-w-5xl">
           <p className="text-sm uppercase tracking-[0.3em] text-neutral-400">Блог и публикации</p>
           <h1 className="text-[clamp(2.5rem,4vw,4.5rem)] font-black leading-tight mt-4">
@@ -70,6 +73,7 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
+      <Footer />
     </main>
   )
 }

@@ -4,6 +4,12 @@ import { useEffect, useMemo, useState } from "react"
 import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
+type HeaderVariant = "dark" | "light"
+
+type HeaderProps = {
+  variant?: HeaderVariant
+}
+
 function HamburgerIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -19,7 +25,7 @@ function HamburgerIcon({ className }: { className?: string }) {
   )
 }
 
-export function Header() {
+export function Header({ variant = "dark" }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const links = useMemo(
@@ -51,27 +57,38 @@ export function Header() {
     }
   }, [isMenuOpen])
 
+  const isLight = variant === "light"
+  const headerBgClass = isLight
+    ? "bg-white/95 shadow-[0_10px_40px_rgba(15,23,42,0.12)]"
+    : "bg-neutral-950/95 backdrop-blur-sm"
+  const brandTextClass = isLight ? "text-neutral-950" : "text-white"
+  const badgeClass = isLight
+    ? "hidden sm:inline-flex items-center rounded-full bg-neutral-900/5 px-2.5 py-1 text-[10px] font-semibold tracking-[0.22em] text-neutral-900"
+    : "hidden sm:inline-flex items-center rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-semibold tracking-[0.22em] text-white/70"
+  const navLinkClass = `${isLight ? "text-neutral-900 hover:text-neutral-950" : "text-white/70 hover:text-white"} transition-colors text-base`
+  const desktopButtonClass = isLight
+    ? "bg-neutral-950 hover:bg-black text-white rounded-full px-6 font-semibold"
+    : "bg-amber-400 hover:bg-amber-500 text-neutral-950 rounded-full px-6 font-semibold"
+  const mobileButtonClass = isLight
+    ? "w-full bg-neutral-950 hover:bg-black text-white rounded-full font-medium"
+    : "w-full bg-amber-400 hover:bg-amber-500 text-neutral-950 rounded-full font-medium"
+  const hamburgerTextClass = isLight ? "text-neutral-900" : "text-white"
+
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-neutral-950/95 backdrop-blur-sm">
+      <header className={`fixed top-0 left-0 right-0 z-50 ${headerBgClass}`}>
         <div className="max-w-7xl mx-auto px-6 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-2">
-                <span className="text-white font-semibold text-lg tracking-tight">Ai for all</span>
-                <span className="hidden sm:inline-flex items-center rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-semibold tracking-[0.22em] text-white/70">
-                  AFA
-                </span>
+                <span className={`${brandTextClass} font-semibold text-lg tracking-tight`}>Ai for all</span>
+                <span className={badgeClass}>AFA</span>
               </div>
             </div>
 
             <nav className="hidden xl:flex items-center gap-8">
               {links.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-white/70 hover:text-white transition-colors text-base"
-                >
+                <a key={link.href} href={link.href} className={navLinkClass}>
                   {link.label}
                 </a>
               ))}
@@ -79,14 +96,12 @@ export function Header() {
 
             <div className="hidden xl:block">
               <a href="#contact">
-                <Button className="bg-amber-400 hover:bg-amber-500 text-neutral-950 rounded-full px-6 font-semibold">
-                  Получить аудит
-                </Button>
+                <Button className={desktopButtonClass}>Получить аудит</Button>
               </a>
             </div>
 
             <button
-              className="xl:hidden flex items-center text-white text-sm font-semibold"
+              className={`xl:hidden flex items-center ${hamburgerTextClass} text-sm font-semibold`}
               onClick={() => setIsMenuOpen(true)}
               aria-label="Открыть меню"
               aria-expanded={isMenuOpen}
@@ -97,7 +112,6 @@ export function Header() {
         </div>
       </header>
 
-      {/* Mobile menu overlay (rendered OUTSIDE header to avoid stacking-context bugs) */}
       <div
         className={`fixed inset-0 z-[999] xl:hidden ${
           isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
@@ -137,9 +151,7 @@ export function Header() {
 
             <div className="px-6 py-6 border-t border-neutral-200">
               <a href="#contact" onClick={() => setIsMenuOpen(false)}>
-                <Button className="w-full bg-amber-400 hover:bg-amber-500 text-neutral-950 rounded-full font-medium">
-                  Получить аудит
-                </Button>
+                <Button className={mobileButtonClass}>Получить аудит</Button>
               </a>
             </div>
           </div>
