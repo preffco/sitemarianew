@@ -7,15 +7,14 @@ import { Button } from "@/components/ui/button"
 function HamburgerIcon({ className }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 72 24"
+      viewBox="0 0 144 24"
       className={className}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <path d="M2 4H70" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-      <path d="M2 12H70" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-      <path d="M2 20H70" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M2 4H142" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M2 20H142" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
     </svg>
   )
 }
@@ -81,20 +80,19 @@ export function Header() {
 
             <div className="hidden xl:block">
               <a href="#contact">
-                <Button className="bg-amber-400 hover:bg-amber-500 text-neutral-950 rounded-full px-6 font-semibold shadow-[0_10px_30px_rgba(245,255,98,0.22)] hover:shadow-[0_12px_36px_rgba(245,255,98,0.28)] transition-shadow">
+                <Button className="bg-amber-400 hover:bg-amber-500 text-neutral-950 rounded-full px-6 font-semibold">
                   Получить аудит
                 </Button>
               </a>
             </div>
 
             <button
-              className="xl:hidden flex items-center gap-2 text-white text-sm font-semibold"
+              className="xl:hidden flex items-center text-white text-sm font-semibold"
               onClick={() => setIsMenuOpen(true)}
               aria-label="Открыть меню"
               aria-expanded={isMenuOpen}
             >
-              <HamburgerIcon className="w-[60px] h-5 shrink-0" />
-              <span>Меню</span>
+              <HamburgerIcon className="w-[120px] h-5 shrink-0" />
             </button>
           </div>
         </div>
@@ -102,22 +100,16 @@ export function Header() {
 
       {/* Mobile menu overlay (rendered OUTSIDE header to avoid stacking-context bugs) */}
       <div
-        className={`fixed inset-0 z-[999] xl:hidden transition-opacity duration-200 ${
+        className={`fixed inset-0 z-[999] xl:hidden ${
           isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         aria-hidden={!isMenuOpen}
       >
-        <button
-          className="absolute inset-0 bg-black/60"
-          onClick={() => setIsMenuOpen(false)}
-          aria-label="Закрыть меню"
-        />
-
         <aside
           role="dialog"
           aria-modal="true"
-          className={`absolute top-0 right-0 h-full w-[86vw] max-w-sm bg-white shadow-2xl transition-transform duration-300 ease-out ${
-            isMenuOpen ? "translate-x-0" : "translate-x-full"
+          className={`absolute inset-0 h-full w-full bg-white shadow-2xl transition-all duration-300 ease-out ${
+            isMenuOpen ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
         >
           <div className="h-full flex flex-col">

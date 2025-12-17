@@ -1,6 +1,29 @@
+"use client"
+
+import { useState } from "react"
 import { TrendingDown, Clock, DollarSign } from "lucide-react"
 
+const valueCards = [
+  {
+    icon: TrendingDown,
+    title: "Потеря прибыли",
+    description: "Рутинные операции отнимают до 40% рабочего времени сотрудников",
+  },
+  {
+    icon: Clock,
+    title: "Время на рутину",
+    description: "Обработка заявок, резюме и документов — часы работы каждый день",
+  },
+  {
+    icon: DollarSign,
+    title: "Экономия с ИИ",
+    description: "Автоматизация сокращает расходы и повышает эффективность в 3-5 раз",
+  },
+]
+
 export function BusinessValueSection() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+
   return (
     <section className="bg-neutral-100 py-24 px-6">
       <div className="max-w-7xl mx-auto">
@@ -16,29 +39,27 @@ export function BusinessValueSection() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 mb-12">
-          <div className="bg-white rounded-3xl p-8 shadow-[0_18px_50px_rgba(15,23,42,0.08)] border border-black/5">
-            <div className="w-14 h-14 bg-neutral-200 rounded-2xl flex items-center justify-center mb-6">
-              <TrendingDown className="w-7 h-7 text-neutral-950" />
-            </div>
-            <h3 className="text-xl font-semibold text-neutral-950 mb-3">Потеря прибыли</h3>
-            <p className="text-neutral-700">Рутинные операции отнимают до 40% рабочего времени сотрудников</p>
-          </div>
-
-          <div className="bg-white rounded-3xl p-8 shadow-[0_18px_50px_rgba(15,23,42,0.08)] border border-black/5">
-            <div className="w-14 h-14 bg-neutral-200 rounded-2xl flex items-center justify-center mb-6">
-              <Clock className="w-7 h-7 text-neutral-950" />
-            </div>
-            <h3 className="text-xl font-semibold text-neutral-950 mb-3">Время на рутину</h3>
-            <p className="text-neutral-700">Обработка заявок, резюме и документов — часы работы каждый день</p>
-          </div>
-
-          <div className="bg-white rounded-3xl p-8 shadow-[0_18px_50px_rgba(15,23,42,0.08)] border border-black/5">
-            <div className="w-14 h-14 bg-neutral-200 rounded-2xl flex items-center justify-center mb-6">
-              <DollarSign className="w-7 h-7 text-neutral-950" />
-            </div>
-            <h3 className="text-xl font-semibold text-neutral-950 mb-3">Экономия с ИИ</h3>
-            <p className="text-neutral-700">Автоматизация сокращает расходы и повышает эффективность в 3-5 раз</p>
-          </div>
+          {valueCards.map((card, idx) => {
+            const Icon = card.icon
+            return (
+              <div
+                key={idx}
+                onMouseEnter={() => setHoveredIndex(idx)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className="bg-white rounded-3xl p-8 shadow-[0_18px_50px_rgba(15,23,42,0.08)] border border-black/5 transition-all hover:shadow-[0_18px_50px_rgba(15,23,42,0.12)] cursor-pointer"
+              >
+                <div
+                  className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-200 ${
+                    hoveredIndex === idx ? "bg-amber-400" : "bg-neutral-200"
+                  }`}
+                >
+                  <Icon className="w-7 h-7 text-neutral-950" />
+                </div>
+                <h3 className="text-xl font-semibold text-neutral-950 mb-3">{card.title}</h3>
+                <p className="text-neutral-700">{card.description}</p>
+              </div>
+            )
+          })}
         </div>
 
         <div className="bg-neutral-950 rounded-3xl p-8 md:p-12 shadow-[0_30px_80px_rgba(0,0,0,0.25)]">

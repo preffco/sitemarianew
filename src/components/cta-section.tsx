@@ -6,8 +6,7 @@ import { useEffect, useState } from "react"
 import dynamic from "next/dynamic"
 import "react-phone-input-2/lib/style.css"
 import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import { AlertTriangle, Check, CheckCircle2, X } from "lucide-react"
+import { AlertTriangle, CheckCircle2, X } from "lucide-react"
 
 const PhoneInput = dynamic(() => import("react-phone-input-2"), { ssr: false })
 
@@ -22,8 +21,6 @@ export function CtaSection() {
   const [loading, setLoading] = useState(false)
   const [toast, setToast] = useState<{ variant: "success" | "error"; title: string; message: string } | null>(null)
   const [toastOpen, setToastOpen] = useState(false)
-  const [agreeTerms, setAgreeTerms] = useState(false)
-  const [agreeConsent, setAgreeConsent] = useState(false)
 
   useEffect(() => {
     if (!toastOpen) return
@@ -40,15 +37,6 @@ export function CtaSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!agreeTerms || !agreeConsent) {
-      setToast({
-        variant: "error",
-        title: "Нужно согласие",
-        message: "Пожалуйста, отметьте оба пункта согласия перед отправкой.",
-      })
-      setToastOpen(true)
-      return
-    }
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailPattern.test(formData.email)) {
       setEmailError("Введите корректный email")
@@ -149,7 +137,7 @@ export function CtaSection() {
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-14 xl:gap-20 items-start">
           <div>
-            <h2 className="text-[clamp(2.6rem,5.2vw,4.8rem)] font-black text-white leading-[0.98] tracking-tight mb-6">
+            <h2 className="text-[clamp(2rem,4vw,3.8rem)] font-black text-white leading-[0.98] tracking-tight mb-6">
               Начните внедрение ИИ с бесплатного аудита
             </h2>
             <p className="text-white/70 text-lg leading-relaxed mb-10 max-w-xl">
@@ -258,69 +246,7 @@ export function CtaSection() {
                 />
               </div>
 
-              <div>
-                <textarea
-                  id="message"
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full min-h-[140px] rounded-3xl bg-neutral-800 border border-white/10 px-7 py-5 text-white placeholder-white/40 focus:outline-none focus:border-white/25 transition-colors resize-none"
-                  placeholder="Напишите компанию или задачу — мы вернемся с решением. Поле необязательное"
-                />
-              </div>
-
               {emailError && <p className="text-amber-300 text-sm -mt-3">{emailError}</p>}
-
-              <div className="space-y-3 pt-2">
-                <label className="flex items-start gap-3 cursor-pointer select-none">
-                  <input
-                    type="checkbox"
-                    checked={agreeTerms}
-                    onChange={(e) => setAgreeTerms(e.target.checked)}
-                    className="sr-only"
-                  />
-                  <span
-                    className={`mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-full ${
-                      agreeTerms ? "bg-amber-400 text-neutral-950" : "bg-white/10 text-white/40"
-                    }`}
-                    aria-hidden="true"
-                  >
-                    <Check className="h-5 w-5" />
-                  </span>
-                  <span className="text-white/70 leading-relaxed">
-                    Я согласен с{" "}
-                    <Link href="/agreement" className="underline underline-offset-4 hover:text-white">
-                      пользовательским соглашением
-                    </Link>{" "}
-                    и{" "}
-                    <Link href="/privacy" className="underline underline-offset-4 hover:text-white">
-                      политикой обработки персональных данных
-                    </Link>
-                  </span>
-                </label>
-
-                <label className="flex items-start gap-3 cursor-pointer select-none">
-                  <input
-                    type="checkbox"
-                    checked={agreeConsent}
-                    onChange={(e) => setAgreeConsent(e.target.checked)}
-                    className="sr-only"
-                  />
-                  <span
-                    className={`mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-full ${
-                      agreeConsent ? "bg-amber-400 text-neutral-950" : "bg-white/10 text-white/40"
-                    }`}
-                    aria-hidden="true"
-                  >
-                    <Check className="h-5 w-5" />
-                  </span>
-                  <span className="text-white/70 leading-relaxed">
-                    Я даю{" "}
-                    <Link href="/agreement" className="underline underline-offset-4 hover:text-white">
-                      согласие на обработку персональных данных
-                    </Link>
-                  </span>
-                </label>
-              </div>
 
               <Button
                 type="submit"

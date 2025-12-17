@@ -6,9 +6,18 @@ export function ExpertSection() {
     <section id="expert" className="bg-neutral-100 py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="relative flex justify-center lg:justify-start">
+          {/* Заголовок и подзаголовок - сначала на мобильных */}
+          <div className="lg:order-2 lg:hidden">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-950 mb-2 text-balance">
+              Мария Аникина
+            </h2>
+            <p className="text-xl text-neutral-600 mb-8">Ваш эксперт по автоматизации бизнеса</p>
+          </div>
+
+          {/* Фотка - вторая на мобильных */}
+          <div className="relative flex justify-start order-2 lg:order-1 pl-6 lg:pl-0">
             <div className="relative lg:ml-5" style={{ width: "66.67%" }}>
-              <div className="aspect-[4/5] bg-neutral-200 rounded-3xl overflow-hidden">
+              <div className="aspect-[4/5] bg-neutral-200 rounded-tr-3xl overflow-hidden">
                 <Image
                   src="/maria-anikina.jpg"
                   alt="Мария Аникина"
@@ -31,11 +40,15 @@ export function ExpertSection() {
             </div>
           </div>
 
-          <div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-950 mb-2 text-balance">
-              Мария Аникина
-            </h2>
-            <p className="text-xl text-neutral-600 mb-8">Ваш эксперт по автоматизации бизнеса</p>
+          {/* Остальной контент - третий на мобильных */}
+          <div className="order-3 lg:order-2">
+            {/* Заголовок и подзаголовок - скрыты на мобильных, видны на десктопе */}
+            <div className="hidden lg:block">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-950 mb-2 text-balance">
+                Мария Аникина
+              </h2>
+              <p className="text-xl text-neutral-600 mb-8">Ваш эксперт по автоматизации бизнеса</p>
+            </div>
             <p className="text-neutral-600 text-lg leading-relaxed mb-6">
               Я, Мария Аникина — основатель агентства Ai for all, эксперт в теме внедрения ИИ в бизнес, преподаватель
               практикумов по работе с нейросетями. Официальный партнер CRM Bitrix24 и AMO CRM.
@@ -48,15 +61,15 @@ export function ExpertSection() {
 
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <CheckCircle2 className="w-6 h-6 text-emerald-500" />
+                <CheckCircle2 className="w-6 h-6 text-[#2f56ff]" />
                 <span className="text-neutral-700">Партнер Bitrix24</span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle2 className="w-6 h-6 text-emerald-500" />
+                <CheckCircle2 className="w-6 h-6 text-[#2f56ff]" />
                 <span className="text-neutral-700">Партнер AMO CRM</span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle2 className="w-6 h-6 text-emerald-500" />
+                <CheckCircle2 className="w-6 h-6 text-[#2f56ff]" />
                 <span className="text-neutral-700">Преподаватель практикумов по ИИ</span>
               </div>
             </div>
