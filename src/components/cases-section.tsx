@@ -157,7 +157,7 @@ export function CasesSection() {
             {/* Left: Case info */}
             <div className="bg-neutral-950 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 text-white">
               <div className="flex items-center justify-between mb-4 sm:mb-6">
-                <span className="text-amber-400 font-semibold text-sm sm:text-base">Кейс {currentCase.id}</span>
+                <span className="text-sky-400 font-semibold text-sm sm:text-base">Кейс {currentCase.id}</span>
                 <span className="text-neutral-500 text-sm sm:text-base">
                   0{currentCase.id}/0{cases.length}
                 </span>
@@ -166,7 +166,7 @@ export function CasesSection() {
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 sm:mb-4 text-balance">
                 {currentCase.title}
               </h3>
-              <p className="text-amber-400 font-medium mb-6 sm:mb-8 text-sm sm:text-base">{currentCase.client}</p>
+              <p className="text-sky-400 font-medium mb-6 sm:mb-8 text-sm sm:text-base">{currentCase.client}</p>
 
               {currentCase.task && (
                 <div className="mb-4 sm:mb-6">
@@ -190,7 +190,7 @@ export function CasesSection() {
             {/* Right: Quote with avatar */}
             <div className="bg-neutral-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 flex flex-col">
               <div className="flex items-start gap-4 mb-4 sm:mb-6">
-                <div className="relative w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-amber-500 ring-offset-2">
+                <div className="relative w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-sky-400 ring-offset-2">
                   <Image
                     src={currentCase.avatar || "/placeholder.svg"}
                     alt={currentCase.client}
@@ -200,11 +200,11 @@ export function CasesSection() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="font-semibold text-neutral-900 text-sm sm:text-base lg:text-lg">{currentCase.client}</p>
-                  <p className="text-amber-600 text-xs sm:text-sm mt-1">Отзыв о сотрудничестве</p>
+                  <p className="text-sky-400 text-xs sm:text-sm mt-1">Отзыв о сотрудничестве</p>
                 </div>
               </div>
 
-              <Quote className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-amber-500 mb-4" />
+              <Quote className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-sky-400 mb-4" />
               <blockquote className="text-base sm:text-lg lg:text-xl text-neutral-700 leading-relaxed flex-1">
                 "{currentCase.quote}"
               </blockquote>
@@ -212,9 +212,9 @@ export function CasesSection() {
           </div>
 
           {/* Progress bar */}
-          <div className="h-1 bg-neutral-200 rounded-full mt-6 sm:mt-8 overflow-hidden">
+            <div className="h-1 bg-neutral-200 rounded-full mt-6 sm:mt-8 overflow-hidden">
             <div
-              className="h-full bg-amber-500 transition-all duration-300"
+              className="h-full bg-sky-400 transition-all duration-300"
               style={{ width: `${((currentIndex + 1) / cases.length) * 100}%` }}
             />
           </div>
@@ -227,7 +227,7 @@ export function CasesSection() {
               key={index}
               onClick={() => goToSlide(index, index > currentIndex ? "right" : "left")}
               className={`h-2 rounded-full transition-all ${
-                index === currentIndex ? "w-6 sm:w-8 bg-amber-500" : "w-2 bg-neutral-300 hover:bg-neutral-400"
+                index === currentIndex ? "w-6 sm:w-8 bg-sky-400" : "w-2 bg-neutral-300 hover:bg-neutral-400"
               }`}
               aria-label={`Перейти к кейсу ${index + 1}`}
             />
@@ -242,7 +242,7 @@ export function CasesSection() {
               onClick={() => goToSlide(index, index > currentIndex ? "right" : "left")}
               className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl text-left transition-all ${
                 index === currentIndex
-                  ? "bg-amber-500 text-white"
+                  ? "bg-sky-400 text-white"
                   : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
               }`}
             >
@@ -256,7 +256,7 @@ export function CasesSection() {
                   />
                 </div>
                 <span
-                  className={`text-xs font-semibold ${index === currentIndex ? "text-amber-100" : "text-neutral-400"}`}
+                  className={`text-xs font-semibold ${index === currentIndex ? "text-sky-100" : "text-neutral-400"}`}
                 >
                   0{caseItem.id}
                 </span>
