@@ -128,8 +128,8 @@ export function ServicesSection() {
                 {serviceCards[activeCard].title}
               </h3>
 
-              <div className="my-8 flex flex-col sm:flex-row gap-6 items-start">
-                <div className="relative w-[350px] sm:w-[410px] md:w-[470px] flex-shrink-0 -translate-x-6">
+              <div className="my-8 flex flex-col sm:flex-row gap-6 items-start -ml-6 md:-ml-10">
+                <div className="relative w-[260px] sm:w-[320px] md:w-[360px] flex-shrink-0">
                   <div className="absolute inset-0 pointer-events-none" />
                   <div className="relative overflow-hidden rounded-[32px] shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
                     <Image
@@ -137,7 +137,7 @@ export function ServicesSection() {
                       alt="Интерфейс чата"
                       width={220}
                       height={440}
-                      className="w-full h-auto object-cover"
+                      className="w-full h-auto object-cover transform -translate-x-6 md:-translate-x-10"
                     />
                   </div>
                 </div>
