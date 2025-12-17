@@ -197,7 +197,7 @@ export function ServicesSection() {
                 {/* Media slot (varies by active card) */}
                 <div className="mt-6">
                   {showPhone ? (
-                    <div className={`mx-auto w-full max-w-[520px] ${mediaSlotHeight} relative overflow-hidden rounded-3xl bg-neutral-900/30 shadow-[0_30px_90px_rgba(0,0,0,0.35)]`}>
+                    <div className={`mx-auto w-full max-w-[520px] h-[clamp(300px,28vw,450px)] relative overflow-hidden rounded-3xl bg-neutral-900/30 shadow-[0_30px_90px_rgba(0,0,0,0.35)]`}>
                       <Image
                         src="/photo/phone.png"
                         alt="Интерфейс чата"
