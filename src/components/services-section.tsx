@@ -80,7 +80,7 @@ export function ServicesSection() {
   return (
     <section className="bg-[#EFEFEF] py-16 md:py-24" id="services">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="mb-16 text-3xl font-bold tracking-tight text-[#1A1A1A] md:text-4xl lg:text-[2.75rem] lg:leading-tight">
+        <h2 className="mb-14 text-[clamp(2.4rem,4.2vw,4.15rem)] font-black tracking-tight leading-[0.98] text-neutral-950">
           Наши услуги: от консалтинга
           <br />
           до разработки AI-ассистентов
@@ -123,22 +123,24 @@ export function ServicesSection() {
           </div>
 
           <div className="w-full lg:w-1/2 mt-8 lg:mt-0">
-            <div className="bg-[#212121] rounded-2xl p-8 md:p-10 h-full min-h-[500px] flex flex-col">
+            <div className="bg-[#212121] rounded-2xl p-8 md:p-10 h-full min-h-[520px] flex flex-col">
               <h3 className="text-2xl md:text-3xl lg:text-[2.5rem] font-bold text-white mb-auto leading-tight">
                 {serviceCards[activeCard].title}
               </h3>
 
-              <div className="my-8 flex flex-col sm:flex-row gap-4 items-start">
-                <div className="relative w-[140px] sm:w-[160px] flex-shrink-0 overflow-hidden rounded-2xl border-4 border-[#333] bg-[#333]">
+              <div className="my-8 flex flex-col sm:flex-row gap-5 items-start">
+                {/* Phone (make ~3x larger, remove backing plate) */}
+                <div className="relative w-[320px] sm:w-[360px] md:w-[420px] flex-shrink-0">
                   <Image
                     src="/services-chat-screenshot.png"
                     alt="Интерфейс чата"
                     width={180}
                     height={320}
-                    className="w-full h-auto"
+                    className="w-full h-auto rounded-2xl shadow-[0_18px_50px_rgba(0,0,0,0.35)]"
                   />
                 </div>
-                <div className="relative flex-1 overflow-hidden rounded-xl">
+                {/* Wide image (slightly smaller if needed) */}
+                <div className="relative flex-1 overflow-hidden rounded-xl max-w-[520px]">
                   <Image
                     src="/services-masterclass.webp"
                     alt="Мастер-класс по ИИ"
