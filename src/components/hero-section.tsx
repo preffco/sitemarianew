@@ -34,7 +34,7 @@ export function HeroSection() {
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
           <div className="max-w-full lg:max-w-xl lg:w-full" style={{ maxWidth: 'min(36rem, calc(100vw - 3rem))' }}>
             <p className="text-white/70 font-medium mb-5 text-base sm:text-lg tracking-wide">
-              {"Агентство 'Ai for all'"}
+              Агентство Ai for all
             </p>
             <h1 className="text-[clamp(1.8rem,3.5vw,4.6rem)] font-black text-white leading-[0.98] tracking-tight mb-5">
               <span className="block">Внедрение ИИ</span>

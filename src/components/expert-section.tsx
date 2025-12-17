@@ -31,10 +31,10 @@ export function ExpertSection() {
                   <div className="w-12 h-12 bg-amber-400 rounded-xl flex items-center justify-center">
                     <span className="text-neutral-950 font-bold text-[10px] tracking-wide">AFA</span>
                   </div>
-                  <div>
-                    <p className="font-semibold text-neutral-950">Owner</p>
-                    <p className="text-neutral-500 text-sm">{"Агентства 'Ai for all'"}</p>
-                  </div>
+                    <div>
+                      <p className="font-semibold text-neutral-950">Owner</p>
+                      <p className="text-neutral-500 text-sm">Агентства Ai for all</p>
+                    </div>
                 </div>
               </div>
             </div>
