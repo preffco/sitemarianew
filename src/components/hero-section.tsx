@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { Bot, GraduationCap, MessageSquare, ShieldCheck, Users } from "lucide-react"
+import { Bot, MessageSquare, ShieldCheck, Users } from "lucide-react"
 import { FeatureCardsRow } from "@/components/feature-cards-row"
 
 const heroCardData = [
@@ -12,12 +12,12 @@ const heroCardData = [
     title: "AI-ассистенты",
     description: "Под ключ, интеграции в CRM и чаты.",
     icon: MessageSquare,
-    highlight: true,
   },
   {
     title: "CRM и поддержка",
     description: "Автоматизация лидов, задач и сопровождения.",
     icon: Users,
+    highlight: true,
   },
   {
     title: "152‑ФЗ и риски",
@@ -36,12 +36,12 @@ export function HeroSection() {
             <p className="text-white/70 font-medium mb-5 text-base sm:text-lg tracking-wide">
               {"Агентство 'Ai for all'"}
             </p>
-            <h1 className="text-[clamp(1.8rem,3.5vw,4.6rem)] font-black text-white leading-[0.98] tracking-tight mb-5">
+            <h1 className="max-w-full text-[clamp(1.8rem,3.5vw,4.6rem)] font-black text-white leading-[0.98] tracking-tight mb-5 break-words hyphens-auto">
               <span className="block">Внедрение ИИ</span>
               <span className="block">в бизнес:</span>
-              <span className="block mt-2 text-white/90">AI-ассистенты и мастер‑классы</span>
+              <span className="block mt-2 text-white/90">AI-ассистенты и мастер-классы</span>
             </h1>
-            <p className="text-white/75 text-base sm:text-lg md:text-lg leading-relaxed mb-8 max-w-xl">
+            <p className="max-w-full text-white/75 text-base sm:text-lg md:text-lg leading-relaxed mb-8 break-words">
               Разрабатываем ИИ-ассистентов для продаж, маркетинга и HR. Проводим корпоративные мастер-классы по
               нейросетям для руководителей и сотрудников
             </p>
