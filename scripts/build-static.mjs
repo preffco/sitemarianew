@@ -2,6 +2,25 @@ import { spawn } from "node:child_process"
 import fs from "node:fs"
 import path from "node:path"
 
+function removeDsStore(dir) {
+  if (!fs.existsSync(dir)) return
+  const entries = fs.readdirSync(dir, { withFileTypes: true })
+  for (const entry of entries) {
+    const full = path.join(dir, entry.name)
+    if (entry.isDirectory()) {
+      removeDsStore(full)
+      continue
+    }
+    if (entry.isFile() && entry.name === ".DS_Store") {
+      try {
+        fs.unlinkSync(full)
+      } catch {
+        // ignore
+      }
+    }
+  }
+}
+
 function run(cmd, args, env) {
   return new Promise((resolve, reject) => {
     const child = spawn(cmd, args, {
@@ -38,6 +57,9 @@ try {
 
   console.log("Building static export into ./out ...")
   await run("npm", ["run", "build"], { NEXT_STATIC_EXPORT: "1" })
+
+  // Clean macOS artifacts from export output (handy for shared hosting)
+  removeDsStore(path.join(repoRoot, "out"))
 } finally {
   if (fs.existsSync(disabledApiDir)) {
     console.log("Restoring src/app/api ...")

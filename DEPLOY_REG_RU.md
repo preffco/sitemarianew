@@ -22,6 +22,24 @@ npm run build:static
 
 Результат: появится папка `out/` (её и нужно загружать на сервер). Внутри уже есть `notify.php`.
 
+## Быстрый способ (рекомендую): один скрипт деплоя
+
+Скрипт сам:
+- делает `npm run build:static`
+- делает бэкап на сервере
+- сохраняет текущий `index.html` в `/education/index.html`
+- загружает новый сайт в корень, **не трогая** `/education` и `.htaccess`
+
+Запуск:
+
+```bash
+cd /Users/goretofff/Desktop/Проекты/mariasite
+chmod +x ./scripts/deploy-reg-ru.sh
+REG_RU_SSH_USER=u3300191 REG_RU_SSH_HOST=31.31.197.5 ./scripts/deploy-reg-ru.sh
+```
+
+Если SSH-ключа нет — скрипт попросит пароль (ввод скрыт).
+
 ## 2) Бэкап текущего сайта на сервере
 
 Зайдите по SSH и выполните:
