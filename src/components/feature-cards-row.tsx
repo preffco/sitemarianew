@@ -17,7 +17,7 @@ export function FeatureCardsRow({
   if (variant === "grid") {
     return (
       <div className="grid grid-cols-2 gap-4">
-        {items.map((card) => (
+        {items.map((card, index) => (
           <div
             key={card.title}
             className={`rounded-[18px] px-7 py-6 border min-h-[160px] flex flex-col ${
@@ -36,7 +36,7 @@ export function FeatureCardsRow({
                 <card.icon className="h-5 w-5 text-neutral-950" />
               </div>
             </div>
-            <div className="flex-1 flex items-end">
+            <div className={`flex items-start ${index < 3 ? "mt-12" : "mt-6"} md:mt-auto md:items-end`}>
               <p className={`text-sm leading-relaxed ${card.highlight ? "text-white/80" : "text-neutral-600"}`}>
                 {card.description}
               </p>
@@ -53,7 +53,7 @@ export function FeatureCardsRow({
         className="overflow-x-auto scrollbar-hide -mx-6 px-6 pb-2 flex gap-4 snap-x snap-mandatory overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch]"
         aria-label="Преимущества (листаются горизонтально)"
       >
-      {items.map((card) => (
+      {items.map((card, index) => (
           <div
             key={card.title}
             className={`snap-start flex-shrink-0 w-[min(200px,55vw)] rounded-[18px] px-5 py-10 border min-h-[250px] flex flex-col ${
@@ -72,7 +72,7 @@ export function FeatureCardsRow({
               <card.icon className="h-5 w-5 text-neutral-950" />
             </div>
           </div>
-          <div className="flex-1 flex items-end">
+          <div className={`flex items-start ${index < 3 ? "mt-12" : "mt-6"} md:mt-auto md:items-end`}>
           <p className={`text-sm leading-relaxed ${card.highlight ? "text-white/80" : "text-neutral-600"}`}>
             {card.description}
           </p>

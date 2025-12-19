@@ -58,7 +58,6 @@ export default function BlogPage() {
                 ) : (
                   <div className="h-10 w-10 rounded-full bg-neutral-200" />
                 )}
-                <span className="text-xs font-semibold uppercase tracking-[0.5em] text-neutral-500">{article.tag}</span>
               </div>
               <h2 className="text-2xl font-semibold text-neutral-950 leading-tight">{article.title}</h2>
               <p className="text-sm text-neutral-600 leading-relaxed">{article.summary}</p>
