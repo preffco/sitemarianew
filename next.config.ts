@@ -1,5 +1,7 @@
 import type { NextConfig } from "next"
 
+const isStaticExport = process.env.NEXT_STATIC_EXPORT === "1"
+
 const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
@@ -18,7 +20,9 @@ const nextConfig: NextConfig = {
         pathname: '/uploads/**',
       },
     ],
+    ...(isStaticExport ? { unoptimized: true } : {}),
   },
+  ...(isStaticExport ? { output: "export", trailingSlash: true } : {}),
   experimental: {
     optimizePackageImports: ["lucide-react"],
   },

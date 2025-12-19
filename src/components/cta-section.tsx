@@ -69,7 +69,11 @@ export function CtaSection() {
     setToast(null)
 
     try {
-      const response = await fetch("/api/notify", {
+      const endpoint =
+        process.env.NEXT_PUBLIC_NOTIFY_ENDPOINT ||
+        (process.env.NODE_ENV === "production" ? "/notify.php" : "/api/notify")
+
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
