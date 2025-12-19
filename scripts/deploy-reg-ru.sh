@@ -6,6 +6,7 @@ set -euo pipefail
 # - Makes server-side backup
 # - Preserves current landing at /education
 # - Uploads ./out into web root without touching /education and .htaccess
+# - (Optional) configures TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID via .htaccess for notify.php
 #
 # Usage:
 #   cd /path/to/mariasite
@@ -15,6 +16,10 @@ set -euo pipefail
 #   REG_RU_SSH_USER=u3300191
 #   REG_RU_SSH_HOST=31.31.197.5
 #   REG_RU_WEB_ROOT=/var/www/u3300191/data/www/afa-edu.ru
+#
+# Optional (if you want the script to configure notify.php):
+#   TELEGRAM_BOT_TOKEN=...
+#   TELEGRAM_CHAT_ID=...
 #
 # Auth:
 # - Prefer SSH key
@@ -26,6 +31,8 @@ cd "$REPO_ROOT"
 REG_RU_SSH_USER="${REG_RU_SSH_USER:-}"
 REG_RU_SSH_HOST="${REG_RU_SSH_HOST:-}"
 REG_RU_WEB_ROOT="${REG_RU_WEB_ROOT:-/var/www/u3300191/data/www/afa-edu.ru}"
+TELEGRAM_BOT_TOKEN="${TELEGRAM_BOT_TOKEN:-}"
+TELEGRAM_CHAT_ID="${TELEGRAM_CHAT_ID:-}"
 
 if [[ -z "$REG_RU_SSH_USER" || -z "$REG_RU_SSH_HOST" ]]; then
   echo "ERROR: set REG_RU_SSH_USER and REG_RU_SSH_HOST"
@@ -78,6 +85,48 @@ rsync -avz \
   -e "$RSYNC_SSH" \
   out/ \
   "$SSH_TARGET:$REG_RU_WEB_ROOT/"
+
+if [[ -z "$TELEGRAM_BOT_TOKEN" || -z "$TELEGRAM_CHAT_ID" ]]; then
+  echo
+  echo "==> Telegram настройки для формы (notify.php)"
+  echo "If you want the script to configure TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID in .htaccess now, type 'y'."
+  echo -n "Configure Telegram now? [y/N]: "
+  read -r answer
+  if [[ "${answer}" == "y" || "${answer}" == "Y" ]]; then
+    if [[ -z "$TELEGRAM_BOT_TOKEN" ]]; then
+      echo -n "Enter TELEGRAM_BOT_TOKEN (input hidden): "
+      read -rs TELEGRAM_BOT_TOKEN
+      echo
+    fi
+    if [[ -z "$TELEGRAM_CHAT_ID" ]]; then
+      echo -n "Enter TELEGRAM_CHAT_ID (input hidden): "
+      read -rs TELEGRAM_CHAT_ID
+      echo
+    fi
+  fi
+fi
+
+if [[ -n "$TELEGRAM_BOT_TOKEN" && -n "$TELEGRAM_CHAT_ID" ]]; then
+  echo "==> Writing TELEGRAM_* env vars into $REG_RU_WEB_ROOT/.htaccess ..."
+
+  # Avoid leaking secrets in logs: encode values before sending to remote shell
+  BOT_B64="$(printf '%s' "$TELEGRAM_BOT_TOKEN" | base64 | tr -d '\n')"
+  CHAT_B64="$(printf '%s' "$TELEGRAM_CHAT_ID" | base64 | tr -d '\n')"
+
+  "${SSH_BASE[@]}" "$SSH_TARGET" "set -e; cd \"$REG_RU_WEB_ROOT\"; touch .htaccess; \
+    sed -i '/^# BEGIN AFA TELEGRAM ENV\$/,/^# END AFA TELEGRAM ENV\$/d' .htaccess; \
+    BOT=\$(echo \"$BOT_B64\" | base64 -d); CHAT=\$(echo \"$CHAT_B64\" | base64 -d); \
+    cat >> .htaccess <<EOF
+
+# BEGIN AFA TELEGRAM ENV
+SetEnv TELEGRAM_BOT_TOKEN \"\$BOT\"
+SetEnv TELEGRAM_CHAT_ID \"\$CHAT\"
+# END AFA TELEGRAM ENV
+EOF"
+else
+  echo
+  echo "Skipping Telegram env configuration. To enable form delivery, set TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID (see DEPLOY_REG_RU.md)."
+fi
 
 echo
 echo "DONE."
