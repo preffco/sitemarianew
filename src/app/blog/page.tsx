@@ -22,7 +22,7 @@ const articleCards = [
     summary:
       "Интервью с Марией Аникиной: как гуманитарий стал лидером ИИ-агентства и помогает компаниям перестроить процессы.",
     tag: "TenChat",
-    logo: "/tenchat.png",
+    logo: "/tenchat2.png",
     link: "/blog/ai-for-all",
   },
 ]

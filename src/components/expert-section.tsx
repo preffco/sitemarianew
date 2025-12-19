@@ -11,7 +11,7 @@ export function ExpertSection() {
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-neutral-950 mb-2 text-balance">
               Мария Аникина
             </h2>
-            <p className="text-xl text-neutral-600 mb-8">Ваш эксперт по автоматизации бизнеса</p>
+            <p className="text-xl text-neutral-600 mb-8">Эксперт по автоматизации бизнеса</p>
           </div>
 
           {/* Фотка - вторая на мобильных */}
@@ -47,15 +47,15 @@ export function ExpertSection() {
               <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-neutral-950 mb-2 text-balance">
                 Мария Аникина
               </h2>
-              <p className="text-xl text-neutral-600 mb-8">Ваш эксперт по автоматизации бизнеса</p>
+              <p className="text-xl text-neutral-600 mb-8">Эксперт по автоматизации бизнеса</p>
             </div>
             <p className="text-neutral-600 text-lg leading-relaxed mb-6">
               Я, Мария Аникина — основатель агентства Ai for all, эксперт в теме внедрения ИИ в бизнес, преподаватель
-              практикумов по работе с нейросетями. Официальный партнер CRM Bitrix24 и AMO CRM.
+              практикумов по работе с нейросетями. Официальный партнер CRM Bitrix24 и AMO CRM
             </p>
             <p className="text-neutral-600 text-lg leading-relaxed mb-8">
               {
-                "Моя команда не просто 'продает нейросети', а глубоко погружается в ваши процессы, чтобы ИИ приносил реальную, измеримую пользу."
+                "Команда не просто «продает нейросети», а глубоко погружается в процессы, чтобы ИИ приносил реальную, измеримую пользу"
               }
             </p>
 

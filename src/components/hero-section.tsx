@@ -5,23 +5,23 @@ import { FeatureCardsRow } from "@/components/feature-cards-row"
 const heroCardData = [
   {
     title: "Аудит процессов",
-    description: "Структурируем задачи, находим точки роста.",
+    description: "Структурируем задачи, находим точки роста",
     icon: Bot,
   },
   {
     title: "AI-ассистенты",
-    description: "Под ключ, интеграции в CRM и чаты.",
+    description: "Под ключ, интеграции в CRM и чаты",
     icon: MessageSquare,
     highlight: true,
   },
   {
     title: "CRM и поддержка",
-    description: "Автоматизация лидов, задач и сопровождения.",
+    description: "Автоматизация лидов, задач и сопровождения",
     icon: Users,
   },
   {
-    title: "152‑ФЗ и риски",
-    description: "Проектируем решения с учетом норм.",
+    title: "Мастер-классы по ИИ",
+    description: "Корпоративные мастер-классы по ИИ для сотрудников",
     icon: ShieldCheck,
     highlight: true,
   },

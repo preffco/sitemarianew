@@ -4,6 +4,7 @@ import type React from "react"
 
 import { useEffect, useState } from "react"
 import dynamic from "next/dynamic"
+import Link from "next/link"
 import "react-phone-input-2/lib/style.css"
 import { Button } from "@/components/ui/button"
 import { AlertTriangle, CheckCircle2, X } from "lucide-react"
@@ -18,6 +19,7 @@ export function CtaSection() {
   })
   const [phone, setPhone] = useState("")
   const [emailError, setEmailError] = useState("")
+  const [validationError, setValidationError] = useState("")
   const [loading, setLoading] = useState(false)
   const [toast, setToast] = useState<{ variant: "success" | "error"; title: string; message: string } | null>(null)
   const [toastOpen, setToastOpen] = useState(false)
@@ -37,13 +39,32 @@ export function CtaSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Валидация обязательных полей
+    if (!formData.name.trim()) {
+      setValidationError("Заполните поле «Имя»")
+      return
+    }
+    
+    if (!phone.trim()) {
+      setValidationError("Заполните поле «Телефон»")
+      return
+    }
+    
+    if (!formData.email.trim()) {
+      setValidationError("Заполните поле «Email»")
+      return
+    }
+    
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailPattern.test(formData.email)) {
       setEmailError("Введите корректный email")
+      setValidationError("")
       return
     }
 
     setEmailError("")
+    setValidationError("")
     setLoading(true)
     setToast(null)
 
@@ -67,7 +88,7 @@ export function CtaSection() {
       setToast({
         variant: "success",
         title: "Заявка отправлена!",
-        message: "Мы скоро свяжемся с вами.",
+        message: "Скоро свяжемся с вами",
       })
       setToastOpen(true)
       setFormData({ name: "", email: "", message: "" })
@@ -76,7 +97,7 @@ export function CtaSection() {
       setToast({
         variant: "error",
         title: "Не удалось отправить заявку",
-        message: error instanceof Error ? error.message : "Попробуйте еще раз позже.",
+        message: error instanceof Error ? error.message : "Попробуйте еще раз позже",
       })
       setToastOpen(true)
     } finally {
@@ -141,9 +162,9 @@ export function CtaSection() {
               Начните внедрение ИИ с бесплатного аудита
             </h2>
             <p className="text-white/70 text-lg leading-relaxed mb-10 max-w-xl">
-              Заполните форму, и мы проведем 30-минутный бесплатный аудит. Разберём задачи, покажем, где нужен
+              Заполните форму, и проведем 30-минутный бесплатный аудит. Разберём задачи, покажем, где нужен
               мастер-класс, а где — AI-ассистент, и предложим конкретный план внедрения. Это бесплатно и без
-              обязательств.
+              обязательств
             </p>
 
             <div className="space-y-6 text-white/80">
@@ -189,7 +210,10 @@ export function CtaSection() {
                   type="text"
                   id="name"
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, name: e.target.value })
+                    if (validationError) setValidationError("")
+                  }}
                   className="w-full h-14 rounded-full bg-neutral-800 border border-white/10 px-7 text-white placeholder-white/40 focus:outline-none focus:border-white/25 transition-colors"
                   placeholder="Имя"
                 />
@@ -200,7 +224,10 @@ export function CtaSection() {
                   <PhoneInput
                     country="ru"
                     value={phone}
-                    onChange={(value) => setPhone(value)}
+                    onChange={(value) => {
+                      setPhone(value)
+                      if (validationError) setValidationError("")
+                    }}
                     masks={{ ru: "(...) ...-..-.." }}
                     enableAreaCodes
                     inputStyle={{
@@ -236,7 +263,11 @@ export function CtaSection() {
                   type="email"
                   id="email"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, email: e.target.value })
+                    if (validationError) setValidationError("")
+                    if (emailError) setEmailError("")
+                  }}
                   className="w-full h-14 rounded-full bg-neutral-800 border border-white/10 px-7 text-white placeholder-white/40 focus:outline-none focus:border-white/25 transition-colors"
                   placeholder="Email"
                   onBlur={() => {
@@ -247,6 +278,7 @@ export function CtaSection() {
               </div>
 
               {emailError && <p className="text-amber-300 text-sm -mt-3">{emailError}</p>}
+              {validationError && <p className="text-amber-300 text-sm -mt-3">{validationError}</p>}
 
           <Button
             type="submit"
@@ -260,7 +292,14 @@ export function CtaSection() {
           </Button>
 
               <p className="text-white/45 text-xs text-center">
-                Нажимая «Отправить», вы подтверждаете согласие с условиями и обработкой персональных данных.
+                Нажимая на кнопку, вы даете{" "}
+                <Link href="/agreement" className="underline underline-offset-2 hover:text-white/70 transition-colors">
+                  согласие на обработку персональных данных
+                </Link>{" "}
+                и соглашаетесь c{" "}
+                <Link href="/privacy" className="underline underline-offset-2 hover:text-white/70 transition-colors">
+                  политикой конфиденциальности
+                </Link>
               </p>
             </form>
           </div>

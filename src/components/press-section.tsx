@@ -10,15 +10,15 @@ const articles = [
     publication: "МАХ",
     publicationLogo: "/RBK_logo.svg.png",
     title:
-      "ИИ-агенты и супераппы в Азии — Россия рискует остаться в стороне, если не появится свой «умный» MAX. Мария Аникина объясняет, как запустить такой проект.",
+      "ИИ-агенты и супераппы в Азии — Россия рискует остаться в стороне, если не появится свой «умный» MAX. Мария Аникина объясняет, как запустить такой проект",
     url: "/blog/rbk",
   },
   {
     id: 2,
     publication: "TenChat",
-    publicationLogo: "/tenchat.png",
+    publicationLogo: "/tenchat2.png",
     title:
-      "Мария Аникина рассказывает, как гуманитарий с юриспруденцией создала Ai for all и теперь помогает компаниям интегрировать ИИ в рутинные процессы.",
+      "Мария Аникина рассказывает, как гуманитарий с юриспруденцией создала Ai for all и теперь помогает компаниям интегрировать ИИ в рутинные процессы",
     url: "/blog/ai-for-all",
   },
 ]
@@ -44,9 +44,11 @@ export function PressSection() {
                   <Image
                     src={article.publicationLogo}
                     alt={article.publication}
-                    width={article.id === 2 ? 306 : 120}
-                    height={article.id === 2 ? 102 : 40}
-                    className={`${article.id === 2 ? 'h-20' : 'h-8'} w-auto object-contain brightness-0 opacity-85`}
+                    width={article.id === 2 ? 240 : 120}
+                    height={article.id === 2 ? 80 : 40}
+                    className={`${article.id === 2 ? 'h-16' : 'h-8'} w-auto object-contain brightness-0 opacity-85`}
+                    unoptimized={article.id === 2}
+                    priority={article.id === 2}
                   />
                 ) : (
                   <div className="border border-neutral-900 rounded px-3 py-1.5 inline-block">

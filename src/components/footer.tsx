@@ -13,7 +13,7 @@ export function Footer() {
               <span className="text-white font-semibold text-lg">Ai for all</span>
             </div>
             <p className="text-neutral-500 max-w-sm">
-              Агентство по внедрению ИИ в бизнес. Разработка AI-ассистентов и корпоративное обучение.
+              Агентство по внедрению ИИ в бизнес. Разработка AI-ассистентов и корпоративное обучение
             </p>
           </div>
 
@@ -62,18 +62,15 @@ export function Footer() {
           <div className="flex flex-col gap-3 text-neutral-500 text-xs leading-relaxed max-w-3xl">
             <p>
               Вся информация, представленная на данном сайте, носит исключительно справочный характер и не является
-              публичной офертой, определяемой положениями статьи 437 ГК РФ.
+              публичной офертой, определяемой положениями статьи 437 ГК РФ
             </p>
-            <p>Регистрация в Реестре операторов персональных данных Роскомнадзора за № 52-25-251691.</p>
+            <p>Регистрация в Реестре операторов персональных данных Роскомнадзора за № 52-25-251691</p>
           </div>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <p className="text-neutral-500 text-sm">© 2025 Ai for all. Все права защищены.</p>
             <div className="flex gap-6">
               <Link href="/privacy" className="text-neutral-500 hover:text-neutral-300 transition-colors text-sm">
                 Политика конфиденциальности
-              </Link>
-              <Link href="/agreement" className="text-neutral-500 hover:text-neutral-300 transition-colors text-sm">
-                Пользовательское соглашение
               </Link>
             </div>
           </div>

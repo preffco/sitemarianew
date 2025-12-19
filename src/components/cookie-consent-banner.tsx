@@ -38,10 +38,9 @@ export function CookieConsentBanner() {
     >
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
         <div className="space-y-2 flex-1 text-sm leading-relaxed text-neutral-200">
-          <p className="font-semibold text-white text-base sm:text-lg">Мы используем cookie</p>
+          <p className="font-semibold text-white text-base sm:text-lg">Мы используем cookie в целях сбора статистики.</p>
           <p className="text-white/70">
-            Собираем исключительно технические и аналитические cookie, чтобы интерфейс работал стабильно,
-            а мы понимали, какие разделы приносят вам пользу.
+            Оставаясь на сайте, Вы выражаете согласие на сбор и обработку Ваших персональных данных, в том числе с привлечением сторонних сервисов, с применением cookie-файлов и средств анализа поведения пользователей, согласно нашей Политике конфиденциальности
           </p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-4">
