@@ -25,6 +25,15 @@ const articleCards = [
     logo: "/tenchat2.png",
     link: "/blog/ai-for-all",
   },
+  {
+    id: "tbank",
+    title: "Внедрить ИИ — это не «купить на него подписку»",
+    summary:
+      "По данным Smart Ranking рынок ИИ в РФ вырос на 25%, но только 5% сотрудников используют его эффективно. Мария Аникина объясняет, почему подписка на ChatGPT не меняет процессы и как правильно внедрять ИИ в компании.",
+    tag: "Т-Бизнес секреты",
+    logo: null,
+    link: "/blog/tbank",
+  },
 ]
 
 export default function BlogPage() {
@@ -56,7 +65,11 @@ export default function BlogPage() {
                     <Image src={article.logo} alt={article.tag} width={40} height={40} className="h-full w-full object-contain" />
                   </div>
                 ) : (
-                  <div className="h-10 w-10 rounded-full bg-neutral-200" />
+                  <div className="border border-neutral-900 rounded px-1 py-0.5 inline-block">
+                    <span className="text-neutral-950 font-bold text-[8px] tracking-wide">
+                      {article.tag}
+                    </span>
+                  </div>
                 )}
               </div>
               <h2 className="text-2xl font-semibold text-neutral-950 leading-tight">{article.title}</h2>

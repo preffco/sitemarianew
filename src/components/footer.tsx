@@ -26,7 +26,7 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#education" className="text-neutral-500 hover:text-neutral-300 transition-colors">
+                <a href="/education" className="text-neutral-500 hover:text-neutral-300 transition-colors">
                   Мастер-классы
                 </a>
               </li>

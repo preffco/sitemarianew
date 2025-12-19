@@ -24,6 +24,14 @@ const fallbackArticles = [
       "Мария Аникина рассказывает, как гуманитарий с юриспруденцией создала Ai for all и теперь помогает компаниям интегрировать ИИ в рутинные процессы",
     url: "/blog/ai-for-all",
   },
+  {
+    id: 3,
+    publication: "Т-Бизнес секреты",
+    publicationLogo: null,
+    title:
+      "Внедрить ИИ — это не «купить на него подписку». Мария Аникина объясняет, почему сотрудники не используют нейросети и как правильно внедрять ИИ в бизнес-процессы",
+    url: "/blog/tbank",
+  },
 ]
 
 interface Article {
@@ -74,8 +82,8 @@ export function PressSection() {
         </h2>
 
         {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            {[1, 2].map((i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {[1, 2, 3].map((i) => (
               <div
                 key={i}
                 className="bg-white rounded-none pt-4 sm:pt-5 px-4 sm:px-5 pb-0 shadow-[0_2px_8px_rgba(0,0,0,0.08)] flex flex-col min-h-[280px] sm:min-h-[300px] animate-pulse"
@@ -87,7 +95,7 @@ export function PressSection() {
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {articles.map((article, index) => {
               // Determine if this is TenChat article (for special styling)
               const isTenChat = article.publicationLogo?.includes('tenchat') || article.publication === 'TenChat'
@@ -111,8 +119,8 @@ export function PressSection() {
                         priority={index === 0}
                       />
                     ) : (
-                      <div className="border border-neutral-900 rounded px-3 py-1.5 inline-block">
-                        <span className="text-neutral-950 font-bold text-sm tracking-wide">
+                      <div className="border border-neutral-900 rounded px-3.5 py-2 inline-block -mt-1">
+                        <span className="text-neutral-950 font-bold text-base tracking-wide uppercase">
                           {article.publication}
                         </span>
                       </div>

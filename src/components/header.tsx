@@ -35,9 +35,9 @@ export function Header({ variant = "dark" }: HeaderProps) {
       { label: "Услуги", href: "#services" },
       { label: "Кейсы", href: "#cases" },
       { label: "Сертификаты", href: "#certificates" },
-      { label: "Обучение", href: "#education" },
       { label: "Блог и публикации", href: "/blog" },
       { label: "Контакты", href: "#contact" },
+      { label: "Обучение", href: "/education" },
     ],
     [],
   )
@@ -88,12 +88,16 @@ export function Header({ variant = "dark" }: HeaderProps) {
             <nav className="hidden xl:flex items-center gap-8">
               {links.map((link) => {
                 const isExternalLink = link.href.startsWith("/")
+                const isEducation = link.label === "Обучение"
+                const educationClass = isEducation 
+                  ? `${isLight ? "text-neutral-950 font-bold" : "text-white font-bold"} transition-colors text-base`
+                  : navLinkClass
                 return isExternalLink ? (
-                  <Link key={link.href} href={link.href} className={navLinkClass}>
+                  <Link key={link.href} href={link.href} className={educationClass}>
                     {link.label}
                   </Link>
                 ) : (
-                  <a key={link.href} href={`${linkBase}${link.href}`} className={navLinkClass}>
+                  <a key={link.href} href={`${linkBase}${link.href}`} className={educationClass}>
                     {link.label}
                   </a>
                 )
@@ -147,11 +151,15 @@ export function Header({ variant = "dark" }: HeaderProps) {
             <nav className="flex-1 overflow-y-auto px-6 py-6 flex flex-col gap-4">
               {links.map((link) => {
                 const isExternalLink = link.href.startsWith("/")
+                const isEducation = link.label === "Обучение"
+                const educationClass = isEducation
+                  ? "text-lg font-bold text-neutral-950 hover:text-neutral-950 transition-colors"
+                  : "text-lg font-medium text-neutral-900 hover:text-neutral-950 transition-colors"
                 return isExternalLink ? (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-lg font-medium text-neutral-900 hover:text-neutral-950 transition-colors"
+                    className={educationClass}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.label}
@@ -160,7 +168,7 @@ export function Header({ variant = "dark" }: HeaderProps) {
                   <a
                     key={link.href}
                     href={`${linkBase}${link.href}`}
-                    className="text-lg font-medium text-neutral-900 hover:text-neutral-950 transition-colors"
+                    className={educationClass}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.label}

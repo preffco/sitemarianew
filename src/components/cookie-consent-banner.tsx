@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 
 const CONSENT_KEY = "afa-cookie-consent"
@@ -19,7 +20,7 @@ export function CookieConsentBanner() {
     setChoice(stored)
   }, [])
 
-  const handleChoice = (value: "accepted" | "declined") => {
+  const handleChoice = (value: "accepted") => {
     window.localStorage.setItem(CONSENT_KEY, value)
     setChoice(value)
     setVisible(false)
@@ -40,7 +41,10 @@ export function CookieConsentBanner() {
         <div className="space-y-2 flex-1 text-sm leading-relaxed text-neutral-200">
           <p className="font-semibold text-white text-base sm:text-lg">Мы используем cookie в целях сбора статистики.</p>
           <p className="text-white/70">
-            Оставаясь на сайте, Вы выражаете согласие на сбор и обработку Ваших персональных данных, в том числе с привлечением сторонних сервисов, с применением cookie-файлов и средств анализа поведения пользователей, согласно нашей Политике конфиденциальности
+            Оставаясь на сайте, Вы выражаете согласие на сбор и обработку Ваших персональных данных, в том числе с привлечением сторонних сервисов, с применением cookie-файлов и средств анализа поведения пользователей, согласно нашей{" "}
+            <Link href="/privacy" className="text-amber-400 hover:text-amber-300 underline underline-offset-2 transition-colors">
+              Политике конфиденциальности
+            </Link>
           </p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-4">
@@ -49,13 +53,6 @@ export function CookieConsentBanner() {
             onClick={() => handleChoice("accepted")}
           >
             Принять
-          </Button>
-          <Button
-            variant="outline"
-            className="flex-1 border-white/20 bg-white/10 text-neutral-950 hover:border-white/30"
-            onClick={() => handleChoice("declined")}
-          >
-            Отклонить
           </Button>
         </div>
       </div>
